@@ -1,4 +1,12 @@
-const spikeApiPublic = require("../../../spike-api-public/index-browser");
+// api
+const shapes = require("./shapes");
+const helpers = require("./helpers");
+const enums = require("./enums");
+const common = require("./lib/common");
+const BadShapeError = require("./lib/badShapeError");
+const InputValidationError = require("./lib/inputValidationError");
+const ShapeNotFoundError = require("./lib/shapeNotFoundError");
+// wrappers
 const accounts = require("./wrappers/accounts");
 const close = require("./wrappers/close");
 const estatement = require("./wrappers/estatement");
@@ -12,16 +20,20 @@ const statements = require("./wrappers/statements");
 const transactions = require("./wrappers/transactions");
 
 module.exports = {
-  // expose spike-api-public
-  getShape: spikeApiPublic.getShape,
-  isSupported: spikeApiPublic.isSupported,
+  // api
+  shape: shapes.shape,
+  getShape: shapes.getShape,
+  common,
+  enums,
+  isSupported: enums.isSupported,
+  isUserError: helpers.isUserError,
+  BadShapeError,
+  InputValidationError,
+  ShapeNotFoundError,
   sanitize(response) {
-    let shape = spikeApiPublic.getShape(response.code);
-    return spikeApiPublic.common.sanitize(shape.sanitize, response.data);
+    let shape = shapes.getShape(response.code);
+    return common.sanitize(shape.sanitize, response.data);
   },
-  enums: spikeApiPublic.enums,
-  InputValidationError: spikeApiPublic.InputValidationError,
-
   // wrappers
   accounts,
   close,
