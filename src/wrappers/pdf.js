@@ -1,4 +1,4 @@
-const spikeApiPublic = require("../../../../spike-api-public/api");
+const spikeApiPublic = require("../../../../spike-api-public/index-browser");
 const config = require("../config/static");
 const shared = require("./shared");
 

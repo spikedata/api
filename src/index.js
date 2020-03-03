@@ -1,4 +1,4 @@
-const spikeApiPublic = require("../../../spike-api-public/api");
+const spikeApiPublic = require("../../../spike-api-public/index-browser");
 const accounts = require("./wrappers/accounts");
 const close = require("./wrappers/close");
 const estatement = require("./wrappers/estatement");
