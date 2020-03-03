@@ -11,7 +11,7 @@ exports.resolve = function(path, arrayOfNestedShapes) {
   }
   let deps = {
     schemas: [],
-    shapes: []
+    shapes: [],
   };
   let ok = true;
   for (let child of arrayOfNestedShapes) {

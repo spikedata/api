@@ -16,17 +16,17 @@ exports.examples = {
       dates: {
         issuedOn: "2017-11-11T00:00:00.000Z",
         from: "2017-10-01T00:00:00.000Z",
-        to: "2017-10-31T00:00:00.000Z"
+        to: "2017-10-31T00:00:00.000Z",
       },
       nameAddress: ["MR I COPELYN", "20 SYDNEY STREET", "GREEN POINT", "8005"],
-      accountType: "VISA Platinum"
+      accountType: "VISA Platinum",
     },
     breakdown: [
       {
         category: "PreviousBalance",
         name: "Balance from last statement",
-        total: 13495.49
-      }
+        total: 13495.49,
+      },
     ],
     transactions: [
       {
@@ -35,10 +35,10 @@ exports.examples = {
         transactionDate: "2017-02-07T00:00:00.000Z",
         processDate: "2017-02-07T00:00:00.000Z",
         description: ["Balance from previous statement"],
-        amount: 13495.49
-      }
+        amount: 13495.49,
+      },
     ],
-    valid: true
+    valid: true,
   },
 
   invalid: {
@@ -49,17 +49,17 @@ exports.examples = {
       dates: {
         issuedOn: "2017-11-11T00:00:00.000Z",
         from: "2017-10-01T00:00:00.000Z",
-        to: "2017-10-31T00:00:00.000Z"
+        to: "2017-10-31T00:00:00.000Z",
       },
       nameAddress: ["MR I COPELYN", "20 SYDNEY STREET", "GREEN POINT", "8005"],
-      accountType: "VISA Platinum"
+      accountType: "VISA Platinum",
     },
     breakdown: [
       {
         category: "PreviousBalance",
         name: "Balance from last statement",
-        total: 13495.49
-      }
+        total: 13495.49,
+      },
     ],
     transactions: [
       {
@@ -68,8 +68,8 @@ exports.examples = {
         transactionDate: "2017-02-07T00:00:00.000Z",
         processDate: "2017-02-07T00:00:00.000Z",
         description: ["Balance from previous statement"],
-        amount: 13495.49
-      }
+        amount: 13495.49,
+      },
     ],
     valid: false,
     breaks: [
@@ -77,10 +77,10 @@ exports.examples = {
         category: "Transactions",
         expected: 100,
         actual: 101,
-        diff: 1
-      }
-    ]
-  }
+        diff: 1,
+      },
+    ],
+  },
 };
 
 //#endregion
@@ -94,7 +94,7 @@ exports.validate = {
     parser: {
       required: true,
       type: "string",
-      enum: enums.PdfParser.creditCardBreakdown
+      enum: enums.PdfParser.creditCardBreakdown,
     },
     statement: {
       required: true,
@@ -110,16 +110,15 @@ exports.validate = {
           properties: {
             issuedOn: { type: "any", format: "date-or-iso-str" }, // optional - ABSA cheque-account-web does not have issue date
             from: { required: true, type: "any", format: "date-or-iso-str" },
-            to: { required: true, type: "any", format: "date-or-iso-str" }
-          }
+            to: { required: true, type: "any", format: "date-or-iso-str" },
+          },
         },
         nameAddress: {
           required: true,
           type: "array",
-          items: { type: "string" }
+          items: { type: "string" },
         },
-        accountType: { required: false, type: "string" }
-      }
+      },
     },
     breakdown: {
       required: true,
@@ -129,9 +128,9 @@ exports.validate = {
         properties: {
           category: { required: true, type: "string" },
           name: { required: true, type: "string" },
-          total: { required: true, type: "number" }
-        }
-      }
+          total: { required: true, type: "number" },
+        },
+      },
     },
     transactions: {
       required: true,
@@ -146,11 +145,11 @@ exports.validate = {
           description: {
             required: true,
             type: "array",
-            items: { type: "string" }
+            items: { type: "string" },
           },
-          amount: { type: "number" } // optional: balance brought forward lines have no amount
-        }
-      }
+          amount: { type: "number" }, // optional: balance brought forward lines have no amount
+        },
+      },
     },
     valid: { required: true, type: "boolean" },
     breaks: {
@@ -161,11 +160,11 @@ exports.validate = {
           category: { required: true, type: "string" },
           expected: { required: true, type: "number" },
           actual: { required: true, type: "number" },
-          diff: { required: true, type: "number" }
-        }
-      }
-    }
-  }
+          diff: { required: true, type: "number" },
+        },
+      },
+    },
+  },
 };
 
 //#endregion
@@ -174,8 +173,8 @@ exports.validate = {
 
 exports.sanitize = {
   statement: {
-    nameAddress: "[redacted]" // remove name
-  }
+    nameAddress: "[redacted]", // remove name
+  },
 };
 
 //#endregion

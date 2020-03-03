@@ -167,7 +167,7 @@ exports.marshall = function(spikeReq, wrapperShape, inputCode, inputData) {
   return {
     outputShape,
     outputCode,
-    outputData
+    outputData,
   };
 };
 

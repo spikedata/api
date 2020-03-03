@@ -4,7 +4,7 @@ module.exports = {
     tags: ["Web"],
     method: "post",
     summary: "Initiate a session by logging in to an internet banking account",
-    operationId: "login"
+    operationId: "login",
   },
   shapes: {
     inputs: "login",
@@ -13,7 +13,7 @@ module.exports = {
       interim: [
         "login/interim-input-abs-pass",
         "login/interim-input-std-otp",
-        "login/interim-wait-cap-2fa"
+        "login/interim-wait-cap-2fa",
       ],
       error: [
         // general & web
@@ -32,8 +32,8 @@ module.exports = {
         "error/site/site-change-detected",
         "error/site/site-maintenance",
         "error/site/site-unreachable",
-        "error/site/site-unresponsive"
-      ]
-    }
-  }
+        "error/site/site-unresponsive",
+      ],
+    },
+  },
 };

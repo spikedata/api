@@ -19,40 +19,40 @@ exports.Types = {
   "new-todo-rule-auto":
     "Forthcoming feature - i.e. a new parser which we've identified but not yet had time to implement", // text-rule
   "unsupported-rule-auto":
-    "text matched a known unsupported pdf format - like Africa Bank Loan Statements, Absa Investment Summaries, Bidvest Cardholder Statements, etc..." // text-rule
+    "text matched a known unsupported pdf format - like Africa Bank Loan Statements, Absa Investment Summaries, Bidvest Cardholder Statements, etc...", // text-rule
 };
 
 exports.examples = {
   scan: {
     type: "scan-rule-auto",
-    message: exports.Types["scan-rule-auto"]
+    message: exports.Types["scan-rule-auto"],
   },
   utf16: {
     type: "broken-utf16-auto",
-    message: exports.Types["broken-utf16-auto"]
+    message: exports.Types["broken-utf16-auto"],
   },
   encoding: {
     type: "broken-encoding-auto",
-    message: exports.Types["broken-encoding-auto"]
+    message: exports.Types["broken-encoding-auto"],
   },
   junk: {
     type: "junk-rule-auto",
-    message: exports.Types["junk-rule-auto"]
+    message: exports.Types["junk-rule-auto"],
   },
   newTodo: {
     type: "new-todo-rule-auto",
-    message: exports.Types["new-todo-rule-auto"]
+    message: exports.Types["new-todo-rule-auto"],
   },
   unsupported: {
     type: "unsupported-rule-auto",
-    message: exports.Types["unsupported-rule-auto"]
-  }
+    message: exports.Types["unsupported-rule-auto"],
+  },
 };
 
 exports.create = function(type) {
   return {
     type,
-    message: exports.Types[type]
+    message: exports.Types[type],
   };
 };
 
@@ -62,13 +62,13 @@ exports.validate = {
     type: {
       required: true,
       type: "string",
-      enum: Object.keys(exports.Types)
+      enum: Object.keys(exports.Types),
     },
     message: {
       required: false,
-      type: "string"
-    }
-  }
+      type: "string",
+    },
+  },
 };
 
 exports.sanitize = undefined;

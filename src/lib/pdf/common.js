@@ -50,7 +50,7 @@ exports.validate = function(requestId, transactions, filename) {
       prev_date: trans_prev.date,
       cur_date: trans_cur.date,
       amount: trans_cur.amount,
-      diff: trans_cur.balance - (trans_prev.balance + trans_cur.amount)
+      diff: trans_cur.balance - (trans_prev.balance + trans_cur.amount),
     };
     if (Math.abs(validation.diff) > 0.001) {
       breaks.push(validation);

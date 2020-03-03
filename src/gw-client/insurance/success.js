@@ -18,18 +18,18 @@ exports.examples = {
       {
         benefit: "Life Cover",
         premium: 249.44,
-        cover: 1552500
+        cover: 1552500,
       },
       {
-        benefit: "Immediate Expenses Benefit"
+        benefit: "Immediate Expenses Benefit",
       },
       {
         benefit: "Absolute Protector Plus (Ood)",
         premium: 164.69,
-        cover: 1035000
-      }
-    ]
-  }
+        cover: 1035000,
+      },
+    ],
+  },
 };
 
 //#endregion
@@ -42,7 +42,7 @@ exports.validate = {
     parser: {
       required: true,
       type: "string",
-      enum: enums.PdfParser.insurance
+      enum: enums.PdfParser.insurance,
     },
     name: { required: true, type: "string" },
     policyNumber: { required: true, type: "string" },
@@ -58,11 +58,11 @@ exports.validate = {
           benefit: { required: true, type: "string" },
           details: { /* required: true,*/ type: "string" },
           cover: { /* required: true,*/ type: ["number", "string"] }, // number or RETAIL (e.g. outsurance vehicle cover)
-          premium: { /* required: true,*/ type: "number" }
-        }
-      }
-    }
-  }
+          premium: { /* required: true,*/ type: "number" },
+        },
+      },
+    },
+  },
 };
 
 //#endregion
@@ -70,7 +70,7 @@ exports.validate = {
 //#region sanitize
 
 exports.sanitize = {
-  name: "[redacted]"
+  name: "[redacted]",
 };
 
 //#endregion

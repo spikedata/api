@@ -14,20 +14,20 @@ exports.composedSchema = {
     sessionId: {
       required: true, // shape can specify required value - see compose() below
       type: "string",
-      format: "uuidV4"
+      format: "uuidV4",
     },
     final: {
       required: true, // shape can specify required value - see compose() below
-      type: "boolean"
-    }
-  }
+      type: "boolean",
+    },
+  },
 };
 
 exports.compose = function(sessionIdRequired, finalRequired, additionalSchema) {
   let composedSchema;
   if (additionalSchema) {
     composedSchema = objectUtil.mergeObjectsClone(this.composedSchema, {
-      properties: additionalSchema
+      properties: additionalSchema,
     });
   } else {
     composedSchema = objectUtil.clone(this.composedSchema);

@@ -8,7 +8,7 @@ exports.noSessionId = true; // shapeExplorer
 //#region examples
 
 exports.examples = {
-  default: ["string1"]
+  default: ["string1"],
 };
 
 //#endregion
@@ -18,9 +18,9 @@ exports.examples = {
 exports.validate = {
   type: "array",
   items: {
-    type: "string"
+    type: "string",
   },
-  minItems: 1
+  minItems: 1,
 };
 
 //#endregion

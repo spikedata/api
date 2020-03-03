@@ -16,8 +16,8 @@ exports.examples = {
     sessionId: uuid.testUuid(),
     final: false,
     code: exports.code,
-    data: "12345"
-  }
+    data: "12345",
+  },
 };
 
 //#endregion
@@ -30,7 +30,7 @@ exports.create = function(sessionId, final = false, otp) {
     sessionId,
     final,
     code: exports.code,
-    data: otp
+    data: otp,
   };
   let errors = common.validateSchema(exports.validate, instance, exports.nestedSchemas);
   if (errors) {
@@ -49,7 +49,7 @@ exports.additionalSchema = undefined;
 
 exports.dataSchema = {
   required: true,
-  type: "string" // NOTE: string is safer than number - leading 0's are stripped from numbers
+  type: "string", // NOTE: string is safer than number - leading 0's are stripped from numbers
 };
 
 exports.validate = composerCodeData.compose(
@@ -67,7 +67,7 @@ exports.validate = composerCodeData.compose(
 exports.ownSanitize = "*****";
 
 exports.sanitize = {
-  data: exports.ownSanitize
+  data: exports.ownSanitize,
 };
 
 //#endregion

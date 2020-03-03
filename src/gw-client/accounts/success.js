@@ -1,3 +1,4 @@
+const common = require("../../lib/common");
 const enums = require("../../enums");
 const InputValidationError = require("../../lib/inputValidationError");
 
@@ -16,7 +17,7 @@ exports.examples = {
       name: "ACCESSACC",
       type: "Current Account",
       currentBalance: 1000.32,
-      balance: 1000.32
+      balance: 1000.32,
     },
     {
       accountNumber: "12345678901",
@@ -25,9 +26,9 @@ exports.examples = {
       name: "CREDIT",
       type: "Credit Account",
       currentBalance: -9000,
-      balance: -9000
-    }
-  ]
+      balance: -9000,
+    },
+  ],
 };
 
 //#endregion
@@ -37,7 +38,7 @@ exports.examples = {
 // TODO: note not currently used because data created by browserCode - e.g. see [$/spike-web/src/NED.0/accounts.js]
 exports.create = function(todo) {
   let instance = {
-    todo
+    todo,
   };
   let errors = common.validateSchema(exports.validate, instance, exports.nestedSchemas);
   if (errors) {
@@ -59,34 +60,34 @@ exports.validate = {
     properties: {
       accountNumber: {
         required: true,
-        type: "string"
+        type: "string",
       },
       currency: {
         required: false,
-        type: "string"
+        type: "string",
       },
       alias: {
         required: false,
-        type: "string"
+        type: "string",
       },
       name: {
         required: true,
-        type: "string"
+        type: "string",
       },
       type: {
         required: false,
-        type: "string"
+        type: "string",
       },
       currentBalance: {
         required: false,
-        type: "number"
+        type: "number",
       },
       balance: {
         required: true,
-        type: "number"
-      }
-    }
-  }
+        type: "number",
+      },
+    },
+  },
 };
 
 //#endregion
@@ -97,8 +98,8 @@ exports.validate = {
 exports.sanitize = [
   {
     currentBalance: "***",
-    balance: "***"
-  }
+    balance: "***",
+  },
 ];
 
 //#endregion

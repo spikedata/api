@@ -17,34 +17,34 @@ exports.examples = {
     site: "ABS.0",
     user: "username",
     pin: "pin",
-    usernum: 1
+    usernum: 1,
   },
   "CAP.0": {
     site: "CAP.0",
     user: "username",
-    pass: "password"
+    pass: "password",
   },
   "FNB.0": {
     site: "FNB.0",
     user: "username",
-    pass: "password"
+    pass: "password",
   },
   "NED.0": {
     site: "NED.0",
     user: "username",
     pass: "password",
-    pin: "pin"
+    pin: "pin",
   },
   "RMB.0": {
     site: "RMB.0",
     user: "username",
-    pass: "password"
+    pass: "password",
   },
   "STD.2018-01": {
     site: "STD.2018-01",
     user: "username",
-    pass: "password"
-  }
+    pass: "password",
+  },
 };
 
 //#endregion
@@ -70,18 +70,18 @@ exports.schema = {
   required: ["site", "user"],
   properties: {
     site: {
-      type: "string"
+      type: "string",
     },
     user: {
-      type: "string"
+      type: "string",
     },
     pin: {
-      type: "string"
+      type: "string",
     },
     usernum: {
-      type: "string"
-    }
-  }
+      type: "string",
+    },
+  },
 };
 
 exports.validate = function(data) {
@@ -114,6 +114,7 @@ exports.validate = function(data) {
         if (!data.user) validationErrors.push("missing required input: user = Username");
         if (!data.pass) validationErrors.push("missing required input: pass = Password/Remote PIN");
       }
+      // eslint-disable-next-line no-fallthrough
       case "RMB.0":
       case "FNB.0": {
         if (!data.user) validationErrors.push("missing required input: user = Username");

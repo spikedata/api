@@ -53,9 +53,9 @@ exports.Enum = {
   keys() {
     return (
       Object.entries(this)
-        .filter(x => x[0] !== exports.nameKey)
+        .filter((x) => x[0] !== exports.nameKey)
         //.filter(x => Number.isInteger(x[1]))
-        .map(x => x[0])
+        .map((x) => x[0])
     );
   },
 
@@ -63,19 +63,20 @@ exports.Enum = {
     // return Object.values(this).filter(Number.isInteger);
     return (
       Object.entries(this)
-        .filter(x => x[0] !== exports.nameKey)
+        .filter((x) => x[0] !== exports.nameKey)
         //.filter(x => Number.isInteger(x[1]))
-        .map(x => x[1])
+        .map((x) => x[1])
     );
   },
 
   validKey(k) {
+    // eslint-disable-next-line no-prototype-builtins
     return this.hasOwnProperty(k);
   },
 
   validValue(v) {
     return this.values().indexOf(v) !== -1;
-  }
+  },
 };
 
 exports.createEnum = function(name, keyValues) {

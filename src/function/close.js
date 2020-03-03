@@ -4,7 +4,7 @@ module.exports = {
     tags: ["Web"],
     method: "post",
     summary: "Close an open session",
-    operationId: "close"
+    operationId: "close",
   },
   shapes: {
     // NOTE: don't use "client-gw" || "gw-client" prefixes - breaks $refs in swagger
@@ -23,8 +23,8 @@ module.exports = {
         "error/site/internal",
         "error/site/site-change-detected",
         "error/site/site-unreachable",
-        "error/site/site-unresponsive"
-      ]
-    }
-  }
+        "error/site/site-unresponsive",
+      ],
+    },
+  },
 };

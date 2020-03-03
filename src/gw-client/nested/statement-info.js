@@ -4,11 +4,11 @@ exports.validate = {
   properties: {
     bank: {
       required: true,
-      type: "string"
+      type: "string",
     },
     accountNumber: {
       required: true,
-      type: "string"
+      type: "string",
     },
     dates: {
       required: true,
@@ -17,28 +17,28 @@ exports.validate = {
         issuedOn: {
           required: false,
           type: "any",
-          format: "date-or-iso-str"
+          format: "date-or-iso-str",
         },
         from: {
           required: true,
           type: "any",
-          format: "date-or-iso-str"
+          format: "date-or-iso-str",
         },
         to: {
           required: true,
           type: "any",
-          format: "date-or-iso-str"
-        }
-      }
+          format: "date-or-iso-str",
+        },
+      },
     },
     nameAddress: {
       required: true,
       type: "array",
       items: {
-        type: "string"
-      }
-    }
-  }
+        type: "string",
+      },
+    },
+  },
 };
 
 exports.examples = {
@@ -48,12 +48,12 @@ exports.examples = {
     dates: {
       issuedOn: "2018-09-02T00:00:00.000Z",
       from: "2018-08-01T00:00:00.000Z",
-      to: "2018-08-31T00:00:00.000Z"
+      to: "2018-08-31T00:00:00.000Z",
     },
-    nameAddress: ["Mr. J Smith", "10 Main Road", "Cape Town", "8001"]
-  }
+    nameAddress: ["Mr. J Smith", "10 Main Road", "Cape Town", "8001"],
+  },
 };
 
 exports.sanitize = {
-  nameAddress: "[redacted]"
+  nameAddress: "[redacted]",
 };

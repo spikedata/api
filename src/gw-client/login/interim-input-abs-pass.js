@@ -8,7 +8,7 @@ exports.passThrough = true; // from lambda-gw
 //#region examples
 
 exports.examples = {
-  default: [0, 1, 2]
+  default: [0, 1, 2],
 };
 
 //#endregion
@@ -18,10 +18,10 @@ exports.examples = {
 exports.validate = {
   type: "array",
   items: {
-    type: "integer"
+    type: "integer",
   },
   minItems: 3,
-  maxItems: 3
+  maxItems: 3,
 };
 
 //#endregion

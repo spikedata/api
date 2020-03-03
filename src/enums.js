@@ -16,7 +16,7 @@ exports.TYPES = Enum.createEnum("TYPES", {
   SUCCESS: 2,
   INTERIM: 3,
   // various errors - from FN or from plumbing
-  ERROR: 4
+  ERROR: 4,
 });
 
 exports.BLAME = Enum.createEnum("BLAME", {
@@ -24,7 +24,7 @@ exports.BLAME = Enum.createEnum("BLAME", {
   SPIKE: 1,
   SITE: 2,
   USER: 3,
-  CLIENT: 4
+  CLIENT: 4,
 });
 
 exports.FN = {
@@ -36,7 +36,7 @@ exports.FN = {
   close,
   transactions,
   statements,
-  estatement
+  estatement,
   //"/account_holder": "Name, address, phone, email",
   //"/beneficiaries": "List of payment beneficiaries"
 };
@@ -49,16 +49,16 @@ exports.Sites = Enum.createEnum("Sites", {
   "FNB.0": 3,
   "NED.0": 4,
   "RMB.0": 5,
-  "STD.2018-01": 6
+  "STD.2018-01": 6,
 });
 
 const exclude = [
   exports.FN.login.url,
   exports.FN["login-interim-input"].url,
-  exports.FN["login-interim-wait"].url
+  exports.FN["login-interim-wait"].url,
 ];
-const allObjectives = Object.values(exports.FN).filter(x => exclude.indexOf(x.url) === -1);
-const noStatements = allObjectives.filter(x => x.url !== exports.FN.statements.url);
+const allObjectives = Object.values(exports.FN).filter((x) => exclude.indexOf(x.url) === -1);
+const noStatements = allObjectives.filter((x) => x.url !== exports.FN.statements.url);
 
 exports.SiteToFunction = {
   "ABS.0": allObjectives,
@@ -66,7 +66,7 @@ exports.SiteToFunction = {
   "FNB.0": allObjectives,
   "NED.0": noStatements,
   "RMB.0": allObjectives,
-  "STD.2018-01": noStatements
+  "STD.2018-01": noStatements,
 };
 
 exports.isSupported = function(site, fn) {
@@ -83,28 +83,28 @@ exports.SiteToBankName = {
   "FNB.0": "FNB",
   "NED.0": "Nedbank",
   "RMB.0": "RMB",
-  "STD.2018-01": "Standard Bank"
+  "STD.2018-01": "Standard Bank",
 };
 
 exports.SiteMeta = {
   "ABS.0": {
-    created: "2018-01-01"
+    created: "2018-01-01",
   },
   "CAP.0": {
-    created: "2018-01-01"
+    created: "2018-01-01",
   },
   "FNB.0": {
-    created: "2018-01-01"
+    created: "2018-01-01",
   },
   "NED.0": {
-    created: "2018-01-01"
+    created: "2018-01-01",
   },
   "RMB.0": {
-    created: "2018-01-01"
+    created: "2018-01-01",
   },
   "STD.2018-01": {
-    created: "2018-01-01"
-  }
+    created: "2018-01-01",
+  },
 };
 
 exports.bankToSite = {
@@ -113,7 +113,7 @@ exports.bankToSite = {
   FNB: "FNB.0",
   NEDBANK: "NED.0",
   RMB: "RMB.0",
-  STANDARDBANK: "STD.2018-01"
+  STANDARDBANK: "STD.2018-01",
 };
 
 //#endregion
@@ -122,7 +122,7 @@ exports.bankToSite = {
 
 exports.PdfType = Enum.createEnum("PdfType", {
   BANK: 0,
-  INSURANCE: 1
+  INSURANCE: 1,
 });
 
 // Documents expected values - not an enum
@@ -160,7 +160,7 @@ exports.PdfParser = {
     "STANDARDBANK_STATEMENT2",
     "STANDARDBANK_STATEMENT3",
     "STANDARDBANK_STATEMENT4",
-    "TYME"
+    "TYME",
   ],
   bankStatementsNoBalance: ["NEDBANK_ACCBAL_WEB"],
   creditCardBreakdown: ["ABSA_CREDITCARD_EMAIL_0", "NEDBANK_CREDITCARD"],
@@ -173,9 +173,9 @@ exports.PdfParser = {
     "OUTSURANCE_ALL",
     "SANLAM",
     "SANTAM_ALL",
-    "SANTAM_OTHER"
+    "SANTAM_OTHER",
   ],
-  other: ["SARS_PAYROLLTAXES_WEB_0"]
+  other: ["SARS_PAYROLLTAXES_WEB_0"],
 };
 
 exports.PdfParserAll = Object.keys(exports.PdfParser).reduce((arr, k) => {
@@ -190,14 +190,14 @@ exports.PdfParserAll = Object.keys(exports.PdfParser).reduce((arr, k) => {
 
 exports.Channel = Enum.createEnum("Channel", {
   Lchan: 1, // lambda channel = invoke and result
-  Bchan: 2 // back channel = send and receive
+  Bchan: 2, // back channel = send and receive
 });
 
 exports.LogLevel = Enum.createEnum("LogLevel", {
   None: 0,
   Full: 1,
   Sanitized: 1,
-  CodeType: 2
+  CodeType: 2,
 });
 
 //#endregion

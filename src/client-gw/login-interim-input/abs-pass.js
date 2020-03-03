@@ -16,8 +16,8 @@ exports.examples = {
     sessionId: uuid.testUuid(),
     final: false,
     code: exports.code,
-    data: ["p", "a", "s"]
-  }
+    data: ["p", "a", "s"],
+  },
 };
 
 //#endregion
@@ -30,7 +30,7 @@ exports.create = function(sessionId, final = false, data) {
     sessionId,
     final,
     code: exports.code,
-    data
+    data,
   };
   let errors = common.validateSchema(exports.validate, instance, exports.nestedSchemas);
   if (errors) {
@@ -53,8 +53,8 @@ exports.dataSchema = {
   items: {
     type: "string",
     minItems: 3,
-    maxItems: 3
-  }
+    maxItems: 3,
+  },
 };
 
 exports.validate = composerCodeData.compose(
@@ -72,7 +72,7 @@ exports.validate = composerCodeData.compose(
 exports.ownSanitize = "[*,*,*]";
 
 exports.sanitize = {
-  data: exports.ownSanitize
+  data: exports.ownSanitize,
 };
 
 //#endregion

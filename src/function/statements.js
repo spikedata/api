@@ -4,7 +4,7 @@ module.exports = {
     tags: ["Web"],
     method: "post",
     summary: "Archived history statement (some banks may charge)",
-    operationId: "statements"
+    operationId: "statements",
   },
   shapes: {
     // NOTE: don't use "client-gw" || "gw-client" prefixes - breaks $refs in swagger
@@ -28,8 +28,8 @@ module.exports = {
         "error/site/site-change-detected",
         "error/site/site-maintenance",
         "error/site/site-unreachable",
-        "error/site/site-unresponsive"
-      ]
-    }
-  }
+        "error/site/site-unresponsive",
+      ],
+    },
+  },
 };

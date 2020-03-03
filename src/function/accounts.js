@@ -4,7 +4,7 @@ module.exports = {
     tags: ["Web"],
     method: "post",
     summary: "List all accounts & balances held by user",
-    operationId: "accounts"
+    operationId: "accounts",
   },
   shapes: {
     // NOTE: don't use "client-gw" || "gw-client" prefixes - breaks $refs in swagger
@@ -23,8 +23,8 @@ module.exports = {
         "error/site/internal",
         "error/site/site-change-detected",
         "error/site/site-unreachable",
-        "error/site/site-unresponsive"
-      ]
-    }
-  }
+        "error/site/site-unresponsive",
+      ],
+    },
+  },
 };

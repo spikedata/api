@@ -14,10 +14,10 @@ exports.not_a_shape = true;
 exports.composedSchema = objectUtil.clone(basic.composedSchema);
 exports.composedSchema.properties.code = {
   required: true, // shape can specify required value - see compose() below
-  type: "string"
+  type: "string",
 };
 exports.composedSchema.properties.data = {
-  required: true // shape can specify required value - see compose() below
+  required: true, // shape can specify required value - see compose() below
   // type: "any"
 };
 

@@ -4,7 +4,7 @@ module.exports = {
     tags: ["Web"],
     method: "post",
     summary: "2nd step in a 2-step login process where user input is NOT required - e.g. CAP wait",
-    operationId: "login"
+    operationId: "login",
   },
   shapes: {
     // NOTE: don't use "client-gw" || "gw-client" prefixes - breaks $refs in swagger
@@ -30,8 +30,8 @@ module.exports = {
         "error/site/site-unreachable",
         "error/site/site-unresponsive",
         "error/user/denied",
-        "error/user/took-too-long"
-      ]
-    }
-  }
+        "error/user/took-too-long",
+      ],
+    },
+  },
 };

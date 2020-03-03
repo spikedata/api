@@ -16,8 +16,8 @@ exports.examples = {
   default: {
     file: "absa.pdf",
     buffer: "JVBER...",
-    pass: "password" // required if pdf is password protected
-  }
+    pass: "password", // required if pdf is password protected
+  },
 };
 
 //#endregion
@@ -41,7 +41,7 @@ exports.create = function(pdfPath, pass, buffer) {
   let instance = {
     file: path.basename(pdfPath),
     buffer,
-    pass
+    pass,
   };
   let errors = common.validateSchema(exports.validate, instance, exports.nestedSchemas);
   if (errors) {
@@ -76,15 +76,15 @@ exports.schema = {
   required: ["file", "buffer"],
   properties: {
     file: {
-      type: "string"
+      type: "string",
     },
     pass: {
-      type: "string"
+      type: "string",
     },
     buffer: {
-      type: "string" // base64 encoded pdf buffer
-    }
-  }
+      type: "string", // base64 encoded pdf buffer
+    },
+  },
 };
 
 //#endregion

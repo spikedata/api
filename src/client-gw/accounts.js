@@ -14,8 +14,8 @@ exports.sessionBased = true;
 exports.examples = {
   default: {
     sessionId: uuid.testUuid(),
-    final: true
-  }
+    final: true,
+  },
 };
 
 //#endregion
@@ -25,7 +25,7 @@ exports.examples = {
 exports.create = function(sessionId, final = true) {
   let instance = {
     sessionId,
-    final
+    final,
   };
   let errors = common.validateSchema(exports.validate, instance, exports.nestedSchemas);
   if (errors) {

@@ -16,8 +16,8 @@ exports.examples = {
     sessionId: uuid.testUuid(),
     final: true,
     accountNumber: "1234567890",
-    numDays: 90
-  }
+    numDays: 90,
+  },
 };
 
 //#endregion
@@ -30,7 +30,7 @@ exports.create = function(sessionId, final = true, accountNumber, numDays = 90) 
     sessionId,
     final,
     accountNumber,
-    numDays
+    numDays,
   };
   let errors = common.validateSchema(exports.validate, instance, exports.nestedSchemas);
   if (errors) {
@@ -49,14 +49,14 @@ exports.additionalSchema = {
   accountNumber: {
     type: "string",
     required: true,
-    minLength: 10
+    minLength: 10,
   },
   numDays: {
     required: true,
     type: "integer",
     minimum: 1,
-    maximum: 90
-  }
+    maximum: 90,
+  },
 };
 
 exports.validate = composerBasic.compose(true, true, exports.additionalSchema);

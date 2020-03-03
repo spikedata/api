@@ -14,13 +14,13 @@ exports.examples = {
   pdf: {
     file: "absa-estatement.pdf",
     buffer: "...",
-    ext: ".pdf"
+    ext: ".pdf",
   },
   zip: {
     file: "fnb-statements.zip",
     buffer: "...",
-    ext: ".zip"
-  }
+    ext: ".zip",
+  },
 };
 
 //#endregion
@@ -35,7 +35,7 @@ exports.create = function(filePath, buffer, ext) {
   let instance = {
     file: path.basename(filePath),
     buffer,
-    ext
+    ext,
   };
   let errors = common.validateSchema(exports.validate, instance, exports.nestedSchemas);
   if (errors) {
@@ -53,8 +53,8 @@ exports.validate = {
   properties: {
     file: { required: true, type: "string" },
     buffer: { required: true, type: "string" },
-    ext: { required: true, type: "string" }
-  }
+    ext: { required: true, type: "string" },
+  },
 };
 
 //#endregion
@@ -66,7 +66,7 @@ exports.sanitize = function(data) {
   let clone = {
     file: data.file,
     buffer: "[redacted]",
-    ext: data.ext
+    ext: data.ext,
   };
   return clone;
 };

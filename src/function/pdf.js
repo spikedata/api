@@ -10,7 +10,7 @@ module.exports = {
     method: "post",
     summary: "Parse a pdf statement and return transactions and account holder info",
     description: "Note - does not require login",
-    operationId: "pdf"
+    operationId: "pdf",
   },
   shapes: {
     inputs: "pdf",
@@ -21,7 +21,7 @@ module.exports = {
         "pdf/success/bank-statement-normal",
         "pdf/success/credit-card-breakdown-multi-user",
         "pdf/success/credit-card-breakdown",
-        "pdf/success/credit-card-simple"
+        "pdf/success/credit-card-simple",
       ],
       error: [
         // general
@@ -46,12 +46,12 @@ module.exports = {
         "pdf/fail/unknown-exception",
         "pdf/fail/failed-to-extract-statement-date",
         "pdf/fail/failed-to-extract-credit-breakdown",
-        "pdf/fail/invalid-data-extracted"
-      ]
+        "pdf/fail/invalid-data-extracted",
+      ],
     },
     additional: {
       // enums,
       // schemas
-    }
-  }
+    },
+  },
 };

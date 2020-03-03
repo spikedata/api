@@ -4,7 +4,7 @@ module.exports = {
     tags: ["Web"],
     method: "post",
     summary: "Up to 90 days transaction history",
-    operationId: "transactions"
+    operationId: "transactions",
   },
   shapes: {
     // NOTE: don't use "client-gw" || "gw-client" prefixes - breaks $refs in swagger
@@ -26,8 +26,8 @@ module.exports = {
         "error/site/site-change-detected",
         "error/site/site-maintenance",
         "error/site/site-unreachable",
-        "error/site/site-unresponsive"
-      ]
-    }
-  }
+        "error/site/site-unresponsive",
+      ],
+    },
+  },
 };

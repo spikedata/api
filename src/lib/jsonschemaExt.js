@@ -1,12 +1,11 @@
 const core = require("./core");
+const uuid = require("./uuid");
 const Validator = require("jsonschema").Validator;
 
 // see https://json-schema.org/understanding-json-schema/reference/string.html
 
-//const uuidV4Regex = /^[A-F\d]{8}-[A-F\d]{4}-4[A-F\d]{3}-[89AB][A-F\d]{3}-[A-F\d]{12}$/i; // https://gist.github.com/bugventure/f71337e3927c34132b9a
-const uuidV4Regex = /[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}/;
 Validator.prototype.customFormats.uuidV4 = function(input) {
-  return uuidV4Regex.test(input);
+  return uuid.validUuidV4(input);
 };
 
 // Used to validate a source object (which has dates as actual new Date() objects) before it is serialized
@@ -26,15 +25,15 @@ Validator.prototype.customFormats["regex-or-str"] = function(input) {
 exports.swaggerReplacement = {
   uuidV4: {
     type: "string",
-    format: "uuid"
+    format: "uuid",
   },
   "date-or-iso-str": {
     type: "string",
-    format: "date-time" // https://xml2rfc.tools.ietf.org/public/rfc/html/rfc3339.html#anchor14
+    format: "date-time", // https://xml2rfc.tools.ietf.org/public/rfc/html/rfc3339.html#anchor14
   },
   "regex-or-str": {
-    type: "string"
-  }
+    type: "string",
+  },
 };
 
 exports.Validator = Validator;

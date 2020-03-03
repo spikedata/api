@@ -6,22 +6,22 @@ exports.validate = {
     properties: {
       prev_id: {
         required: true,
-        type: "integer"
+        type: "integer",
       },
       cur_id: {
         required: true,
-        type: "integer"
+        type: "integer",
       },
       amount: {
         required: true,
-        type: "number"
+        type: "number",
       },
       diff: {
         required: true,
-        type: "number"
-      }
-    }
-  }
+        type: "number",
+      },
+    },
+  },
 };
 
 exports.examples = {
@@ -30,13 +30,13 @@ exports.examples = {
       prev_id: 1,
       cur_id: 2,
       amount: -100,
-      diff: -500
+      diff: -500,
     },
     {
       prev_id: 2,
       cur_id: 3,
       amount: -500,
-      diff: 600
-    }
-  ]
+      diff: 600,
+    },
+  ],
 };
