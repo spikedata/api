@@ -96,7 +96,7 @@ exports.validateShape = function(shape, data) {
 };
 
 // validateSchema implementation is in a separate schema.js file which is kept in sync with spike-common
-// schema.js has no spike-api-public dependencies (.validate, .sanitize etc...)
+// schema.js has no @spikedata/api dependencies (.validate, .sanitize etc...)
 exports.validateSchema = Schema.validate;
 
 exports.validateWrapped = function(wrapperShape, wrappedInstance) {

@@ -1,6 +1,6 @@
 const axios = require("axios");
-const InputValidationError = require("../../../../spike-api-public/lib/inputValidationError");
-const uuid = require("../../../../spike-api-public/lib/uuid");
+const InputValidationError = require("../lib/inputValidationError");
+const uuid = require("../lib/uuid");
 
 const MAX = 20 * 1024 * 1024;
 

@@ -1,5 +1,5 @@
-const FN = require("../../../../spike-api-public/function");
-// const version = require("../../../../spike-stack/config/version"); // DONT - will bundle dbconfig with spike-api-public
+const FN = require("../function");
+// const version = require("../../../../spike-stack/config/version"); // DON'T - will bundle secrets with @spikedata/api
 
 // const server = "https://api-${ver}.spikedata.co.za";
 const server = "http://localhost:3000";
