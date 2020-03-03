@@ -6,15 +6,16 @@ module.exports = {
   env: {
     commonjs: true,
     es6: true,
-    node: true
+    node: true,
+    mocha: true,
   },
   extends: ["eslint:recommended"],
   parserOptions: {
-    ecmaVersion: 2018
+    ecmaVersion: 2018,
   },
   rules: {},
   globals: {
     log: "readonly",
-    cliLog: "readonly"
-  }
+    cliLog: "readonly",
+  },
 };

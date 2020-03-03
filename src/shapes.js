@@ -1,4 +1,7 @@
 const ShapeNotFoundError = require("./lib/shapeNotFoundError");
+// additional
+const clientGwComposerBasic = require("./client-gw/composer/basic");
+const clientGwComposerCodeData = require("./client-gw/composer/codeData");
 // client-gw
 const clientGwAccounts = require("./client-gw/accounts");
 const clientGwClose = require("./client-gw/close");
@@ -81,6 +84,9 @@ const gwClientTransactionsSuccess = require("./gw-client/transactions/success");
 const gwClientWrapper = require("./gw-client/wrapper");
 
 exports.shape = {
+  // additional
+  "client-gw/composer/basic": clientGwComposerBasic,
+  "client-gw/composer/codeData": clientGwComposerCodeData,
   // client-gw
   "client-gw/accounts": clientGwAccounts,
   "client-gw/close": clientGwClose,
