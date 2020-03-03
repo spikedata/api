@@ -1,4 +1,4 @@
-const objectUtil = require("../../../../../spike-common/src/object");
+const objectUtil = require("../../../../lib/object");
 const cloneShape = require("../../no-data");
 const enums = require("../../../../enums");
 exports = module.exports = objectUtil.clone(cloneShape);
