@@ -15,10 +15,13 @@ export default {
       file,
       format: "iife",
       sourceMap: true,
-      globals: { fs: "window", path: "window", url: "window" },
+      // NOTE: fs & path aren't used in browser code
+      //  - fs/path only used when file path is supplied to wrappers.pdf()
+      //  - browser code should supply a base64 encoded string
+      globals: { fs: "null", path: "null", url: "null" },
     },
   ],
-  external: ["fs", "path", "url"],
+  external: ["fs", "path", "url"], // includes deps in bundle: ajv, axios, lodash.merge, uuid
   plugins: [
     babel({
       exclude: ["node_modules/**"],
