@@ -1,5 +1,4 @@
 const enums = require("../enums");
-const objectUtil = require("../lib/object");
 const Schema = require("../lib/schema");
 const InputValidationError = require("../lib/inputValidationError");
 
@@ -147,7 +146,7 @@ exports.validate = function(data) {
 
 // NOTE: custom sanitizer used so that .pin & .pass are not added when they haven't been supplied
 exports.sanitize = function(data) {
-  let clone = objectUtil.clone(data);
+  let clone = Object.assign({}, data);
   if (clone.pin) clone.pin = "***";
   if (clone.pass) clone.pass = "***";
   return clone;

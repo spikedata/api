@@ -1,8 +1,16 @@
 const enums = require("../../../enums");
-const objectUtil = require("../../../lib/object");
-const cloneShape = require("../no-data");
-exports = module.exports = objectUtil.clone(cloneShape);
-
-exports.message = "username and or password is incorrect";
-exports.code = "error/site/login-failed";
-exports.blame = enums.BLAME.USER;
+const parent = require("../no-data");
+module.exports = {
+  // parent
+  type: parent.type,
+  examples: parent.examples,
+  validate: parent.validate,
+  sanitize: parent.sanitize,
+  noData: parent.noData,
+  passThrough: parent.passThrough,
+  noSessionId: parent.noSessionId,
+  // own
+  message: "username and or password is incorrect",
+  code: "error/site/login-failed",
+  blame: enums.BLAME.USER,
+};

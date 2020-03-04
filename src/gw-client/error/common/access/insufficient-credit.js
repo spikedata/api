@@ -1,7 +1,16 @@
 const enums = require("../../../../enums");
-const objectUtil = require("../../../../lib/object");
-const cloneShape = require("../../no-data");
-exports = module.exports = objectUtil.clone(cloneShape);
-exports.message = "please purchase more credits";
-exports.code = "error/common/access/insufficient-credit";
-exports.blame = enums.BLAME.CLIENT;
+const parent = require("../../no-data");
+module.exports = {
+  // parent
+  type: parent.type,
+  examples: parent.examples,
+  validate: parent.validate,
+  sanitize: parent.sanitize,
+  noData: parent.noData,
+  passThrough: parent.passThrough,
+  noSessionId: parent.noSessionId,
+  // own
+  message: "please purchase more credits",
+  code: "error/common/access/insufficient-credit",
+  blame: enums.BLAME.CLIENT,
+};

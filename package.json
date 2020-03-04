@@ -36,8 +36,8 @@
   },
   "dependencies": {
     "axios": "0.19.2",
-    "deep-extend": "0.6.0",
     "jsonschema": "1.2.5",
+    "lodash.merge": "4.6.2",
     "uuid": "7.0.1"
   },
   "preferGlobal": false,

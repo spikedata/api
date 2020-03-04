@@ -1,9 +1,16 @@
-const objectUtil = require("../../../lib/object");
 const enums = require("../../../enums");
-const cloneShape = require("../no-data");
-exports = module.exports = objectUtil.clone(cloneShape);
-
-exports.message =
-  "there is a legal notice present - the user must log on and read and dismiss the notice";
-exports.code = "error/site/ok-got-it";
-exports.blame = enums.BLAME.USER;
+const parent = require("../no-data");
+module.exports = {
+  // parent
+  type: parent.type,
+  examples: parent.examples,
+  validate: parent.validate,
+  sanitize: parent.sanitize,
+  noData: parent.noData,
+  passThrough: parent.passThrough,
+  noSessionId: parent.noSessionId,
+  // own
+  message: "there is a legal notice present - the user must log on and read and dismiss the notice",
+  code: "error/site/ok-got-it",
+  blame: enums.BLAME.USER,
+};

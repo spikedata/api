@@ -1,8 +1,16 @@
 const enums = require("../../../enums");
-const objectUtil = require("../../../lib/object");
-const cloneShape = require("../no-data");
-exports = module.exports = objectUtil.clone(cloneShape);
-
-exports.message = "the bank website has changed, please try again in a few hours";
-exports.code = "error/site/site-change-detected";
-exports.blame = enums.BLAME.SITE;
+const parent = require("../no-data");
+module.exports = {
+  // parent
+  type: parent.type,
+  examples: parent.examples,
+  validate: parent.validate,
+  sanitize: parent.sanitize,
+  noData: parent.noData,
+  passThrough: parent.passThrough,
+  noSessionId: parent.noSessionId,
+  // own
+  message: "the bank website has changed, please try again in a few hours",
+  code: "error/site/site-change-detected",
+  blame: enums.BLAME.SITE,
+};

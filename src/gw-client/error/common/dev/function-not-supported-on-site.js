@@ -1,8 +1,16 @@
 const enums = require("../../../../enums");
-const objectUtil = require("../../../../lib/object");
-const cloneShape = require("../../no-data");
-exports = module.exports = objectUtil.clone(cloneShape);
-
-exports.message = "site does not support this function";
-exports.code = "error/common/dev/function-not-supported-on-site";
-exports.blame = enums.BLAME.CLIENT;
+const parent = require("../../no-data");
+module.exports = {
+  // parent
+  type: parent.type,
+  examples: parent.examples,
+  validate: parent.validate,
+  sanitize: parent.sanitize,
+  noData: parent.noData,
+  passThrough: parent.passThrough,
+  noSessionId: parent.noSessionId,
+  // own
+  message: "site does not support this function",
+  code: "error/common/dev/function-not-supported-on-site",
+  blame: enums.BLAME.CLIENT,
+};

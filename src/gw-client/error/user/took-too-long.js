@@ -1,8 +1,16 @@
-const objectUtil = require("../../../lib/object");
 const enums = require("../../../enums");
-const cloneShape = require("../no-data");
-exports = module.exports = objectUtil.clone(cloneShape);
-
-exports.message = "User took too long to authorise";
-exports.code = "error/user/took-too-long";
-exports.blame = enums.BLAME.USER;
+const parent = require("../no-data");
+module.exports = {
+  // parent
+  type: parent.type,
+  examples: parent.examples,
+  validate: parent.validate,
+  sanitize: parent.sanitize,
+  noData: parent.noData,
+  passThrough: parent.passThrough,
+  noSessionId: parent.noSessionId,
+  // own
+  message: "User took too long to authorise",
+  code: "error/user/took-too-long",
+  blame: enums.BLAME.USER,
+};

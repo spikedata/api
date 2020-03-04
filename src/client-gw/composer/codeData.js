@@ -3,7 +3,6 @@
  * This composer includes basic fields + extra fields: { code, data }
  * see ./compose.md
  */
-const objectUtil = require("../../lib/object");
 const basic = require("./basic");
 
 exports.code = "client-gw/composer/codeData";
@@ -11,14 +10,27 @@ exports.not_a_shape = true;
 
 //#region validate
 
-exports.composedSchema = objectUtil.clone(basic.composedSchema);
-exports.composedSchema.properties.code = {
-  required: true, // shape can specify required value - see compose() below
-  type: "string",
-};
-exports.composedSchema.properties.data = {
-  required: true, // shape can specify required value - see compose() below
-  // type: "any"
+exports.composedSchema = {
+  type: "object",
+  properties: {
+    sessionId: {
+      required: true, // shape can specify required value - see compose() below
+      type: "string",
+      format: "uuidV4",
+    },
+    final: {
+      required: true, // shape can specify required value - see compose() below
+      type: "boolean",
+    },
+    code: {
+      required: true, // shape can specify required value - see compose() below
+      type: "string",
+    },
+    data: {
+      required: true, // shape can specify required value - see compose() below
+      // type: "any"
+    },
+  },
 };
 
 exports.compose = function(
