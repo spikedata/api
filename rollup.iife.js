@@ -18,10 +18,10 @@ export default {
       // NOTE: fs & path aren't used in browser code
       //  - fs/path only used when file path is supplied to wrappers.pdf()
       //  - browser code should supply a base64 encoded string
-      globals: { fs: "null", path: "null", url: "null" },
+      globals: { fs: "null", path: "null" },
     },
   ],
-  external: ["fs", "path", "url"], // includes deps in bundle: ajv, axios, lodash.merge, uuid
+  external: ["fs", "path"], // include module deps in iife bundle: ajv, axios, lodash.merge, uuid
   plugins: [
     babel({
       exclude: ["node_modules/**"],

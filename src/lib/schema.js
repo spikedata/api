@@ -1,5 +1,4 @@
-require("./jsonschemaExt"); // make sure that customFormats are loaded to Validator.prototype before next line
-const Validator = require("jsonschema").Validator;
+const AjvExt = require("./ajvExt");
 const core = require("./core");
 
 exports.validate = function(schema, data, nestedSchemas) {
@@ -9,7 +8,7 @@ exports.validate = function(schema, data, nestedSchemas) {
   if (core.isFunction(schema)) {
     return schema(data);
   }
-  const v = new Validator();
+  const v = new AjvExt(schema);
 
   // check schema object for nestedSchemas
   if (nestedSchemas) {
@@ -19,16 +18,7 @@ exports.validate = function(schema, data, nestedSchemas) {
   }
 
   // validation
-  let validation = v.validate(data, schema);
-
-  // transform validation errors
-  //return _.map(validation.errors, x => x.stack.replace(/instance./, ''));
-  let errors = [];
-  for (let x of validation.errors) {
-    //log.info(x.stack);
-    errors.push(x.stack.replace(/instance\.? ?/, ""));
-  }
-  return errors.length ? errors : undefined;
+  return v.validate(data);
 };
 
 exports.undefinedArrayItemsCheck = function(arrayData) {

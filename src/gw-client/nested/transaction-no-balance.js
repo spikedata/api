@@ -3,7 +3,7 @@ exports.validate = {
   type: "object",
   properties: {
     id: { required: true, type: "integer" },
-    date: { required: true, type: "any", format: "date-or-iso-str" },
+    date: { required: true, format: "date-or-iso-str" },
     description: { required: true, type: "array", items: { type: "string" } },
     amount: { required: false, type: "number" }, // optional: balance brought forward lines have no amount
   },

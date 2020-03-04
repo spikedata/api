@@ -108,9 +108,9 @@ exports.validate = {
           required: true,
           type: "object",
           properties: {
-            issuedOn: { type: "any", format: "date-or-iso-str" }, // optional - ABSA cheque-account-web does not have issue date
-            from: { required: true, type: "any", format: "date-or-iso-str" },
-            to: { required: true, type: "any", format: "date-or-iso-str" },
+            issuedOn: { format: "date-or-iso-str" }, // optional - ABSA cheque-account-web does not have issue date
+            from: { required: true, format: "date-or-iso-str" },
+            to: { required: true, format: "date-or-iso-str" },
           },
         },
         nameAddress: {
@@ -140,8 +140,8 @@ exports.validate = {
         properties: {
           id: { required: true, type: "integer" },
           category: { required: true, type: "string" },
-          transactionDate: { required: false, type: "any", format: "date-or-iso-str" },
-          processDate: { required: true, type: "any", format: "date-or-iso-str" },
+          transactionDate: { required: false, format: "date-or-iso-str" },
+          processDate: { required: true, format: "date-or-iso-str" },
           description: {
             required: true,
             type: "array",

@@ -1,5 +1,4 @@
 const Core = require("./core");
-require("./jsonschemaExt"); // custom formats etc...
 
 // resolve:
 //  resolves all nested shapes recursively so that parent shape only needs to know

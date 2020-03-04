@@ -5,8 +5,6 @@ const ObjectUtil = require("./object");
 const Schema = require("./schema");
 const BadShapeError = require("./badShapeError");
 
-require("./jsonschemaExt"); // custom formats etc...
-
 //#region sanitize
 
 exports.sanitize = function(sanitizer, data) {
