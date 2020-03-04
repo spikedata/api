@@ -1,6 +1,6 @@
 const enums = require("../enums");
-const common = require("../lib/common");
 const objectUtil = require("../lib/object");
+const Schema = require("../lib/schema");
 const InputValidationError = require("../lib/inputValidationError");
 
 exports.code = "login";
@@ -53,7 +53,7 @@ exports.examples = {
 
 exports.create = function(site, user, pin, pass, usernum) {
   let instance = { site, user, pin, pass, usernum };
-  let errors = common.validateSchema(exports.validate, instance, exports.nestedSchemas);
+  let errors = Schema.validate(exports.validate, instance, exports.nestedSchemas);
   if (errors) {
     throw new InputValidationError(errors);
   }

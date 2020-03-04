@@ -92,12 +92,8 @@ exports.validateShape = function(shape, data) {
   if (!schema) {
     return undefined;
   }
-  return exports.validateSchema(schema, data, shape.nestedSchemas);
+  return Schema.validate(schema, data, shape.nestedSchemas);
 };
-
-// validateSchema implementation is in a separate schema.js file which is kept in sync with spike-common
-// schema.js has no @spikedata/api dependencies (.validate, .sanitize etc...)
-exports.validateSchema = Schema.validate;
 
 exports.validateWrapped = function(wrapperShape, wrappedInstance) {
   if (wrapperShape.type === Enums.TYPES.ERROR) {
@@ -107,7 +103,7 @@ exports.validateWrapped = function(wrapperShape, wrappedInstance) {
   let wrapperCode = wrapperShape.code;
 
   // validate wrapper
-  let wrapperErrors = exports.validateSchema(wrapperSchema, wrappedInstance);
+  let wrapperErrors = Schema.validate(wrapperSchema, wrappedInstance);
   if (wrapperErrors && wrapperErrors.length) {
     log.fatal(`${wrapperCode}[${wrappedInstance.code}] validate - invalid wrapper`, wrapperErrors);
     throw new Error("validate error - invalid wrapper");
@@ -126,7 +122,7 @@ exports.validateWrapped = function(wrapperShape, wrappedInstance) {
   if (!schema) {
     return true;
   }
-  let errors = exports.validateSchema(schema, wrappedInstance.data, shape.nestedSchemas);
+  let errors = Schema.validate(schema, wrappedInstance.data, shape.nestedSchemas);
   if (errors && errors.length) {
     log.fatal(`${wrapperCode}[${wrappedInstance.code}] validate - invalid wrapped.data`, errors);
     throw new Error("validate error - invalid wrapped.data");

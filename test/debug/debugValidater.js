@@ -5,11 +5,11 @@ const API = require("../../src/index");
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 // NOTE: set `let debugFindNested = true;` in $/API/lib/common.js
-let data = API.shape["gw-client/wrapper"];
+let shape = API.shape["gw-client/wrapper"];
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-let examples = Object.keys(data.examples);
+let examples = Object.keys(shape.examples);
 for (let example of examples) {
   console.log("------------------------------");
   console.log(example);
@@ -17,15 +17,15 @@ for (let example of examples) {
   console.log(
     JSON.stringify(
       {
-        validate: data.validate,
-        example: data.examples[example],
-        nestedSchemas: data.nestedSchemas,
+        validate: shape.validate,
+        example: shape.examples[example],
+        nestedSchemas: shape.nestedSchemas,
       },
       null,
       2
     )
   );
 
-  let errors = API.common.validateSchema(data.validate, data.examples[example], data.nestedSchemas);
+  let errors = API.common.validateShape(shape, shape.examples[example]);
   console.log("errors", JSON.stringify(errors, null, 2));
 }

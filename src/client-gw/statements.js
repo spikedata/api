@@ -1,5 +1,5 @@
 const enums = require("../enums");
-const common = require("../lib/common");
+const Schema = require("../lib/schema");
 const uuid = require("../lib/uuid");
 const composerBasic = require("./composer/basic");
 const InputValidationError = require("../lib/inputValidationError");
@@ -31,7 +31,7 @@ exports.create = function(sessionId, final = true, accountNumber, numStatements 
     accountNumber,
     numStatements,
   };
-  let errors = common.validateSchema(exports.validate, instance, exports.nestedSchemas);
+  let errors = Schema.validate(exports.validate, instance, exports.nestedSchemas);
   if (errors) {
     throw new InputValidationError(errors);
   }

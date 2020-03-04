@@ -1,5 +1,6 @@
 const BadShapeError = require("../../lib/badShapeError");
 const common = require("../../lib/common");
+const Schema = require("../../lib/schema");
 const enums = require("../../enums");
 const shapes = require("../../shapes");
 const uuid = require("../../lib/uuid");
@@ -83,7 +84,7 @@ exports.composerSchema = {
 };
 
 exports.validate = function(composedInstance) {
-  common.validateSchema(exports.composerSchema, composedInstance);
+  Schema.validate(exports.composerSchema, composedInstance);
 };
 
 //#endregion

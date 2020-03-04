@@ -1,6 +1,7 @@
 const Enums = require("../enums");
 const common = require("../lib/common");
 const InputValidationError = require("../lib/inputValidationError");
+const Schema = require("../lib/schema");
 const uuid = require("../lib/uuid");
 // NOTE: circular require problem - can't use Shapes in root scope
 // const Shapes = require("../shapes");
@@ -82,7 +83,7 @@ exports.marshall = function(requestId, sessionId = undefined, inputCode, inputDa
     outputShape.type,
     outputData
   );
-  let errors = common.validateSchema(exports.validate, wrappedInstance, exports.nestedSchemas);
+  let errors = Schema.validate(exports.validate, wrappedInstance, exports.nestedSchemas);
   if (errors) {
     throw new InputValidationError(errors);
   }

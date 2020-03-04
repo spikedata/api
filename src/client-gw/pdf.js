@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const common = require("../lib/common");
+const Schema = require("../lib/schema");
 const enums = require("../enums");
 const InputValidationError = require("../lib/inputValidationError");
 
@@ -43,7 +43,7 @@ exports.create = function(pdfPath, pass, buffer) {
     buffer,
     pass,
   };
-  let errors = common.validateSchema(exports.validate, instance, exports.nestedSchemas);
+  let errors = Schema.validate(exports.validate, instance, exports.nestedSchemas);
   if (errors) {
     throw new InputValidationError(errors);
   }

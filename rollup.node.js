@@ -4,24 +4,31 @@ import resolve from "@rollup/plugin-node-resolve";
 
 import pkg from "./package.json";
 
+const external = ["fs", "path", "crypto", "util", "url"].concat(Object.keys(pkg.dependencies));
+
 export default {
-  input: "./src/index.js",
+  input: "./src/module.mjs",
   output: [
     {
-      file: pkg.browser,
+      file: pkg.main,
       format: "cjs",
       sourceMap: true,
     },
+    {
+      file: pkg.module,
+      format: "es",
+      sourceMap: true,
+    },
   ],
-  external: ["fs"],
+  external,
   plugins: [
     babel({
-      exclude: "node_modules/**",
+      exclude: ["node_modules/**", "../node_modules/**"],
       externalHelpers: false,
       runtimeHelpers: true,
     }),
     resolve({
-      browser: true,
+      preferBuiltins: true,
     }),
     commonjs(),
   ],

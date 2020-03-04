@@ -1,5 +1,3 @@
-const Enum = require("./enum");
-
 exports.xor = function(a, b) {
   a = !!a;
   b = !!b;
@@ -47,10 +45,6 @@ exports.isValidDate = function(date) {
 
 exports.isObject = function(obj) {
   return !!(obj && Object.prototype.toString.call(obj) === "[object Object]");
-};
-
-exports.isEnum = function(e) {
-  return !!(e && e[Enum.nameKey]);
 };
 
 exports.isString = function(x) {

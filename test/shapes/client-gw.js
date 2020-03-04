@@ -39,7 +39,7 @@ describe("client-gw validaters", function() {
       for (let example of examples) {
         let clientGwInstance = shape.examples[example];
         if (shape.validate) {
-          errors = API.common.validateSchema(shape.validate, clientGwInstance, shape.nestedSchemas);
+          errors = API.common.validateShape(shape, clientGwInstance);
           expect(errors).to.be.undefined;
         } else {
           log.warn(`API/${code}: does not have a .validate`);

@@ -1,8 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 const enums = require("../../enums");
-const common = require("../../lib/common");
 const InputValidationError = require("../../lib/inputValidationError");
+const Schema = require("../../lib/schema");
 
 exports.code = "file/success";
 exports.type = enums.TYPES.SUCCESS;
@@ -37,7 +37,7 @@ exports.create = function(filePath, buffer, ext) {
     buffer,
     ext,
   };
-  let errors = common.validateSchema(exports.validate, instance, exports.nestedSchemas);
+  let errors = Schema.validate(exports.validate, instance, exports.nestedSchemas);
   if (errors) {
     throw new InputValidationError(errors);
   }

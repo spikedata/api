@@ -1,6 +1,6 @@
-const common = require("../../lib/common");
 const enums = require("../../enums");
 const InputValidationError = require("../../lib/inputValidationError");
+const Schema = require("../../lib/schema");
 
 exports.code = "accounts/success";
 exports.type = enums.TYPES.SUCCESS;
@@ -40,7 +40,7 @@ exports.create = function(todo) {
   let instance = {
     todo,
   };
-  let errors = common.validateSchema(exports.validate, instance, exports.nestedSchemas);
+  let errors = Schema.validate(exports.validate, instance, exports.nestedSchemas);
   if (errors) {
     throw new InputValidationError(errors);
   }

@@ -36,7 +36,7 @@ describe("gw-client validaters", function() {
             // if (code === debugCode) {
             //   debugger;
             // }
-            let errors = API.common.validateSchema(shape.validate, instance, shape.nestedSchemas);
+            let errors = API.common.validateShape(shape, instance);
             // if (errors) {
             //   debugger;
             // }

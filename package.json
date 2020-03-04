@@ -2,18 +2,21 @@
   "name": "@spikedata/api",
   "version": "1.0.0",
   "description": "Spike API library helper",
-  "main": "src/index.js",
-  "module": "src/module.jsm",
+  "main": "dist/main.js",
+  "module": "dist/module.mjs",
   "browser": "dist/browser.js",
   "author": "ilan@spikedata.co.za",
   "license": "SPIKE",
   "scripts": {
     "test": "mocha test/index --quiet 1",
     "test:verbose": "mocha test/index --quiet 0",
-    "build": "rollup -c",
+    "prebuild": "rm -rf ./dist",
+    "build": "npm-run-all --parallel build:*",
+    "build:node": "rollup -c rollup.node.js",
+    "build:browser": "rollup -c rollup.browser.js",
     "fix-format": "npm-run-all fix format",
     "fix": "eslint .",
-    "format": "prettier --write 'src/**/*.{js,jsm,jsx,json,css,md}'"
+    "format": "prettier --write 'src/**/*.{js,mjs,jsx,json,css,md}'"
   },
   "devDependencies": {
     "@babel/core": "7.8.6",

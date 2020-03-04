@@ -1,8 +1,8 @@
 const enums = require("../../enums");
-const common = require("../../lib/common");
 const InputValidationError = require("../../lib/inputValidationError");
 const Nested = require("../../lib/nested");
 const PdfCommon = require("../../lib/pdf/common");
+const Schema = require("../../lib/schema");
 const transactions = require("../nested/transactions");
 const breaks = require("../nested/breaks");
 
@@ -40,7 +40,7 @@ exports.create = function(requestId, accountNumber, transactions, scraperName) {
   PdfCommon.add_id(transactions);
   let { breaks, valid } = PdfCommon.validate(requestId, transactions, scraperName);
   let instance = { accountNumber, transactions, valid, breaks };
-  let errors = common.validateSchema(exports.validate, instance, exports.nestedSchemas);
+  let errors = Schema.validate(exports.validate, instance, exports.nestedSchemas);
   if (errors) {
     throw new InputValidationError(errors);
   }

@@ -92,7 +92,7 @@ describe("full request pipeline = client-gw-lambda", function() {
             // );
             // LCHAN = "gw-lambda/lchan/inputs".validate()
             // BCHAN = "gw-lambda/bchan/composer".validate()
-            let errors = API.common.validateSchema(gwLambdaShape.validate, gwLambdaInstance);
+            let errors = API.common.validateShape(gwLambdaShape, gwLambdaInstance);
             expect(errors).to.be.undefined;
           }
         }

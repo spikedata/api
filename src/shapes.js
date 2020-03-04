@@ -81,7 +81,7 @@ const gwClientPdfSuccessCreditCardBreakdownMultiUser = require("./gw-client/pdf/
 const gwClientPdfSuccessCreditCardSimple = require("./gw-client/pdf/success/credit-card-simple");
 const gwClientSarsSuccessPayrollTaxes = require("./gw-client/sars/success/payroll-taxes");
 const gwClientTransactionsSuccess = require("./gw-client/transactions/success");
-const gwClientWrapper = require("./gw-client/wrapper");
+// const gwClientWrapper = require("./gw-client/wrapper"); // remove circular dep: shape -> wrapper -> common -> shape
 
 exports.shape = {
   // additional
@@ -166,7 +166,7 @@ exports.shape = {
   "gw-client/pdf/success/credit-card-simple": gwClientPdfSuccessCreditCardSimple,
   "gw-client/sars/success/payroll-taxes": gwClientSarsSuccessPayrollTaxes,
   "gw-client/transactions/success": gwClientTransactionsSuccess,
-  "gw-client/wrapper": gwClientWrapper,
+  // "gw-client/wrapper": gwClientWrapper, // remove circular dep: shape -> wrapper -> common -> shape
 };
 
 exports.getShape = function(code) {
