@@ -1,32 +1,8 @@
-const crypto = require("crypto");
-const uuidv4 = require("uuid/v4");
+const { v4: uuidv4 } = require("uuid");
 
 let _testUuidCount = 0;
 exports.testUuid = function() {
   return exports.mockRequestId(_testUuidCount++);
-};
-
-// https://stackoverflow.com/questions/19989481/how-to-determine-if-a-string-is-a-valid-v4-uuid
-// uuid/v4 = xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx where x is any hexadecimal digit and y is one of 8, 9, A, or B.
-exports.dummyUuidV4 = "00000000-0000-4000-a000-000000000000";
-
-// From C:\dev\aws\lambci\awslambda\build\Release\awslambda.js
-// Approximates the look of a v1 UUID
-exports.fakeUuid = function() {
-  return (
-    crypto.randomBytes(4).toString("hex") +
-    "-" +
-    crypto.randomBytes(2).toString("hex") +
-    "-" +
-    crypto
-      .randomBytes(2)
-      .toString("hex")
-      .replace(/^./, "1") +
-    "-" +
-    crypto.randomBytes(2).toString("hex") +
-    "-" +
-    crypto.randomBytes(6).toString("hex")
-  );
 };
 
 exports.mockRequestId = function(testCount) {
