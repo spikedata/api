@@ -2,9 +2,9 @@
   "name": "@spikedata/api",
   "version": "1.0.0",
   "description": "Spike API library helper",
-  "main": "dist/main.js",
-  "module": "dist/module.mjs",
-  "browser": "dist/browser.js",
+  "main": "dist/spike-api.js",
+  "module": "dist/spike-api.mjs",
+  "browser": "dist/spike-api.browser.js",
   "author": "ilan@spikedata.co.za",
   "license": "SPIKE",
   "scripts": {
@@ -38,5 +38,9 @@
     "deep-extend": "0.6.0",
     "jsonschema": "1.2.5",
     "uuid": "7.0.1"
-  }
+  },
+  "preferGlobal": false,
+  "files": [
+    "dist/"
+  ]
 }
