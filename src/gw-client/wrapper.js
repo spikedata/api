@@ -83,7 +83,12 @@ exports.marshall = function(requestId, sessionId = undefined, inputCode, inputDa
     outputShape.type,
     outputData
   );
-  let errors = Schema.validate(exports.validate, wrappedInstance, exports.nestedSchemas);
+  let errors = Schema.validate(
+    exports.code,
+    exports.validate,
+    wrappedInstance,
+    exports.nestedSchemas
+  );
   if (errors) {
     throw new InputValidationError(errors);
   }

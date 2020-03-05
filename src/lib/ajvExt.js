@@ -66,6 +66,7 @@ class AjvExt {
       validate: regexOrStr,
     });
 
+    AjvExt.fixSchema(schema); // mutates schema
     this.compiled = this.ajv.compile(schema);
   }
 
@@ -76,6 +77,47 @@ class AjvExt {
     } else {
       // return this.ajv.errorsText(this.compiled.errors, { dataVar: "" });
       return this.compiled.errors.map((x) => `${x.dataPath} ${x.message}`);
+    }
+  }
+
+  // NOTE: mutates schema
+  static fixSchema(schema) {
+    // .required
+    //  - root level properties can have .required
+    //  - properties on sub-objects or arrays must have .required array at object level
+
+    if (schema.type === "object" && schema.properties) {
+      if (!schema.required) {
+        schema.required = [];
+      }
+
+      for (let key in schema.properties) {
+        let property = schema.properties[key];
+
+        // move property.required to schema.required array
+        if (property.hasOwnProperty("required")) {
+          if (property.required) {
+            schema.required.push(key);
+          }
+          delete property.required;
+        }
+
+        // recurse
+        if (property.type === "object") {
+          AjvExt.fixSchema(property);
+          continue;
+        } else if (property.type === "array") {
+          AjvExt.fixSchema(property.items);
+          continue;
+        }
+      }
+
+      if (schema.required.length === 0) {
+        delete schema.required;
+      }
+    } else if (schema.type === "array") {
+      // e.g. /transactions, and /breaks
+      AjvExt.fixSchema(schema.items);
     }
   }
 }

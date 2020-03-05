@@ -52,7 +52,7 @@ exports.examples = {
 
 exports.create = function(site, user, pin, pass, usernum) {
   let instance = { site, user, pin, pass, usernum };
-  let errors = Schema.validate(exports.validate, instance, exports.nestedSchemas);
+  let errors = Schema.validate(exports.code, exports.validate, instance, exports.nestedSchemas);
   if (errors) {
     throw new InputValidationError(errors);
   }
@@ -63,16 +63,17 @@ exports.create = function(site, user, pin, pass, usernum) {
 
 //#region validate
 
-// For swagger def - not
+// For swagger definition - not used by validate()
 exports.schema = {
   type: "object",
-  required: ["site", "user"],
   properties: {
     site: {
       type: "string",
+      required: true,
     },
     user: {
       type: "string",
+      required: true,
     },
     pin: {
       type: "string",

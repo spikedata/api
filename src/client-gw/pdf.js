@@ -43,7 +43,7 @@ exports.create = function(pdfPath, pass, buffer) {
     buffer,
     pass,
   };
-  let errors = Schema.validate(exports.validate, instance, exports.nestedSchemas);
+  let errors = Schema.validate(exports.code, exports.validate, instance, exports.nestedSchemas);
   if (errors) {
     throw new InputValidationError(errors);
   }
@@ -73,16 +73,17 @@ exports.validate = function(data) {
 
 exports.schema = {
   type: "object",
-  required: ["file", "buffer"],
   properties: {
     file: {
       type: "string",
+      required: true,
     },
     pass: {
       type: "string",
     },
     buffer: {
       type: "string", // base64 encoded pdf buffer
+      required: true,
     },
   },
 };

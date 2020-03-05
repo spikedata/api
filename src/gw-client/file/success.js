@@ -37,7 +37,7 @@ exports.create = function(filePath, buffer, ext) {
     buffer,
     ext,
   };
-  let errors = Schema.validate(exports.validate, instance, exports.nestedSchemas);
+  let errors = Schema.validate(exports.code, exports.validate, instance, exports.nestedSchemas);
   if (errors) {
     throw new InputValidationError(errors);
   }

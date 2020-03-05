@@ -32,7 +32,7 @@ exports.create = function(sessionId, final = true, accountNumber, numDays = 90) 
     accountNumber,
     numDays,
   };
-  let errors = Schema.validate(exports.validate, instance, exports.nestedSchemas);
+  let errors = Schema.validate(exports.code, exports.validate, instance, exports.nestedSchemas);
   if (errors) {
     throw new InputValidationError(errors);
   }

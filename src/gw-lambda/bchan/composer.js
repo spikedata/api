@@ -64,7 +64,8 @@ exports.composerSchema = {
   properties: {
     requestId: {
       required: true,
-      type: "uuidV4",
+      type: "string",
+      format: "uuidV4",
     },
     code: {
       required: true,
@@ -84,7 +85,7 @@ exports.composerSchema = {
 };
 
 exports.validate = function(composedInstance) {
-  Schema.validate(exports.composerSchema, composedInstance);
+  Schema.validate(exports.code, exports.composerSchema, composedInstance);
 };
 
 //#endregion

@@ -90,7 +90,7 @@ exports.validateShape = function(shape, data) {
   if (!schema) {
     return undefined;
   }
-  return Schema.validate(schema, data, shape.nestedSchemas);
+  return Schema.validate(shape.code, schema, data, shape.nestedSchemas);
 };
 
 exports.validateWrapped = function(wrapperShape, wrappedInstance) {
@@ -101,7 +101,7 @@ exports.validateWrapped = function(wrapperShape, wrappedInstance) {
   let wrapperCode = wrapperShape.code;
 
   // validate wrapper
-  let wrapperErrors = Schema.validate(wrapperSchema, wrappedInstance);
+  let wrapperErrors = Schema.validate(wrapperCode, wrapperSchema, wrappedInstance);
   if (wrapperErrors && wrapperErrors.length) {
     log.fatal(`${wrapperCode}[${wrappedInstance.code}] validate - invalid wrapper`, wrapperErrors);
     throw new Error("validate error - invalid wrapper");
@@ -120,7 +120,7 @@ exports.validateWrapped = function(wrapperShape, wrappedInstance) {
   if (!schema) {
     return true;
   }
-  let errors = Schema.validate(schema, wrappedInstance.data, shape.nestedSchemas);
+  let errors = Schema.validate(shape.code, schema, wrappedInstance.data, shape.nestedSchemas);
   if (errors && errors.length) {
     log.fatal(`${wrapperCode}[${wrappedInstance.code}] validate - invalid wrapped.data`, errors);
     throw new Error("validate error - invalid wrapped.data");

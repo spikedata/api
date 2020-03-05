@@ -40,7 +40,7 @@ exports.create = function(requestId, accountNumber, transactions, scraperName) {
   PdfCommon.add_id(transactions);
   let { breaks, valid } = PdfCommon.validate(requestId, transactions, scraperName);
   let instance = { accountNumber, transactions, valid, breaks };
-  let errors = Schema.validate(exports.validate, instance, exports.nestedSchemas);
+  let errors = Schema.validate(exports.code, exports.validate, instance, exports.nestedSchemas);
   if (errors) {
     throw new InputValidationError(errors);
   }
