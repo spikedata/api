@@ -52,7 +52,6 @@ exports.create = function(todo) {
 //#region validate
 
 exports.validate = {
-  required: true,
   type: "array",
   minItems: 1,
   items: {

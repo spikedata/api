@@ -4,7 +4,7 @@ const API = require("../../src/index");
 
 //#region chai setup
 
-const { expect, assert } = chai;
+const { expect, assert, AssertionError } = chai;
 chai.use(chaiUuid);
 
 //#endregion
@@ -46,6 +46,10 @@ describe("gw-client validaters", function() {
           }
         }
       } catch (ex) {
+        // log exceptions except for expect() exceptions above
+        if (ex instanceof AssertionError) {
+          throw ex;
+        }
         log.error("Exception", ex);
         // log.error(code, shape && JSON.stringify(shape, null, 2));
         if (global.runtype === global.RUNTYPE.Mocha) {
