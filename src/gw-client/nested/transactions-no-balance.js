@@ -5,6 +5,8 @@ const nested = {
   "transaction-no-balance": transactionNoBalance,
 };
 
+exports.code = "gw-client/nested/transactions-no-balance";
+
 exports.validate = {
   id: "/transactions-no-balance", // NOTE: must match root.$ref in parent schema
   type: "array",

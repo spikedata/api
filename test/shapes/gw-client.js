@@ -37,9 +37,16 @@ describe("gw-client validaters", function() {
             //   debugger;
             // }
             let errors = API.common.validateShape(shape, instance);
-            // if (errors) {
-            //   debugger;
-            // }
+            if (errors) {
+              // debugger;
+              log.error(
+                `shape ${code}:\n instance ${example}: ${JSON.stringify(
+                  instance,
+                  null,
+                  2
+                )}\n validation errors: ${JSON.stringify(errors, null, 2)}`
+              );
+            }
             expect(errors).to.be.undefined;
           } else {
             log.warn(`${code}: does not have a .validate`);

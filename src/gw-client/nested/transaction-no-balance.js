@@ -1,3 +1,5 @@
+exports.code = "gw-client/nested/transaction-no-balance";
+
 exports.validate = {
   id: "/transaction-no-balance", // NOTE: must match root.$ref in parent schema
   type: "object",

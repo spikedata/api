@@ -13,6 +13,7 @@ exports.validate = function(code, schema, data, nestedSchemas) {
 
   // compile the schema once (does fixSchema)
   let ajvExt;
+  // console.log("code:", code);
   if (compiledSchemas[code]) {
     ajvExt = compiledSchemas[code];
   } else {

@@ -14,6 +14,8 @@ const nested = {
   breaks,
 };
 
+exports.code = "gw-client/nested/bank-statement-normal";
+
 exports.validate = {
   id: "/bank-statement-normal", // NOTE: was referenced by shape("statements/success").schema.$ref
   type: "object",

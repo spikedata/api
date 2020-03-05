@@ -5,6 +5,8 @@ const nested = {
   transaction,
 };
 
+exports.code = "gw-client/nested/transactions";
+
 exports.validate = {
   id: "/transactions", // NOTE: must match root.$ref in parent schema
   type: "array",

@@ -13,6 +13,8 @@ const nested = {
   "transactions-no-balance": transactionsNoBalance,
 };
 
+exports.code = "gw-client/nested/bank-statement-no-balance";
+
 exports.validate = {
   id: "/bank-statement-no-balance", // NOTE: used below, but not strictly required because not currently referenced by another schema i.e. root.$ref
   type: "object",
