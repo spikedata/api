@@ -50,7 +50,6 @@ exports.examples = {
 exports.validate = {
   // array of nested /credit-card
   id: "/credit-card-breakdown-multi-user",
-  required: true,
   type: "array",
   items: {
     $ref: creditCardBreakdownMultiUser.validate.id,

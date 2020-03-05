@@ -17,16 +17,10 @@ exports.validate = function(code, schema, data, nestedSchemas) {
     ajvExt = compiledSchemas[code];
   } else {
     try {
-      compiledSchemas[code] = ajvExt = new AjvExt(schema);
+      ajvExt = new AjvExt(schema, nestedSchemas);
+      compiledSchemas[code] = ajvExt;
     } catch (e) {
       throw new BadShapeError(`shape ${code} schema compile errors: ${e.message}`);
-    }
-  }
-
-  // check schema object for nestedSchemas TODO
-  if (nestedSchemas) {
-    for (let nestedSchema of nestedSchemas) {
-      ajvExt.addSchema(nestedSchema, nestedSchema.id); // NOTE: parent must use same .id for $ref
     }
   }
 

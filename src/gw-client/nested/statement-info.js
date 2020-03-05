@@ -16,17 +16,17 @@ exports.validate = {
       properties: {
         issuedOn: {
           required: false,
-          type: "any",
+          // type: "any",
           format: "date-or-iso-str",
         },
         from: {
           required: true,
-          type: "any",
+          // type: "any",
           format: "date-or-iso-str",
         },
         to: {
           required: true,
-          type: "any",
+          // type: "any",
           format: "date-or-iso-str",
         },
       },

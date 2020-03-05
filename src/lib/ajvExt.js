@@ -1,5 +1,6 @@
 const Ajv = require("ajv");
 const core = require("./core");
+const objectUtil = require("./object");
 const uuid = require("./uuid");
 
 // see https://json-schema.org/understanding-json-schema/reference/string.html
@@ -53,9 +54,13 @@ exports.swaggerReplacement = {
 //#endregion
 
 class AjvExt {
-  constructor(schema) {
-    this.ajv = new Ajv({ allErrors: true });
+  constructor(schema, nestedSchemas) {
+    this.ajv = new Ajv({
+      allErrors: true,
+      logger: false, // hide "schema id ignored" messages on nestedSchemas
+    });
 
+    // custom formats
     this.ajv.addFormat("uuidV4", {
       validate: uuidV4,
     });
@@ -66,7 +71,16 @@ class AjvExt {
       validate: regexOrStr,
     });
 
-    AjvExt.fixSchema(schema); // mutates schema
+    // nestedSchemas
+    if (nestedSchemas && nestedSchemas.length) {
+      for (let x of nestedSchemas) {
+        x = AjvExt.fixSchema(x);
+        this.ajv.addSchema(x, x.id);
+      }
+    }
+
+    // fix & compile
+    schema = AjvExt.fixSchema(schema);
     this.compiled = this.ajv.compile(schema);
   }
 
@@ -80,8 +94,15 @@ class AjvExt {
     }
   }
 
-  // NOTE: mutates schema
+  // NOTE: doesn't mutate schema
   static fixSchema(schema) {
+    let clone = objectUtil.clone(schema);
+    this._fixSchema(clone);
+    return clone;
+  }
+
+  // NOTE: mutates schema
+  static _fixSchema(schema) {
     // .required
     //  - root level properties can have .required
     //  - properties on sub-objects or arrays must have .required array at object level
@@ -104,10 +125,10 @@ class AjvExt {
 
         // recurse
         if (property.type === "object") {
-          AjvExt.fixSchema(property);
+          AjvExt._fixSchema(property);
           continue;
         } else if (property.type === "array") {
-          AjvExt.fixSchema(property.items);
+          AjvExt._fixSchema(property.items);
           continue;
         }
       }
@@ -117,7 +138,7 @@ class AjvExt {
       }
     } else if (schema.type === "array") {
       // e.g. /transactions, and /breaks
-      AjvExt.fixSchema(schema.items);
+      AjvExt._fixSchema(schema.items);
     }
   }
 }

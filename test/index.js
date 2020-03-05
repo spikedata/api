@@ -19,7 +19,8 @@ describe("init", () => {
 // shapes
 //
 
-require("./shapes/client-gw");
+// require("./ajvExt");
+// require("./shapes/client-gw");
 require("./shapes/gw-client");
 // require("./shapes/request-c-gw-l");
 // require("./shapes/response-l-gw-c");
