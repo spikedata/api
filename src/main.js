@@ -6,6 +6,8 @@ const common = require("./lib/common");
 const BadShapeError = require("./lib/badShapeError");
 const InputValidationError = require("./lib/inputValidationError");
 const ShapeNotFoundError = require("./lib/shapeNotFoundError");
+const schema = require("./lib/schema");
+const gwClientWrapper = require("./gw-client/wrapper");
 // wrappers
 const accounts = require("./wrappers/accounts");
 const close = require("./wrappers/close");
@@ -34,6 +36,8 @@ module.exports = {
     let shape = shapes.getShape(response.code);
     return common.sanitize(shape.sanitize, response.data);
   },
+  schema,
+  createResponse: gwClientWrapper.create,
   // wrappers
   accounts,
   close,

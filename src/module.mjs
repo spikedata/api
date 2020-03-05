@@ -6,6 +6,8 @@ import common from "./lib/common";
 import BadShapeError from "./lib/badShapeError";
 import InputValidationError from "./lib/inputValidationError";
 import ShapeNotFoundError from "./lib/shapeNotFoundError";
+import schema from "./lib/schema";
+import gwClientWrapper from "./gw-client/wrapper";
 // wrappers
 import accounts from "./wrappers/accounts";
 import close from "./wrappers/close";
@@ -34,6 +36,8 @@ export default {
     let shape = shapes.getShape(response.code);
     return common.sanitize(shape.sanitize, response.data);
   },
+  schema,
+  createResponse: gwClientWrapper.create,
   // wrappers
   accounts,
   close,
