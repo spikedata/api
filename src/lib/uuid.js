@@ -1,5 +1,3 @@
-const { v4: uuidv4 } = require("uuid");
-
 let _testUuidCount = 0;
 exports.testUuid = function() {
   return exports.mockRequestId(_testUuidCount++);
@@ -17,14 +15,6 @@ exports.mockLambdaId = function(testCount) {
   let padCount = (pad + testCount).slice(-pad.length);
   let id = "99999999-0000-4000-a000-" + padCount;
   return id;
-};
-
-exports.uuid = function() {
-  return uuidv4();
-};
-
-exports.uuidLength = function() {
-  return exports.uuid().length;
 };
 
 exports.randomAccountId = function() {

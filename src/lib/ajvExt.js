@@ -116,7 +116,7 @@ class AjvExt {
         let property = schema.properties[key];
 
         // move property.required to schema.required array
-        if (property.hasOwnProperty("required")) {
+        if ({}.hasOwnProperty.call(property, "required")) {
           if (property.required) {
             schema.required.push(key);
           }

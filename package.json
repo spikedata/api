@@ -3,19 +3,16 @@
   "version": "1.0.0",
   "description": "Spike API library helper",
   "main": "src/main.js",
-  "module": "dist/spike-api.mjs",
-  "browser": "dist/spike-api.browser.js",
+  "module": "dist/spike-api.esm.mjs",
+  "browser": "dist/spike-api.umd.js",
   "author": "ilan@spikedata.co.za",
   "license": "SPIKE",
   "scripts": {
     "test": "mocha test/index --quiet 1",
     "test:verbose": "mocha test/index --quiet 0",
     "prebuild": "rm -rf ./dist",
-    "build": "npm-run-all --parallel build:*",
-    "build:node": "rollup -c rollup.node.js",
-    "build:cdn": "rollup -c rollup.cdn.js",
-    "watch:cdn": "rollup -c rollup.cdn.js -w",
-    "build:browser": "rollup -c rollup.browser.js",
+    "build": "rollup -c rollup.config.js",
+    "watch": "rollup -c rollup.config.js -w",
     "fix-format": "npm-run-all fix format",
     "fix": "eslint .",
     "format": "prettier --write 'src/**/*.{js,mjs,jsx,json,css,md}'"
@@ -39,8 +36,7 @@
   "dependencies": {
     "ajv": "6.12.0",
     "axios": "0.19.2",
-    "lodash.merge": "4.6.2",
-    "uuid": "7.0.1"
+    "lodash.merge": "4.6.2"
   },
   "preferGlobal": false,
   "files": [
