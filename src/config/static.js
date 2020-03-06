@@ -1,9 +1,5 @@
 const FN = require("../function");
-// const version = require("../../../../spike-stack/config/version"); // DON'T - will bundle secrets with @spikedata/api
-
-// const server = "https://api-${ver}.spikedata.co.za";
-const server = "http://localhost:3000";
-// const server = "http://10.21.7.253:3000"; // Destination Host Unreachable
+const server = "https://api-v6.spikedata.co.za";
 
 const state = {
   url: {
