@@ -13,8 +13,8 @@
     "prebuild": "rm -rf ./dist",
     "build": "npm-run-all --parallel build:*",
     "build:node": "rollup -c rollup.node.js",
-    "build:iife": "rollup -c rollup.iife.js",
-    "watch:iife": "rollup -c rollup.iife.js -w",
+    "build:cdn": "rollup -c rollup.cdn.js",
+    "watch:cdn": "rollup -c rollup.cdn.js -w",
     "build:browser": "rollup -c rollup.browser.js",
     "fix-format": "npm-run-all fix format",
     "fix": "eslint .",
@@ -23,6 +23,7 @@
   "devDependencies": {
     "@babel/core": "7.8.6",
     "@rollup/plugin-commonjs": "11.0.2",
+    "@rollup/plugin-json": "4.0.2",
     "@rollup/plugin-node-resolve": "7.1.1",
     "chai": "4.2.0",
     "chai-uuid": "1.0.6",

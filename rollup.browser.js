@@ -11,7 +11,7 @@ export default {
     {
       file: pkg.browser,
       format: "cjs",
-      sourceMap: true,
+      sourcemap: true,
     },
   ],
   external: ["fs", "path", "crypto", "util", "url"],

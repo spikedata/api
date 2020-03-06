@@ -39,7 +39,7 @@ exports.create = function(pdfPath, pass, buffer) {
     buffer = buffer.toString("base64");
   }
   let instance = {
-    file: path.basename(pdfPath),
+    file: path ? path.basename(pdfPath) : pdfPath,
     buffer,
     pass,
   };
