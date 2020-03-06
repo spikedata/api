@@ -26,7 +26,8 @@
     "watch": "rollup -c rollup.config.js -w",
     "fix-format": "npm-run-all fix format",
     "fix": "eslint .",
-    "format": "prettier --write 'src/**/*.{js,mjs,jsx,json,css,md}'"
+    "format": "prettier --write 'src/**/*.{js,mjs,jsx,json,css,md}'",
+    "pub": "./scripts/publish.sh"
   },
   "devDependencies": {
     "@babel/core": "7.8.6",
