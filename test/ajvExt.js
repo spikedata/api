@@ -147,8 +147,8 @@ describe("testFixSchema", function() {
   for (let test in source) {
     it(test, function() {
       let schema = source[test];
-      AjvExt.fixSchema(schema);
-      expect(schema).to.deep.equal(expected[test]);
+      let fixed = AjvExt.fixSchema(schema);
+      expect(fixed).to.deep.equal(expected[test]);
     });
   }
 });
