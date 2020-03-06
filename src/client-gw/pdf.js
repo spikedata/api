@@ -3,6 +3,7 @@ const path = require("path");
 const Schema = require("../lib/schema");
 const enums = require("../enums");
 const InputValidationError = require("../lib/inputValidationError");
+const PdfTooLargeError = require("../lib/pdfTooLargeError");
 
 exports.code = "pdf";
 exports.type = enums.TYPES.INPUTS;
@@ -38,6 +39,11 @@ exports.create = function(pdfPath, pass, buffer) {
     buffer = fs.readFileSync(pdfPath);
     buffer = buffer.toString("base64");
   }
+
+  if (buffer.length > PdfTooLargeError.Max) {
+    throw new PdfTooLargeError();
+  }
+
   let instance = {
     file: path ? path.basename(pdfPath) : pdfPath,
     buffer,

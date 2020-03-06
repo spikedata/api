@@ -5,6 +5,7 @@ import enums from "./enums";
 import common from "./lib/common";
 import BadShapeError from "./lib/badShapeError";
 import InputValidationError from "./lib/inputValidationError";
+import PdfTooLargeError from "./lib/pdfTooLargeError";
 import ShapeNotFoundError from "./lib/shapeNotFoundError";
 import schema from "./lib/schema";
 import gwClientWrapper from "./gw-client/wrapper";
@@ -31,6 +32,7 @@ export default {
   isUserError: helpers.isUserError,
   BadShapeError,
   InputValidationError,
+  PdfTooLargeError,
   ShapeNotFoundError,
   sanitize(response) {
     let shape = shapes.getShape(response.code);

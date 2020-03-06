@@ -5,6 +5,7 @@ const enums = require("./enums");
 const common = require("./lib/common");
 const BadShapeError = require("./lib/badShapeError");
 const InputValidationError = require("./lib/inputValidationError");
+const PdfTooLargeError = require("./lib/pdfTooLargeError");
 const ShapeNotFoundError = require("./lib/shapeNotFoundError");
 const schema = require("./lib/schema");
 const gwClientWrapper = require("./gw-client/wrapper");
@@ -31,6 +32,7 @@ module.exports = {
   isUserError: helpers.isUserError,
   BadShapeError,
   InputValidationError,
+  PdfTooLargeError,
   ShapeNotFoundError,
   sanitize(response) {
     let shape = shapes.getShape(response.code);
