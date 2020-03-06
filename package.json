@@ -7,6 +7,17 @@
   "browser": "dist/spike-api.umd.js",
   "author": "ilan@spikedata.co.za",
   "license": "SPIKE",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spikedata/api"
+  },
+  "keywords": [
+    "spike",
+    "pdf",
+    "south africa",
+    "bank",
+    "statements"
+  ],
   "scripts": {
     "test": "mocha test/index --quiet 1",
     "test:verbose": "mocha test/index --quiet 0",
