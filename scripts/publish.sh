@@ -8,10 +8,10 @@ npm run build
 
 # update semver
 npm version patch
-ver=`jq .version ./package.json`
 
-# git tag
-git tag $ver
-git push --tags
+# git tag - `npm version` does this already
+# ver=`jq .version ./package.json`
+# git tag $ver
+# git push --tags
 
 npm publish
