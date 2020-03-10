@@ -41,7 +41,7 @@ module.exports = {
     return common.sanitize(shape.sanitize, response.data);
   },
   schema,
-  createResponse: gwClientWrapper.create,
+  response: gwClientWrapper,
   // wrappers
   accounts,
   close,
