@@ -1,6 +1,6 @@
 {
   "name": "@spikedata/api",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Spike API library helper",
   "main": "src/main.js",
   "module": "dist/spike-api.esm.mjs",
