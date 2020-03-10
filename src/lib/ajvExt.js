@@ -34,25 +34,6 @@ function regexOrStr(input) {
 
 //#endregion
 
-//#region swagger
-
-// https://swagger.io/specification/#dataTypes
-exports.swaggerReplacement = {
-  uuidV4: {
-    type: "string",
-    format: "uuid",
-  },
-  "date-or-iso-str": {
-    type: "string",
-    format: "date-time", // https://xml2rfc.tools.ietf.org/public/rfc/html/rfc3339.html#anchor14
-  },
-  "regex-or-str": {
-    type: "string",
-  },
-};
-
-//#endregion
-
 class AjvExt {
   constructor(schema, nestedSchemas) {
     this.ajv = new Ajv({
@@ -141,6 +122,21 @@ class AjvExt {
       AjvExt._fixSchema(schema.items);
     }
   }
+
+  // https://swagger.io/specification/#dataTypes
+  static swaggerReplacement = {
+    uuidV4: {
+      type: "string",
+      format: "uuid",
+    },
+    "date-or-iso-str": {
+      type: "string",
+      format: "date-time", // https://xml2rfc.tools.ietf.org/public/rfc/html/rfc3339.html#anchor14
+    },
+    "regex-or-str": {
+      type: "string",
+    },
+  };
 }
 
 module.exports = AjvExt;
