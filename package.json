@@ -52,6 +52,7 @@
   },
   "preferGlobal": false,
   "files": [
-    "dist/"
+    "dist/",
+    "src/"
   ]
 }
