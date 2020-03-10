@@ -1,3 +1,4 @@
+const config = require("./config/static");
 // api
 const shapes = require("./shapes");
 const helpers = require("./helpers");
@@ -23,6 +24,7 @@ const statements = require("./wrappers/statements");
 const transactions = require("./wrappers/transactions");
 
 module.exports = {
+  config,
   // api
   shape: shapes.shape,
   getShape: shapes.getShape,
