@@ -28,6 +28,12 @@ module.exports = {
   // api
   shape: shapes.shape,
   getShape: shapes.getShape,
+  overrideShapes: function(shapeOverrides) {
+    // NOTE: must modify the object inplace in order for spike-api-public code to use supplied shapes
+    for (let key in shapeOverrides) {
+      shapes[key] = shapeOverrides[key];
+    }
+  },
   common,
   enums,
   isSupported: enums.isSupported,
