@@ -26,6 +26,12 @@ export default {
   // api
   shape: shapes.shape,
   getShape: shapes.getShape,
+  overrideShapes: function(shapeOverrides) {
+    // NOTE: must modify the object inplace in order for @spikedata/api code to use supplied shapes
+    for (let key in shapeOverrides) {
+      shapes.shape[key] = shapeOverrides[key]; // NOTE: modifies exports.shape
+    }
+  },
   common,
   enums,
   isSupported: enums.isSupported,
@@ -39,7 +45,7 @@ export default {
     return common.sanitize(shape.sanitize, response.data);
   },
   schema,
-  createResponse: gwClientWrapper.create,
+  response: gwClientWrapper,
   // wrappers
   accounts,
   close,

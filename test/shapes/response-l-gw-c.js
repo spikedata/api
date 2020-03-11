@@ -1,6 +1,6 @@
 const chai = require("chai");
 const chaiUuid = require("chai-uuid");
-const API = require("../../src/index");
+const API = require("../../src/main");
 const uuid = require("../../src/lib/uuid");
 
 /**
@@ -87,7 +87,7 @@ function marshallOrPassThrough(lambdaGwShape, lambdaGwCode, lambdaGwInstance) {
   } else {
     // session is over - don't bother to send back to client
   }
-  let wrapper = API.shape["gw-client/wrapper"];
+  let wrapper = API.response;
   let gwClientInstance = wrapper.marshall(
     uuid.testUuid(),
     sessionId,
