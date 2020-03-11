@@ -123,20 +123,23 @@ class AjvExt {
     }
   }
 
-  // https://swagger.io/specification/#dataTypes
-  static swaggerReplacement = {
-    uuidV4: {
-      type: "string",
-      format: "uuid",
-    },
-    "date-or-iso-str": {
-      type: "string",
-      format: "date-time", // https://xml2rfc.tools.ietf.org/public/rfc/html/rfc3339.html#anchor14
-    },
-    "regex-or-str": {
-      type: "string",
-    },
-  };
+  // NOTE: static class properties are stage 3 atm: https://javascript.info/static-properties-methods#static-properties
+  static swaggerReplacement() {
+    // https://swagger.io/specification/#dataTypes
+    return {
+      uuidV4: {
+        type: "string",
+        format: "uuid",
+      },
+      "date-or-iso-str": {
+        type: "string",
+        format: "date-time", // https://xml2rfc.tools.ietf.org/public/rfc/html/rfc3339.html#anchor14
+      },
+      "regex-or-str": {
+        type: "string",
+      },
+    };
+  }
 }
 
 module.exports = AjvExt;
