@@ -24,7 +24,7 @@ export default [
         sourcemap: true,
       },
       {
-        file: pkg.module,
+        file: "dist/spike-api.esm.mjs", // pkg.module,
         format: "es",
         sourcemap: true,
       },
