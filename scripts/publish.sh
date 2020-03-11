@@ -23,10 +23,11 @@ npm version patch
 printf "${CYAN}npm publish${NC}\n"
 npm publish
 
-printf "${CYAN}update @spikedata/sample-simple/package.json to latest version${NC}\n"
-cd ../sample-simple
-npm install -S @spikedata/api@latest
+# don't need to update using compatible package in samples: i.e. "@spikedata/api": "^1.0.2"
+# printf "${CYAN}update @spikedata/sample-simple/package.json to latest version${NC}\n"
+# cd ../sample-simple
+# npm install -S @spikedata/api@latest
 
-printf "${CYAN}update @spikedata/sample-/package.json to latest version${NC}\n"
-cd ../sample-web
-npm install -S @spikedata/api@latest
+# printf "${CYAN}update @spikedata/sample-web/package.json to latest version${NC}\n"
+# cd ../sample-web
+# npm install -S @spikedata/api@latest
