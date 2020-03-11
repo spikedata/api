@@ -29,9 +29,9 @@ module.exports = {
   shape: shapes.shape,
   getShape: shapes.getShape,
   overrideShapes: function(shapeOverrides) {
-    // NOTE: must modify the object inplace in order for spike-api-public code to use supplied shapes
+    // NOTE: must modify the object inplace in order for @spikedata/api code to use supplied shapes
     for (let key in shapeOverrides) {
-      shapes[key] = shapeOverrides[key];
+      shapes.shape[key] = shapeOverrides[key]; // NOTE: modifies exports.shape
     }
   },
   common,
