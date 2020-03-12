@@ -1,3 +1,4 @@
+import config from "./config/static";
 // api
 import shapes from "./shapes";
 import helpers from "./helpers";
@@ -23,6 +24,7 @@ import statements from "./wrappers/statements";
 import transactions from "./wrappers/transactions";
 
 export default {
+  config,
   // api
   shape: shapes.shape,
   getShape: shapes.getShape,
