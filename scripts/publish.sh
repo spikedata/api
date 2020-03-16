@@ -21,7 +21,7 @@ npm version patch
 # git push --tags
 
 printf "${CYAN}npm publish${NC}\n"
-npm publish
+npm publish --access public
 
 # don't need to update using compatible package in samples: i.e. "@spikedata/api": "^1.0.2"
 # printf "${CYAN}update @spikedata/sample-simple/package.json to latest version${NC}\n"
