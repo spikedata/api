@@ -1,8 +1,8 @@
 const FN = require("../function");
-const server = "https://api-v6.spikedata.co.za";
+const _server = "https://api-v6.spikedata.co.za";
 
-const state = {
-  url: {
+function buildUrls(server) {
+  return {
     // web
     accounts: server + FN["accounts"].url,
     estatement: server + FN["estatement"].url,
@@ -15,7 +15,12 @@ const state = {
 
     // pdf
     pdf: server + FN["pdf"].url,
+  };
+}
+
+module.exports = {
+  url: buildUrls(_server),
+  changeServer(server) {
+    module.exports.url = buildUrls(server);
   },
 };
-
-module.exports = state;
