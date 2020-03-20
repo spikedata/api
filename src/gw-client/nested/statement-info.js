@@ -40,6 +40,7 @@ exports.validate = {
         type: "string",
       },
     },
+    statementBalance: { required: false, type: "number" },
   },
 };
 
