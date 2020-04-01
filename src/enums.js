@@ -77,13 +77,28 @@ exports.isSupported = function(site, fn) {
   }
 };
 
+exports.Bank = {
+  ABS: { code: "ABS", name: "ABSA" },
+  BID: { code: "BID", name: "Bidvest" },
+  CAP: { code: "CAP", name: "Capitec" },
+  DEA: { code: "DEA", name: "Document Exchange Association" },
+  DIS: { code: "DIS", name: "Discovery" },
+  FNB: { code: "FNB", name: "FNB" },
+  INV: { code: "INV", name: "Investec" },
+  NED: { code: "NED", name: "Nedbank" },
+  RMB: { code: "RMB", name: "RMB" },
+  SAS: { code: "SAS", name: "Safin" },
+  STD: { code: "STD", name: "Standard Bank" },
+  TYM: { code: "TYM", name: "TYME" },
+};
+
 exports.SiteToBankName = {
-  "ABS.0": "ABSA",
-  "CAP.0": "Capitec",
-  "FNB.0": "FNB",
-  "NED.0": "Nedbank",
-  "RMB.0": "RMB",
-  "STD.2018-01": "Standard Bank",
+  "ABS.0": exports.Bank.ABS.name,
+  "CAP.0": exports.Bank.CAP.name,
+  "FNB.0": exports.Bank.FNB.name,
+  "NED.0": exports.Bank.NED.name,
+  "RMB.0": exports.Bank.RMB.name,
+  "STD.2018-01": exports.Bank.STD.name,
 };
 
 exports.SiteMeta = {
