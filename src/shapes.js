@@ -16,6 +16,11 @@ const clientGwTransactions = require("./client-gw/transactions");
 // gw-client
 const gwClientAccountsSuccess = require("./gw-client/accounts/success");
 const gwClientCloseSuccess = require("./gw-client/close/success");
+const gwClientCsvFailInvalidDataExtracted = require("./gw-client/csv/fail/invalid-data-extracted");
+const gwClientCsvFailMultipleMatchingParsers = require("./gw-client/csv/fail/multiple-matching-parsers");
+const gwClientCsvFailUnknownCsv = require("./gw-client/csv/fail/unknown-csv");
+const gwClientCsvFailUnknownException = require("./gw-client/csv/fail/unknown-exception");
+const gwClientCsvSuccessBankStatement = require("./gw-client/csv/success/bank-statement");
 const gwClientErrorCommonAccessExceededMaxConcurrentRequests = require("./gw-client/error/common/access/exceeded-max-concurrent-requests");
 const gwClientErrorCommonAccessInsufficientCredit = require("./gw-client/error/common/access/insufficient-credit");
 const gwClientErrorCommonDevAuthorization = require("./gw-client/error/common/dev/authorization");
@@ -101,6 +106,11 @@ exports.shape = {
   // gw-client
   "gw-client/accounts/success": gwClientAccountsSuccess,
   "gw-client/close/success": gwClientCloseSuccess,
+  "gw-client/csv/fail/invalid-data-extracted": gwClientCsvFailInvalidDataExtracted,
+  "gw-client/csv/fail/multiple-matching-parsers": gwClientCsvFailMultipleMatchingParsers,
+  "gw-client/csv/fail/unknown-csv": gwClientCsvFailUnknownCsv,
+  "gw-client/csv/fail/unknown-exception": gwClientCsvFailUnknownException,
+  "gw-client/csv/success/bank-statement": gwClientCsvSuccessBankStatement,
   "gw-client/error/common/access/exceeded-max-concurrent-requests": gwClientErrorCommonAccessExceededMaxConcurrentRequests,
   "gw-client/error/common/access/insufficient-credit": gwClientErrorCommonAccessInsufficientCredit,
   "gw-client/error/common/dev/authorization": gwClientErrorCommonDevAuthorization,

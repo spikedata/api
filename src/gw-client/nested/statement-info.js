@@ -48,7 +48,7 @@ exports.validate = {
 
 exports.examples = {
   default: {
-    bank: "ABS.0",
+    bank: "ABS",
     accountNumber: "9017446437",
     dates: {
       issuedOn: "2018-09-02T00:00:00.000Z",

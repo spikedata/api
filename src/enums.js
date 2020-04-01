@@ -201,6 +201,22 @@ exports.PdfParserAll = Object.keys(exports.PdfParser).reduce((arr, k) => {
 
 //#endregion
 
+//#region csv
+
+// Documents expected values - not an enum
+// see $/spike-csv/tools/doc.js
+exports.CsvParser = {
+  bankStatementsNormal: ["ABS1", "CAP1"],
+};
+
+exports.CsvParserAll = Object.keys(exports.CsvParser).reduce((arr, k) => {
+  arr = arr.concat(exports.CsvParser[k]);
+  return arr;
+}, []);
+// console.log(exports.CsvParserAll);
+
+//#endregion
+
 //#region internal
 
 exports.Channel = Enum.createEnum("Channel", {
