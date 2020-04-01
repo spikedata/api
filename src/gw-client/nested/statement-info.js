@@ -1,3 +1,4 @@
+const enums = require("../../enums");
 exports.code = "gw-client/nested/statement-info";
 
 exports.validate = {
@@ -7,6 +8,7 @@ exports.validate = {
     bank: {
       required: true,
       type: "string",
+      enum: Object.values(enums.Bank).map((x) => x.code),
     },
     accountNumber: {
       required: true,

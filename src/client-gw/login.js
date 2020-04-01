@@ -70,6 +70,7 @@ exports.schema = {
     site: {
       type: "string",
       required: true,
+      enum: enums.Sites.keys(),
     },
     user: {
       type: "string",
