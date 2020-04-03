@@ -15,6 +15,7 @@ function buildUrls(server) {
 
     // pdf
     pdf: server + FN["pdf"].url,
+    csv: server + FN["csv"].url,
   };
 }
 

@@ -5,6 +5,7 @@ const clientGwComposerCodeData = require("./client-gw/composer/codeData");
 // client-gw
 const clientGwAccounts = require("./client-gw/accounts");
 const clientGwClose = require("./client-gw/close");
+const clientGwCsv = require("./client-gw/csv");
 const clientGwEstatement = require("./client-gw/estatement");
 const clientGwLogin = require("./client-gw/login");
 const clientGwLoginInterimInputAbsPass = require("./client-gw/login-interim-input/abs-pass");
@@ -95,6 +96,7 @@ exports.shape = {
   // client-gw
   "client-gw/accounts": clientGwAccounts,
   "client-gw/close": clientGwClose,
+  "client-gw/csv": clientGwCsv,
   "client-gw/estatement": clientGwEstatement,
   "client-gw/login": clientGwLogin,
   "client-gw/login-interim-input/abs-pass": clientGwLoginInterimInputAbsPass,

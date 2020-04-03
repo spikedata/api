@@ -7,6 +7,7 @@ const statements = require("./statements");
 const transactions = require("./transactions");
 const close = require("./close");
 const pdf = require("./pdf");
+const csv = require("./csv");
 
 module.exports = {
   accounts,
@@ -18,6 +19,7 @@ module.exports = {
   transactions,
   close,
   pdf,
+  csv,
 
   check: function(func) {
     if (this[func]) {

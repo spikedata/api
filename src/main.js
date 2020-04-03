@@ -13,6 +13,7 @@ const gwClientWrapper = require("./gw-client/wrapper");
 // wrappers
 const accounts = require("./wrappers/accounts");
 const close = require("./wrappers/close");
+const csv = require("./wrappers/csv");
 const estatement = require("./wrappers/estatement");
 const loginInterimInputAbsPass = require("./wrappers/login-interim-input/abs-pass");
 const loginInterimInputStdOtp = require("./wrappers/login-interim-input/std-otp");
@@ -51,6 +52,7 @@ module.exports = {
   // wrappers
   accounts,
   close,
+  csv,
   estatement,
   loginInterimInputAbsPass,
   loginInterimInputStdOtp,
