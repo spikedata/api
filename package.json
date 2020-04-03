@@ -3,7 +3,7 @@
   "version": "1.0.8",
   "description": "Spike API library helper",
   "main": "src/main.js",
-  "browser": "dist/spike-api.umd.js",
+  "browser": "dist/spike-api.esm.mjs",
   "author": "ilan@spikedata.co.za",
   "license": "SPIKE",
   "repository": {
