@@ -49,7 +49,7 @@ export default [
     output: [
       {
         name: "SpikeApi",
-        file: pkg.browser,
+        file: "dist/spike-api.umd.mjs", // pkg.browser,
         format: "umd",
         sourcemap: true,
         // NOTE: fs & path aren't used in browser code

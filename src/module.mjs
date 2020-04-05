@@ -13,6 +13,7 @@ import gwClientWrapper from "./gw-client/wrapper";
 // wrappers
 import accounts from "./wrappers/accounts";
 import close from "./wrappers/close";
+import csv from "./wrappers/csv";
 import estatement from "./wrappers/estatement";
 import loginInterimInputAbsPass from "./wrappers/login-interim-input/abs-pass";
 import loginInterimInputStdOtp from "./wrappers/login-interim-input/std-otp";
@@ -51,6 +52,7 @@ export default {
   // wrappers
   accounts,
   close,
+  csv,
   estatement,
   loginInterimInputAbsPass,
   loginInterimInputStdOtp,
