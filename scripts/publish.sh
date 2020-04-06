@@ -18,7 +18,7 @@ npm version patch
 # git tag - `npm version` does this already
 # ver=`jq .version ./package.json`
 # git tag $ver
-# git push --tags
+git push --tags # note - must manually push tags to git to create e.g. https://github.com/spikedata/api/tags
 
 printf "${CYAN}npm publish${NC}\n"
 npm publish --access public

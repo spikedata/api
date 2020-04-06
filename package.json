@@ -2,6 +2,7 @@
   "name": "@spikedata/api",
   "version": "1.0.10",
   "description": "Spike API library helper",
+  "private": false,
   "main": "src/main.js",
   "browser": "dist/spike-api.esm.mjs",
   "author": "ilan@spikedata.co.za",
