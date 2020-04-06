@@ -12,6 +12,7 @@ module.exports = {
   extends: ["eslint:recommended"],
   parserOptions: {
     ecmaVersion: 2018,
+    sourceType: "module", // https://github.com/AtomLinter/linter-eslint/issues/462
   },
   rules: {},
   globals: {
