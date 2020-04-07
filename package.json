@@ -1,6 +1,6 @@
 {
   "name": "@spikedata/api",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Spike API library helper",
   "private": false,
   "main": "src/main.js",
