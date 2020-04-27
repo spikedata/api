@@ -141,7 +141,7 @@ exports.PdfType = Enum.createEnum("PdfType", {
 });
 
 // Documents expected values - not an enum
-// see $/spike-pdf/tools/doc.js
+// see $/spike-pdf/tools/docs/add-new-parser.md
 exports.PdfParser = {
   bankStatementsNormal: [
     "ABSA_ACTIVESAVE_ALL_0",
@@ -180,7 +180,12 @@ exports.PdfParser = {
   bankStatementsNoBalance: ["NEDBANK_ACCBAL_WEB"],
   creditCardBreakdown: ["ABSA_CREDITCARD_EMAIL_0", "NEDBANK_CREDITCARD"],
   creditCardBreakdownMultiUser: ["STANDARDBANK_CREDITCARD"],
-  creditCardSimple: ["DISCOVERY_CREDITCARD_ALL_0", "FNB_CREDITCARD_ALL_0", "RMB_CREDITCARD_ALL_0"],
+  creditCardSimple: [
+    "DISCOVERY_0",
+    "DISCOVERY_CREDITCARD_ALL_0",
+    "FNB_CREDITCARD_ALL_0",
+    "RMB_CREDITCARD_ALL_0",
+  ],
   insurance: [
     "LIBERTY_LIFE_COVER_ANNIVERSARY_LETTER",
     "LIBERTY_LIFE_COVER_POLICY_DOC",
