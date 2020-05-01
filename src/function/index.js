@@ -1,35 +1,36 @@
-const accounts = require("./accounts");
-const estatement = require("./estatement");
-const login = require("./login");
-const loginInterimInput = require("./login-interim-input");
-const loginInterimWait = require("./login-interim-wait");
-const statements = require("./statements");
-const transactions = require("./transactions");
-const close = require("./close");
-const pdf = require("./pdf");
-const csv = require("./csv");
+import accounts from "./accounts";
+import estatement from "./estatement";
+import login from "./login";
+import loginInterimInput from "./login-interim-input";
+import loginInterimWait from "./login-interim-wait";
+import statements from "./statements";
+import transactions from "./transactions";
+import close from "./close";
+import pdf from "./pdf";
+import csv from "./csv";
 
-module.exports = {
+function check(func) {
+  if (this[func]) {
+    return true;
+  } else {
+    let funcs = Object.keys(this)
+      .filter((x) => x !== "check")
+      .join("\n");
+    console.error(`invalid function, valid options = \n${funcs}`);
+    return false;
+  }
+}
+
+export {
   accounts,
   estatement,
   login,
-  "login-interim-input": loginInterimInput,
-  "login-interim-wait": loginInterimWait,
+  loginInterimInput as "login-interim-input" ,
+  loginInterimWait as "login-interim-wait" ,
   statements,
   transactions,
   close,
   pdf,
   csv,
-
-  check: function(func) {
-    if (this[func]) {
-      return true;
-    } else {
-      let funcs = Object.keys(this)
-        .filter((x) => x !== "check")
-        .join("\n");
-      console.error(`invalid function, valid options = \n${funcs}`);
-      return false;
-    }
-  },
+  check,
 };
