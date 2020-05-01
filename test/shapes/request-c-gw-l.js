@@ -1,6 +1,6 @@
 const chai = require("chai");
 const chaiUuid = require("chai-uuid");
-const API = require("../../src/index");
+const API = require("../../src/index").default;
 const uuid = require("../../src/lib/uuid");
 
 /**

@@ -1,14 +1,15 @@
-import config from "./config/static";
+import "./global";
+import * as config from "./config/static";
 // api
-import shapes from "./shapes";
-import helpers from "./helpers";
-import enums from "./enums";
-import common from "./lib/common";
+import * as shapes from "./shapes";
+import * as helpers from "./helpers";
+import * as enums from "./enums";
+import * as common from "./lib/common";
 import BadShapeError from "./lib/badShapeError";
 import InputValidationError from "./lib/inputValidationError";
 import PdfTooLargeError from "./lib/pdfTooLargeError";
 import ShapeNotFoundError from "./lib/shapeNotFoundError";
-import schema from "./lib/schema";
+import * as schema from "./lib/schema";
 import gwClientWrapper from "./gw-client/wrapper";
 // wrappers
 import accounts from "./wrappers/accounts";
@@ -20,7 +21,7 @@ import loginInterimInputStdOtp from "./wrappers/login-interim-input/std-otp";
 import loginInterimWait from "./wrappers/login-interim-wait";
 import login from "./wrappers/login";
 import pdf from "./wrappers/pdf";
-import shared from "./wrappers/shared";
+import * as shared from "./wrappers/shared";
 import statements from "./wrappers/statements";
 import transactions from "./wrappers/transactions";
 
@@ -31,8 +32,8 @@ export default {
   getShape: shapes.getShape,
   overrideShapes: function(shapeOverrides) {
     // NOTE: must modify the object inplace in order for @spikedata/api code to use supplied shapes
-    for (let key in shapeOverrides) {
-      shapes.shape[key] = shapeOverrides[key]; // NOTE: modifies exports.shape
+    for (const key in shapeOverrides) {
+      shapes.shape[key] = shapeOverrides[key]; // NOTE: modifies export shape
     }
   },
   common,
@@ -44,7 +45,7 @@ export default {
   PdfTooLargeError,
   ShapeNotFoundError,
   sanitize(response) {
-    let shape = shapes.getShape(response.code);
+    const shape = shapes.getShape(response.code);
     return common.sanitize(shape.sanitize, response.data);
   },
   schema,

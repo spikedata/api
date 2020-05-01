@@ -13,7 +13,7 @@ function check(func) {
   if (this[func]) {
     return true;
   } else {
-    let funcs = Object.keys(this)
+    const funcs = Object.keys(this)
       .filter((x) => x !== "check")
       .join("\n");
     console.error(`invalid function, valid options = \n${funcs}`);
@@ -21,12 +21,12 @@ function check(func) {
   }
 }
 
-export {
+export default {
   accounts,
   estatement,
   login,
-  loginInterimInput,
-  loginInterimWait,
+  "login-interim-input": loginInterimInput,
+  "login-interim-wait": loginInterimWait,
   statements,
   transactions,
   close,

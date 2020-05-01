@@ -41,7 +41,8 @@
     "reset:check": "./scripts/git-check-uncommitted-changes.sh",
     "reset:force": "git clean -dfx && git reset --hard && npm update && npm i",
     "clean": "trash build coverage .nyc_output",
-    "prepare-release": "run-s reset test cov:check version"
+    "prepare-release": "run-s reset test cov:check version",
+    "hack": "mocha -r ts-node/register ./test/index.js"
   },
   "scripts-info": {
     "info": "Display information about the package scripts",
@@ -61,7 +62,10 @@
   "dependencies": {
     "ajv": "6.12.0",
     "axios": "0.19.2",
-    "lodash.merge": "4.6.2"
+    "chai": "^4.2.0",
+    "chai-uuid": "^1.0.6",
+    "lodash.merge": "4.6.2",
+    "mocha": "^7.1.2"
   },
   "devDependencies": {
     "@bitjson/npm-scripts-info": "^1.0.0",

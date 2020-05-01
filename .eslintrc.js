@@ -26,6 +26,8 @@ module.exports = {
     ],
     "@typescript-eslint/no-unused-vars": "warn",
     "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/ban-ts-ignore": "off",
+    "@typescript-eslint/camelcase": "off",
   },
   globals: {
     log: "readonly",
