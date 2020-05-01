@@ -1,9 +1,11 @@
-# root
 node_modules
-*.7z
-*.gz
-*.log
-package-lock.json
-dist
+build
+test
+src/**.js
+.idea/*
 
-# project specific
+coverage
+.nyc_output
+*.log
+
+yarn.lock

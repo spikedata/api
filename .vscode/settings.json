@@ -1,14 +1,33 @@
 {
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": { "source.fixAll.eslint": false },
   "debug.node.autoAttach": "on",
+  "editor.codeActionsOnSave": { "source.fixAll.eslint": true },
+  "editor.formatOnSave": true,
+  "eslint.validate": ["javascript", { "language": "typescript", "autoFix": true }],
+  // "prettier.eslintIntegration": true,
   "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[html]": {
+  "[markdown]": {
+    // "editor.formatOnSave": false
+  },
+  "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+    // "editor.formatOnSave": false
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/dist": true,
+    "**/coverage": true
+  },
+  // use local typescript version
+  "typescript.tsdk": "node_modules/typescript/lib",
+  // "typescript.implementationsCodeLens.enabled": true,
+  "typescript.referencesCodeLens.enabled": true
 }

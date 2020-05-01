@@ -1,4 +1,4 @@
-const FN = require("../function");
+import FN from "../function";
 const _server = "https://api-v6.spikedata.co.za";
 
 function buildUrls(server) {
