@@ -31,7 +31,7 @@ export default {
   shape: shapes.shape,
   getShape: shapes.getShape,
   overrideShapes: function(shapeOverrides) {
-    // NOTE: must modify the object inplace in order for @spikedata/api code to use supplied shapes
+    // NOTE: must modify the object inplace in order for @spike/api code to use supplied shapes
     for (const key in shapeOverrides) {
       shapes.shape[key] = shapeOverrides[key]; // NOTE: modifies export shape
     }
