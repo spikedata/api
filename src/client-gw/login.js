@@ -105,7 +105,6 @@ exports.validate = function(data) {
         } else {
           let usernumstr = data.usernum.toString();
           if (usernumstr.match(/[^0-9]/) || parseInt(usernumstr) <= 0 || parseInt(usernumstr) > 9) {
-            log.fatal("ABSA usernum is not an integer between 1 and 9");
             validationErrors.push("usernum should be an integer between 1 and 9");
           }
         }
