@@ -1,13 +1,13 @@
-const Enums = require("../enums");
-const common = require("../lib/common");
-const InputValidationError = require("../lib/inputValidationError");
-const Schema = require("../lib/schema");
-const uuid = require("../lib/uuid");
+import * as Enums from "../enums";
+import * as common from "../lib/common";
+import InputValidationError from "../lib/inputValidationError";
+import * as Schema from "../lib/schema";
+import * as uuid from "../lib/uuid";
 // NOTE: circular require problem - can't use Shapes in root scope
 // const Shapes = require("../shapes");
-const gwClientAccountsSuccess = require("./accounts/success");
-const gwClientLoginInterimInputAbsPass = require("./login/interim-input-abs-pass");
-const gwClientErrorCommonDevInvalidInputs = require("./error/common/dev/invalid-inputs");
+import * as gwClientAccountsSuccess from "./accounts/success";
+import * as gwClientLoginInterimInputAbsPass from "./login/interim-input-abs-pass";
+import gwClientErrorCommonDevInvalidInputs from "./error/common/dev/invalid-inputs";
 
 const Shapes = {
   "gw-client/accounts/success": gwClientAccountsSuccess,
@@ -15,12 +15,12 @@ const Shapes = {
   "gw-client/error/common/dev/invalid-inputs": gwClientErrorCommonDevInvalidInputs,
 };
 
-exports.code = "gw-client/wrapper"; // specified by wrapped.data. This .code is only used as wrapperCode in common.validateWrapped
-exports.type = Enums.TYPES.NOTSET; // specified by wrapped.data
+export const code = "gw-client/wrapper"; // specified by wrapped.data. This .code is only used as wrapperCode in common.validateWrapped
+export const type = Enums.TYPES.NOTSET; // specified by wrapped.data
 
 //#region create
 
-exports.create = function(requestId, sessionId, code, type, data) {
+export const create = function(requestId, sessionId, code, type, data?) {
   return {
     requestId,
     sessionId,
@@ -30,30 +30,30 @@ exports.create = function(requestId, sessionId, code, type, data) {
   };
 };
 
-exports.createError = function(requestId, code, data) {
-  return exports.create(requestId, undefined, code, Enums.TYPES.ERROR, data);
+export const createError = function(requestId, code, data?) {
+  return create(requestId, undefined, code, Enums.TYPES.ERROR, data);
 };
 
 //#endregion
 
 //#region examples
 
-exports.examples = {
-  "gw-client/wrapper[gw-client/accounts/success]": exports.create(
+export const examples = {
+  "gw-client/wrapper[gw-client/accounts/success]": create(
     uuid.testUuid(),
     uuid.testUuid(),
     Shapes["gw-client/accounts/success"].code,
     Shapes["gw-client/accounts/success"].type,
     Shapes["gw-client/accounts/success"].examples.default
   ),
-  "gw-client/wrapper[login/interim-input-abs-pass]": exports.create(
+  "gw-client/wrapper[login/interim-input-abs-pass]": create(
     uuid.testUuid(),
     uuid.testUuid(),
     Shapes["gw-client/login/interim-input-abs-pass"].code,
     Shapes["gw-client/login/interim-input-abs-pass"].type,
     Shapes["gw-client/login/interim-input-abs-pass"].examples.default
   ),
-  "gw-client/wrapper[gw-client/error/common/dev/invalid-inputs]": exports.createError(
+  "gw-client/wrapper[gw-client/error/common/dev/invalid-inputs]": createError(
     uuid.testUuid(),
     Shapes["gw-client/error/common/dev/invalid-inputs"].code,
     Shapes["gw-client/error/common/dev/invalid-inputs"].examples.default
@@ -67,28 +67,16 @@ exports.examples = {
 // create wrapped data
 //  .data = marshall or passThrough (from lambda-gw => gw-client)
 //  input* were created on lambda - see lambda-gw/*chan/wrapper.createResponse
-exports.marshall = function(requestId, sessionId = undefined, inputCode, inputData) {
+export const marshall = function(requestId, sessionId = undefined, inputCode, inputData) {
   let { outputShape, outputCode, outputData } = common.marshall(
     undefined,
     exports,
     inputCode,
     inputData
   );
-
   // create instance which matches wrapperSchema
-  let wrappedInstance = exports.create(
-    requestId,
-    sessionId,
-    outputCode,
-    outputShape.type,
-    outputData
-  );
-  let errors = Schema.validate(
-    exports.code,
-    exports.validate,
-    wrappedInstance,
-    exports.nestedSchemas
-  );
+  let wrappedInstance = create(requestId, sessionId, outputCode, outputShape.type, outputData);
+  let errors = Schema.validate(code, validate, wrappedInstance);
   if (errors) {
     throw new InputValidationError(errors);
   }
@@ -99,7 +87,7 @@ exports.marshall = function(requestId, sessionId = undefined, inputCode, inputDa
 
 //#region validate
 
-exports.wrapperSchema = {
+export const wrapperSchema = {
   type: "object",
   properties: {
     requestId: {
@@ -128,7 +116,7 @@ exports.wrapperSchema = {
   },
 };
 
-exports.validate = function(wrappedInstance) {
+export const validate = function(wrappedInstance) {
   common.validateWrapped(exports, wrappedInstance);
 };
 
@@ -136,8 +124,7 @@ exports.validate = function(wrappedInstance) {
 
 //#region sanitize
 
-// started
-exports.sanitize = function(wrappedInstance) {
+export const sanitize = function(wrappedInstance) {
   return common.sanitizeWrapped(exports, wrappedInstance);
 };
 
@@ -145,9 +132,9 @@ exports.sanitize = function(wrappedInstance) {
 
 //#region log
 
-exports.log = function(wrappedInstance) {
-  let sanitized = exports.sanitize(wrappedInstance);
-  log.net(`GW -> Client`, JSON.stringify(sanitized, null, 2));
+export const log = function(wrappedInstance) {
+  let sanitized = sanitize(wrappedInstance);
+  global.log.net(`GW -> Client`, JSON.stringify(sanitized, null, 2));
 };
 
 //#endregion

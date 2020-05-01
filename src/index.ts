@@ -10,7 +10,7 @@ import InputValidationError from "./lib/inputValidationError";
 import PdfTooLargeError from "./lib/pdfTooLargeError";
 import ShapeNotFoundError from "./lib/shapeNotFoundError";
 import * as schema from "./lib/schema";
-import gwClientWrapper from "./gw-client/wrapper";
+import * as gwClientWrapper from "./gw-client/wrapper";
 // wrappers
 import accounts from "./wrappers/accounts";
 import close from "./wrappers/close";
