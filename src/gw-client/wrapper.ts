@@ -62,29 +62,6 @@ export const examples = {
 
 //#endregion
 
-//#region marshall
-
-// create wrapped data
-//  .data = marshall or passThrough (from lambda-gw => gw-client)
-//  input* were created on lambda - see lambda-gw/*chan/wrapper.createResponse
-export const marshall = function(requestId, sessionId = undefined, inputCode, inputData) {
-  let { outputShape, outputCode, outputData } = common.marshall(
-    undefined,
-    exports,
-    inputCode,
-    inputData
-  );
-  // create instance which matches wrapperSchema
-  let wrappedInstance = create(requestId, sessionId, outputCode, outputShape.type, outputData);
-  let errors = Schema.validate(code, validate, wrappedInstance);
-  if (errors) {
-    throw new InputValidationError(errors);
-  }
-  return wrappedInstance;
-};
-
-//#endregion
-
 //#region validate
 
 export const wrapperSchema = {
@@ -122,6 +99,29 @@ export const validate = function(wrappedInstance) {
 
 //#endregion
 
+//#region marshall
+
+// create wrapped data
+//  .data = marshall or passThrough (from lambda-gw => gw-client)
+//  input* were created on lambda - see lambda-gw/*chan/wrapper.createResponse
+export const marshall = function(requestId, sessionId = undefined, inputCode, inputData) {
+  const { outputShape, outputCode, outputData } = common.marshall(
+    undefined,
+    exports,
+    inputCode,
+    inputData
+  );
+  // create instance which matches wrapperSchema
+  const wrappedInstance = create(requestId, sessionId, outputCode, outputShape.type, outputData);
+  const errors = Schema.validate(code, validate, wrappedInstance);
+  if (errors) {
+    throw new InputValidationError(errors);
+  }
+  return wrappedInstance;
+};
+
+//#endregion
+
 //#region sanitize
 
 export const sanitize = function(wrappedInstance) {
@@ -133,8 +133,8 @@ export const sanitize = function(wrappedInstance) {
 //#region log
 
 export const log = function(wrappedInstance) {
-  let sanitized = sanitize(wrappedInstance);
-  global.log.net(`GW -> Client`, JSON.stringify(sanitized, null, 2));
+  const sanitized = sanitize(wrappedInstance);
+  global.log.net("GW -> Client", JSON.stringify(sanitized, null, 2));
 };
 
 //#endregion
