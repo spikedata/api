@@ -1,14 +1,29 @@
-const enums = require("../../enums");
-const InputValidationError = require("../../lib/inputValidationError");
-const Schema = require("../../lib/schema");
+import * as enums from "../../enums";
+import InputValidationError from "../../lib/inputValidationError";
+import * as Schema from "../../lib/schema";
+import { GwClientShapeFactory } from "../../shape";
 
-exports.code = "accounts/success";
-exports.type = enums.TYPES.SUCCESS;
-exports.passThrough = true; // from lambda-gw
+const code = "accounts/success";
+const type = enums.TYPES.SUCCESS;
+const passThrough = true; // from lambda-gw
 
 //#region examples
 
-exports.examples = {
+export interface Instance {
+  accountNumber: string;
+  currency?: string;
+  alias?: string;
+  name?: string;
+  type?: string;
+  currentBalance?: number;
+  balance: number;
+}
+
+export interface Examples {
+  default: Instance[];
+}
+
+const examples = {
   default: [
     {
       accountNumber: "10091234567",
@@ -36,11 +51,11 @@ exports.examples = {
 //#region create
 
 // TODO: note not currently used because data created by browserCode - e.g. see [$/spike-web/src/NED.0/accounts.js]
-exports.create = function(todo) {
+const create = function(todo) {
   let instance = {
     todo,
   };
-  let errors = Schema.validate(exports.code, exports.validate, instance, exports.nestedSchemas);
+  let errors = Schema.validate(code, validate, instance);
   if (errors) {
     throw new InputValidationError(errors);
   }
@@ -51,7 +66,7 @@ exports.create = function(todo) {
 
 //#region validate
 
-exports.validate = {
+const validate = {
   type: "array",
   minItems: 1,
   items: {
@@ -94,7 +109,7 @@ exports.validate = {
 //#region sanitize
 
 // NOTE: array sanitizer = will be applied to every element of array by common.sanitize
-exports.sanitize = [
+const sanitize = [
   {
     currentBalance: "***",
     balance: "***",
@@ -102,3 +117,16 @@ exports.sanitize = [
 ];
 
 //#endregion
+
+// typescript typecheck
+const AccountsSuccess: GwClientShapeFactory = {
+  code,
+  passThrough,
+  type,
+  examples,
+  create,
+  validate,
+  sanitize,
+  noSessionId: false,
+};
+export default AccountsSuccess;
