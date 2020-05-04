@@ -14,6 +14,10 @@ const disabledBuiltins = {
 const external = builtins.concat(Object.keys(pkg.dependencies));
 
 export default [
+  // NOTE: cjs and esm are not needed - only umd
+  // cjs = use build/main/index.js
+  // esm = use build/module/index.mjs
+  /*
   // CommonJS (for Node)
   {
     input: "./build/main/index.js",
@@ -63,6 +67,7 @@ export default [
       json(),
     ],
   },
+  */
 
   // browser - umd build for cdn
   {
@@ -70,7 +75,7 @@ export default [
     output: [
       {
         name: "SpikeApi",
-        file: "dist/spike-api.umd.js", // pkg.browser,
+        file: "./build/umd/spike-api.umd.js", // pkg.browser,
         format: "umd",
         sourcemap: true,
         // NOTE: fs & path aren't used in browser code

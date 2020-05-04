@@ -2,9 +2,10 @@
   "name": "@spike/api",
   "version": "1.0.12",
   "description": "Spike API library helper",
+  "typex": "module",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
-  "module": "build/module/index.js",
+  "module": "build/module/index.mjs",
   "sideEffects": false,
   "author": "ilan@spikedata.co.za",
   "repository": "https://github.com/spikedata/api",
@@ -16,6 +17,15 @@
     "bank",
     "statements"
   ],
+  "exports": {
+    ".": [
+      {
+        "import": "./build/module/index.mjs",
+        "require": "./build/main/index.js"
+      },
+      "./build/module/index.mjs"
+    ]
+  },
   "scripts": {
     "describe": "npm-scripts-info",
     "build": "run-s clean && run-p build:m* && run-s build:rollup",
@@ -60,7 +70,8 @@
     "axios": "0.19.2",
     "chai": "^4.2.0",
     "chai-uuid": "^1.0.6",
-    "lodash.merge": "4.6.2",
+    "lodash": "^4.17.15",
+    "lodash-es": "^4.17.15",
     "mocha": "^7.1.2"
   },
   "devDependencies": {
