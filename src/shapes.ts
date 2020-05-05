@@ -1,6 +1,4 @@
 import ShapeNotFoundError from "./lib/shapeNotFoundError";
-import * as clientGwComposerBasic from "./client-gw/composer/basic";
-import * as clientGwComposerCodeData from "./client-gw/composer/codeData";
 import * as clientGwAccounts from "./client-gw/accounts";
 // import * as clientGwClose from "./client-gw/close";
 // import * as clientGwCsv from "./client-gw/csv";
@@ -87,9 +85,6 @@ import * as clientGwAccounts from "./client-gw/accounts";
 // import * as gwClientWrapper from "./gw-client/wrapper"; // remove circular dep: shape -> wrapper -> common -> shape
 
 export const shape = {
-  // additional
-  "client-gw/composer/basic": clientGwComposerBasic,
-  "client-gw/composer/codeData": clientGwComposerCodeData,
   // client-gw
   "client-gw/accounts": clientGwAccounts,
   // "client-gw/close": clientGwClose,

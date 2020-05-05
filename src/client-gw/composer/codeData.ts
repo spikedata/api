@@ -5,9 +5,6 @@
  */
 import * as objectUtil from "../../lib/object";
 
-export const code = "client-gw/composer/codeData";
-export const not_a_shape = true;
-
 export const composedSchema = {
   type: "object",
   properties: {

@@ -1,16 +1,12 @@
 import BadShapeError from "../../lib/badShapeError";
 import * as common from "../../lib/common";
 import * as Schema from "../../lib/schema";
-import * as enums from "../../enums";
-import * as shapes from "../../shapes";
 import * as uuid from "../../lib/uuid";
 import LoginInterimInputAbsPass, {
   Examples as LoginInterimInputAbsPassExamples,
 } from "../../client-gw/login-interim-input/abs-pass";
 
 export const code = "gw-lambda/bchan/composer"; // NOTE: won't ever appear in data on channel, this the .code of the Composed.data will appear on the channel
-export const type = enums.TYPES.NOTSET; // NOTE: won't ever appear in data on channel, this the .code of the Composed.data will appear on the channel
-export const not_a_shape = true;
 
 const exampleComposedShape = LoginInterimInputAbsPass.examples as LoginInterimInputAbsPassExamples;
 export const examples = {
@@ -35,11 +31,11 @@ export const create = function(requestId, code, final, data) {
 //  NOTE: clientGwInstance has .sessionId (if req2+)
 //  whereas gwLambdaInstance will have .requestId (allocated by express in route handler on request received)
 export const decompose = function(requestId, shape, clientGwInstance) {
-  if (!shape.composer || !shape.composer.code) {
-    throw new BadShapeError(`shape ${shape.code} does not have .composer.code`);
+  if (!shape.composer) {
+    throw new BadShapeError(`shape ${shape.code} does not have .composer`);
   }
-  const composer = shapes.getShape(shape.composer.code); // e.g. "client-gw/composer/basic" || "client-gw/composer/codeData"
-  const { code, data } = composer.decompose(shape, clientGwInstance); // NOTE: returns { code, data }
+  // shape.composer = "client-gw/composer/basic" || "client-gw/composer/codeData"
+  const { code, data } = shape.composer.decompose(shape, clientGwInstance);
   // create "gw-lambda/bchan/composer"
   const final = clientGwInstance.final === undefined ? true : clientGwInstance.final; // default to final if not set
   return create(requestId, code, final, data);

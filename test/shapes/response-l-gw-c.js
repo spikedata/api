@@ -29,9 +29,6 @@ describe("full response pipeline = lambda-gw-client", function() {
     let gwClientInstance;
 
     lambdaGwShape = API.shape[lambdaGwCode];
-    if (lambdaGwShape.not_a_shape) {
-      continue;
-    }
     if (!lambdaGwShape.code) {
       log.info(JSON.stringify(lambdaGwShape, null, 2));
       assert.fail(true, false, `${lambdaGwCode}.code missing`); // throws

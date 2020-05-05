@@ -14,9 +14,6 @@ chai.use(chaiUuid);
 describe("client-gw validaters", function() {
   let codes = Object.keys(API.shape).filter((x) => x.startsWith("client-gw"));
   for (let code of codes) {
-    if (API.shape[code].not_a_shape) {
-      continue;
-    }
     let testname = `validate API/${code}`;
     it(testname, async function() {
       let shape = API.shape[code];

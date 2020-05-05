@@ -1,8 +1,5 @@
 import * as objectUtil from "../../lib/object";
 
-export const code = "client-gw/composer/basic";
-export const not_a_shape = true;
-
 export const composedSchema = {
   type: "object",
   properties: {
@@ -17,6 +14,7 @@ export const composedSchema = {
     },
   },
 };
+
 export const compose = function(sessionIdRequired, finalRequired, additionalSchema) {
   let composedSchema;
   if (additionalSchema) {
