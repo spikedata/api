@@ -3,9 +3,9 @@ import InputValidationError from "../lib/inputValidationError";
 import * as Schema from "../lib/schema";
 import * as uuid from "../lib/uuid";
 import * as composerBasic from "./composer/basic";
-import { ClientGwShapeFactory } from "../shape";
+import { ClientGwComposedShapeFactory } from "../shape";
 
-const Accounts: ClientGwShapeFactory = {
+const Accounts: ClientGwComposedShapeFactory = {
   code: "accounts",
   type: enums.TYPES.INPUTS,
   channel: enums.Channel.Bchan,

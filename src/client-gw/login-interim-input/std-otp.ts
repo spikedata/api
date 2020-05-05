@@ -3,7 +3,7 @@ import InputValidationError from "../../lib/inputValidationError";
 import * as Schema from "../../lib/schema";
 import * as uuid from "../../lib/uuid";
 import * as composerCodeData from "../composer/codeData";
-import { ClientGwShapeFactory } from "../../shape";
+import { ClientGwComposedShapeFactory } from "../../shape";
 
 const code = "login-interim-input/std-otp";
 const type = enums.TYPES.INPUTS;
@@ -68,7 +68,7 @@ const sanitize = {
 //#endregion
 
 // typescript typecheck
-const LoginInterimInputStdOtp: ClientGwShapeFactory = {
+const factory: ClientGwComposedShapeFactory = {
   code,
   type,
   channel,
@@ -82,4 +82,4 @@ const LoginInterimInputStdOtp: ClientGwShapeFactory = {
   ownSanitize,
   sanitize,
 };
-export default LoginInterimInputStdOtp;
+export default factory;

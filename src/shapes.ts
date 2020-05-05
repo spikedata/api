@@ -1,22 +1,22 @@
 import ShapeNotFoundError from "./lib/shapeNotFoundError";
-import * as clientGwAccounts from "./client-gw/accounts";
-// import * as clientGwClose from "./client-gw/close";
-// import * as clientGwCsv from "./client-gw/csv";
-// import * as clientGwEstatement from "./client-gw/estatement";
-// import * as clientGwLogin from "./client-gw/login";
-// import * as clientGwLoginInterimInputAbsPass from "./client-gw/login-interim-input/abs-pass";
-// import * as clientGwLoginInterimInputStdOtp from "./client-gw/login-interim-input/std-otp";
-// import * as clientGwLoginInterimWait from "./client-gw/login-interim-wait";
-// import * as clientGwPdf from "./client-gw/pdf";
-// import * as clientGwStatements from "./client-gw/statements";
-// import * as clientGwTransactions from "./client-gw/transactions";
-// import * as gwClientAccountsSuccess from "./gw-client/accounts/success";
-// import * as gwClientCloseSuccess from "./gw-client/close/success";
-// import * as gwClientCsvFailInvalidDataExtracted from "./gw-client/csv/fail/invalid-data-extracted";
-// import * as gwClientCsvFailMultipleMatchingParsers from "./gw-client/csv/fail/multiple-matching-parsers";
-// import * as gwClientCsvFailUnknownCsv from "./gw-client/csv/fail/unknown-csv";
-// import * as gwClientCsvFailUnknownException from "./gw-client/csv/fail/unknown-exception";
-// import * as gwClientCsvSuccessBankStatement from "./gw-client/csv/success/bank-statement";
+import clientGwAccounts from "./client-gw/accounts";
+import clientGwClose from "./client-gw/close";
+import clientGwCsv from "./client-gw/csv";
+import clientGwEstatement from "./client-gw/estatement";
+import clientGwLogin from "./client-gw/login";
+import clientGwLoginInterimInputAbsPass from "./client-gw/login-interim-input/abs-pass";
+import clientGwLoginInterimInputStdOtp from "./client-gw/login-interim-input/std-otp";
+import clientGwLoginInterimWait from "./client-gw/login-interim-wait";
+import clientGwPdf from "./client-gw/pdf";
+import clientGwStatements from "./client-gw/statements";
+import clientGwTransactions from "./client-gw/transactions";
+// import gwClientAccountsSuccess from "./gw-client/accounts/success";
+// import gwClientCloseSuccess from "./gw-client/close/success";
+// import gwClientCsvFailInvalidDataExtracted from "./gw-client/csv/fail/invalid-data-extracted";
+// import gwClientCsvFailMultipleMatchingParsers from "./gw-client/csv/fail/multiple-matching-parsers";
+// import gwClientCsvFailUnknownCsv from "./gw-client/csv/fail/unknown-csv";
+// import gwClientCsvFailUnknownException from "./gw-client/csv/fail/unknown-exception";
+// import gwClientCsvSuccessBankStatement from "./gw-client/csv/success/bank-statement";
 // import gwClientErrorCommonAccessExceededMaxConcurrentRequests from "./gw-client/error/common/access/exceeded-max-concurrent-requests";
 // import gwClientErrorCommonAccessInsufficientCredit from "./gw-client/error/common/access/insufficient-credit";
 // import gwClientErrorCommonDevAuthorization from "./gw-client/error/common/dev/authorization";
@@ -44,60 +44,60 @@ import * as clientGwAccounts from "./client-gw/accounts";
 // import gwClientErrorSiteSiteUnresponsive from "./gw-client/error/site/site-unresponsive";
 // import gwClientErrorUserDenied from "./gw-client/error/user/denied";
 // import gwClientErrorUserTookTooLong from "./gw-client/error/user/took-too-long";
-// import * as gwClientFileSuccess from "./gw-client/file/success";
-// import * as gwClientInsuranceFail from "./gw-client/insurance/fail";
-// import * as gwClientInsuranceSuccess from "./gw-client/insurance/success";
-// import * as gwClientLoginInterimInputAbsPass from "./gw-client/login/interim-input-abs-pass";
-// import * as gwClientLoginInterimInputStdOtp from "./gw-client/login/interim-input-std-otp";
-// import * as gwClientLoginInterimInputSuccess from "./gw-client/login-interim-input/success";
-// import * as gwClientLoginInterimWaitCap2fa from "./gw-client/login/interim-wait-cap-2fa";
-// import * as gwClientLoginInterimWaitSuccess from "./gw-client/login-interim-wait/success";
-// import * as gwClientLoginSuccess from "./gw-client/login/success";
-// import * as gwClientNestedBreaks from "./gw-client/nested/breaks";
-// import * as gwClientNestedStatementInfo from "./gw-client/nested/statement-info";
-// import * as gwClientNestedTransaction from "./gw-client/nested/transaction";
-// import * as gwClientNestedTransactionNoBalance from "./gw-client/nested/transaction-no-balance";
-// import * as gwClientNestedTransactions from "./gw-client/nested/transactions";
-// import * as gwClientNestedTransactionsNoBalance from "./gw-client/nested/transactions-no-balance";
-// import * as gwClientPdfFailAutoDetect from "./gw-client/pdf/fail/auto-detect";
-// import * as gwClientPdfFailFailedToExtractCreditBreakdown from "./gw-client/pdf/fail/failed-to-extract-credit-breakdown";
-// import * as gwClientPdfFailFailedToExtractStatementDate from "./gw-client/pdf/fail/failed-to-extract-statement-date";
-// import * as gwClientPdfFailFileNotFound from "./gw-client/pdf/fail/file-not-found";
-// import * as gwClientPdfFailImagePdf from "./gw-client/pdf/fail/image-pdf";
-// import * as gwClientPdfFailImagePdfWithOcr from "./gw-client/pdf/fail/image-pdf-with-ocr";
-// import * as gwClientPdfFailInvalidDataExtracted from "./gw-client/pdf/fail/invalid-data-extracted";
-// import * as gwClientPdfFailInvalidPdfException from "./gw-client/pdf/fail/invalid-pdf-exception";
-// import * as gwClientPdfFailMultipleMatchingParsers from "./gw-client/pdf/fail/multiple-matching-parsers";
-// import * as gwClientPdfFailPasswordIncorrect from "./gw-client/pdf/fail/password-incorrect";
-// import * as gwClientPdfFailPasswordRequired from "./gw-client/pdf/fail/password-required";
-// import * as gwClientPdfFailPdfJsError from "./gw-client/pdf/fail/pdf-js-error";
-// import * as gwClientPdfFailPdfJsException from "./gw-client/pdf/fail/pdf-js-exception";
-// import * as gwClientPdfFailPdfReadException from "./gw-client/pdf/fail/pdf-read-exception";
-// import * as gwClientPdfFailUnknownException from "./gw-client/pdf/fail/unknown-exception";
-// import * as gwClientPdfFailUnknownPdf from "./gw-client/pdf/fail/unknown-pdf";
-// import * as gwClientPdfSuccessBankStatementNormal from "./gw-client/pdf/success/bank-statement-normal";
-// import * as gwClientPdfSuccessBankStatementNoBalance from "./gw-client/pdf/success/bank-statement-no-balance";
-// import * as gwClientPdfSuccessCreditCardBreakdown from "./gw-client/pdf/success/credit-card-breakdown";
-// import * as gwClientPdfSuccessCreditCardBreakdownMultiUser from "./gw-client/pdf/success/credit-card-breakdown-multi-user";
-// import * as gwClientPdfSuccessCreditCardSimple from "./gw-client/pdf/success/credit-card-simple";
-// import * as gwClientSarsSuccessPayrollTaxes from "./gw-client/sars/success/payroll-taxes";
-// import * as gwClientTransactionsSuccess from "./gw-client/transactions/success";
-// import * as gwClientWrapper from "./gw-client/wrapper"; // remove circular dep: shape -> wrapper -> common -> shape
+// import gwClientFileSuccess from "./gw-client/file/success";
+// import gwClientInsuranceFail from "./gw-client/insurance/fail";
+// import gwClientInsuranceSuccess from "./gw-client/insurance/success";
+// import gwClientLoginInterimInputAbsPass from "./gw-client/login/interim-input-abs-pass";
+// import gwClientLoginInterimInputStdOtp from "./gw-client/login/interim-input-std-otp";
+// import gwClientLoginInterimInputSuccess from "./gw-client/login-interim-input/success";
+// import gwClientLoginInterimWaitCap2fa from "./gw-client/login/interim-wait-cap-2fa";
+// import gwClientLoginInterimWaitSuccess from "./gw-client/login-interim-wait/success";
+// import gwClientLoginSuccess from "./gw-client/login/success";
+// import gwClientNestedBreaks from "./gw-client/nested/breaks";
+// import gwClientNestedStatementInfo from "./gw-client/nested/statement-info";
+// import gwClientNestedTransaction from "./gw-client/nested/transaction";
+// import gwClientNestedTransactionNoBalance from "./gw-client/nested/transaction-no-balance";
+// import gwClientNestedTransactions from "./gw-client/nested/transactions";
+// import gwClientNestedTransactionsNoBalance from "./gw-client/nested/transactions-no-balance";
+// import gwClientPdfFailAutoDetect from "./gw-client/pdf/fail/auto-detect";
+// import gwClientPdfFailFailedToExtractCreditBreakdown from "./gw-client/pdf/fail/failed-to-extract-credit-breakdown";
+// import gwClientPdfFailFailedToExtractStatementDate from "./gw-client/pdf/fail/failed-to-extract-statement-date";
+// import gwClientPdfFailFileNotFound from "./gw-client/pdf/fail/file-not-found";
+// import gwClientPdfFailImagePdf from "./gw-client/pdf/fail/image-pdf";
+// import gwClientPdfFailImagePdfWithOcr from "./gw-client/pdf/fail/image-pdf-with-ocr";
+// import gwClientPdfFailInvalidDataExtracted from "./gw-client/pdf/fail/invalid-data-extracted";
+// import gwClientPdfFailInvalidPdfException from "./gw-client/pdf/fail/invalid-pdf-exception";
+// import gwClientPdfFailMultipleMatchingParsers from "./gw-client/pdf/fail/multiple-matching-parsers";
+// import gwClientPdfFailPasswordIncorrect from "./gw-client/pdf/fail/password-incorrect";
+// import gwClientPdfFailPasswordRequired from "./gw-client/pdf/fail/password-required";
+// import gwClientPdfFailPdfJsError from "./gw-client/pdf/fail/pdf-js-error";
+// import gwClientPdfFailPdfJsException from "./gw-client/pdf/fail/pdf-js-exception";
+// import gwClientPdfFailPdfReadException from "./gw-client/pdf/fail/pdf-read-exception";
+// import gwClientPdfFailUnknownException from "./gw-client/pdf/fail/unknown-exception";
+// import gwClientPdfFailUnknownPdf from "./gw-client/pdf/fail/unknown-pdf";
+// import gwClientPdfSuccessBankStatementNormal from "./gw-client/pdf/success/bank-statement-normal";
+// import gwClientPdfSuccessBankStatementNoBalance from "./gw-client/pdf/success/bank-statement-no-balance";
+// import gwClientPdfSuccessCreditCardBreakdown from "./gw-client/pdf/success/credit-card-breakdown";
+// import gwClientPdfSuccessCreditCardBreakdownMultiUser from "./gw-client/pdf/success/credit-card-breakdown-multi-user";
+// import gwClientPdfSuccessCreditCardSimple from "./gw-client/pdf/success/credit-card-simple";
+// import gwClientSarsSuccessPayrollTaxes from "./gw-client/sars/success/payroll-taxes";
+// import gwClientTransactionsSuccess from "./gw-client/transactions/success";
+// import gwClientWrapper from "./gw-client/wrapper"; // remove circular dep: shape -> wrapper -> common -> shape
 
 export const shape = {
   // client-gw
   "client-gw/accounts": clientGwAccounts,
-  // "client-gw/close": clientGwClose,
-  // "client-gw/csv": clientGwCsv,
-  // "client-gw/estatement": clientGwEstatement,
-  // "client-gw/login": clientGwLogin,
-  // "client-gw/login-interim-input/abs-pass": clientGwLoginInterimInputAbsPass,
-  // "client-gw/login-interim-input/std-otp": clientGwLoginInterimInputStdOtp,
-  // "client-gw/login-interim-wait": clientGwLoginInterimWait,
-  // "client-gw/pdf": clientGwPdf,
-  // "client-gw/statements": clientGwStatements,
-  // "client-gw/transactions": clientGwTransactions,
-  // // gw-client
+  "client-gw/close": clientGwClose,
+  "client-gw/csv": clientGwCsv,
+  "client-gw/estatement": clientGwEstatement,
+  "client-gw/login": clientGwLogin,
+  "client-gw/login-interim-input/abs-pass": clientGwLoginInterimInputAbsPass,
+  "client-gw/login-interim-input/std-otp": clientGwLoginInterimInputStdOtp,
+  "client-gw/login-interim-wait": clientGwLoginInterimWait,
+  "client-gw/pdf": clientGwPdf,
+  "client-gw/statements": clientGwStatements,
+  "client-gw/transactions": clientGwTransactions,
+  // gw-client
   // "gw-client/accounts/success": gwClientAccountsSuccess,
   // "gw-client/close/success": gwClientCloseSuccess,
   // "gw-client/csv/fail/invalid-data-extracted": gwClientCsvFailInvalidDataExtracted,

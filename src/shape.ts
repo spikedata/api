@@ -23,6 +23,7 @@ export interface ShapeFactory {
   noData?: boolean;
   create: CreateFunction;
   validate: object | ValidateFunction;
+  schema?: object; // supplied if validate = ValidateFunction, for swagger definition
   sanitize: object | SanitizeFunction;
 
   // see: /spike/v7/lib/core/api/src/lib/nested.ts
@@ -36,20 +37,23 @@ export const createUnused: CreateFunction = () => {
 };
 
 export interface ClientGwShapeFactory extends ShapeFactory {
+  firstRequestInSession?: boolean;
+  sessionBased: boolean;
+  // gw to lambda
+  marshallTo?: string | MarshallToFunction;
+  channel: number;
+}
+
+export interface ClientGwComposedShapeFactory extends ClientGwShapeFactory {
   composer: Composer;
   additionalSchema?: object;
   dataSchema?: object;
   ownSanitize: Sanitizer;
-  // gw to lambda
-  channel: number;
-  sessionBased: boolean;
 }
 
 export interface GwClientShapeFactory extends ShapeFactory {
   // marshalling
   passThrough?: boolean;
-  marshallTo?: string | MarshallToFunction;
-  marshallFrom?: undefined | MarshallFromFunction;
   // other
   noSessionId: boolean;
 }

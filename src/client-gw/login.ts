@@ -1,17 +1,18 @@
-const enums = require("../enums");
-const Schema = require("../lib/schema");
-const InputValidationError = require("../lib/inputValidationError");
+import * as enums from "../enums";
+import InputValidationError from "../lib/inputValidationError";
+import * as Schema from "../lib/schema";
+import { ClientGwShapeFactory } from "../shape";
 
-exports.code = "login";
-exports.type = enums.TYPES.INPUTS;
-exports.marshallTo = "gw-lambda/lchan/login";
-exports.channel = enums.Channel.Lchan;
-exports.sessionBased = true;
-exports.firstRequestInSession = true;
+const code = "login";
+const type = enums.TYPES.INPUTS;
+const marshallTo = "gw-lambda/lchan/login";
+const channel = enums.Channel.Lchan;
+const sessionBased = true;
+const firstRequestInSession = true;
 
 //#region examples
 
-exports.examples = {
+const examples = {
   "ABS.0": {
     site: "ABS.0",
     user: "username",
@@ -50,9 +51,9 @@ exports.examples = {
 
 //#region create
 
-exports.create = function(site, user, pin, pass, usernum) {
+const create = function(site, user, pin, pass, usernum) {
   let instance = { site, user, pin, pass, usernum };
-  let errors = Schema.validate(exports.code, exports.validate, instance, exports.nestedSchemas);
+  let errors = Schema.validate(code, validate, instance);
   if (errors) {
     throw new InputValidationError(errors);
   }
@@ -64,7 +65,7 @@ exports.create = function(site, user, pin, pass, usernum) {
 //#region validate
 
 // For swagger definition - not used by validate()
-exports.schema = {
+const schema = {
   type: "object",
   properties: {
     site: {
@@ -85,7 +86,7 @@ exports.schema = {
   },
 };
 
-exports.validate = function(data) {
+const validate = function(data) {
   let validationErrors = [];
   if (!data.site) {
     validationErrors.push("missing required input: site");
@@ -113,6 +114,7 @@ exports.validate = function(data) {
       case "CAP.0": {
         if (!data.user) validationErrors.push("missing required input: user = Username");
         if (!data.pass) validationErrors.push("missing required input: pass = Password/Remote PIN");
+        break;
       }
       // eslint-disable-next-line no-fallthrough
       case "RMB.0":
@@ -146,7 +148,7 @@ exports.validate = function(data) {
 //#region sanitize
 
 // NOTE: custom sanitizer used so that .pin & .pass are not added when they haven't been supplied
-exports.sanitize = function(data) {
+const sanitize = function(data) {
   let clone = Object.assign({}, data);
   if (clone.pin) clone.pin = "***";
   if (clone.pass) clone.pass = "***";
@@ -154,3 +156,19 @@ exports.sanitize = function(data) {
 };
 
 //#endregion
+
+// typescript typecheck
+const factory: ClientGwShapeFactory = {
+  code,
+  type,
+  channel,
+  sessionBased,
+  examples,
+  create,
+  validate,
+  schema,
+  sanitize,
+  firstRequestInSession,
+  marshallTo,
+};
+export default factory;

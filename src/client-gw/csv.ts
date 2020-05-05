@@ -1,19 +1,20 @@
-const fs = require("fs");
-const path = require("path");
-const Schema = require("../lib/schema");
-const enums = require("../enums");
-const InputValidationError = require("../lib/inputValidationError");
-const PdfTooLargeError = require("../lib/pdfTooLargeError");
+import fs from "fs";
+import path from "path";
+import * as enums from "../enums";
+import InputValidationError from "../lib/inputValidationError";
+import PdfTooLargeError from "../lib/pdfTooLargeError";
+import * as Schema from "../lib/schema";
+import { ClientGwShapeFactory } from "../shape";
 
-exports.code = "csv";
-exports.type = enums.TYPES.INPUTS;
-exports.marshallTo = "gw-lambda/lchan/csv";
-exports.channel = enums.Channel.Lchan;
-exports.sessionBased = false;
+const code = "csv";
+const type = enums.TYPES.INPUTS;
+const marshallTo = "gw-lambda/lchan/csv";
+const channel = enums.Channel.Lchan;
+const sessionBased = false;
 
 //#region examples
 
-exports.examples = {
+const examples = {
   default: {
     file: "abs.csv",
     buffer: "...",
@@ -24,7 +25,7 @@ exports.examples = {
 
 //#region create
 
-exports.create = function(csvPath, pass, buffer) {
+const create = function(csvPath, pass, buffer) {
   if (!buffer && !csvPath) {
     throw new InputValidationError(["must supply csvPath or buffer"]);
   }
@@ -48,7 +49,7 @@ exports.create = function(csvPath, pass, buffer) {
     buffer,
     pass,
   };
-  let errors = Schema.validate(exports.code, exports.validate, instance, exports.nestedSchemas);
+  let errors = Schema.validate(code, validate, instance);
   if (errors) {
     throw new InputValidationError(errors);
   }
@@ -59,18 +60,7 @@ exports.create = function(csvPath, pass, buffer) {
 
 //#region validate
 
-exports.validate = function(data) {
-  let validationErrors = [];
-  if (!data.file) {
-    validationErrors.push("missing required input: file");
-  }
-  if (!data.buffer) {
-    validationErrors.push("missing required input: buffer");
-  }
-  return validationErrors.length === 0 ? undefined : validationErrors;
-};
-
-exports.schema = {
+const validate = {
   type: "object",
   properties: {
     file: {
@@ -89,7 +79,7 @@ exports.schema = {
 //#region sanitize
 
 // NOTE: custom sanitizer in order to prevent buffer being deep cloned before being [redacted]
-exports.sanitize = function(data) {
+const sanitize = function(data) {
   let temp = data.buffer;
   delete data.buffer;
   let clone = Object.assign({ buffer: "[redacted]" }, data);
@@ -98,3 +88,17 @@ exports.sanitize = function(data) {
 };
 
 //#endregion
+
+// typescript typecheck
+const factory: ClientGwShapeFactory = {
+  code,
+  type,
+  marshallTo,
+  channel,
+  sessionBased,
+  examples,
+  create,
+  validate,
+  sanitize,
+};
+export default factory;

@@ -1,19 +1,20 @@
-const fs = require("fs");
-const path = require("path");
-const Schema = require("../lib/schema");
-const enums = require("../enums");
-const InputValidationError = require("../lib/inputValidationError");
-const PdfTooLargeError = require("../lib/pdfTooLargeError");
+import fs from "fs";
+import path from "path";
+import * as enums from "../enums";
+import InputValidationError from "../lib/inputValidationError";
+import PdfTooLargeError from "../lib/pdfTooLargeError";
+import * as Schema from "../lib/schema";
+import { ClientGwShapeFactory } from "../shape";
 
-exports.code = "pdf";
-exports.type = enums.TYPES.INPUTS;
-exports.marshallTo = "gw-lambda/lchan/pdf";
-exports.channel = enums.Channel.Lchan;
-exports.sessionBased = false;
+const code = "pdf";
+const type = enums.TYPES.INPUTS;
+const marshallTo = "gw-lambda/lchan/pdf";
+const channel = enums.Channel.Lchan;
+const sessionBased = false;
 
 //#region examples
 
-exports.examples = {
+const examples = {
   default: {
     file: "absa.pdf",
     buffer: "JVBER...",
@@ -25,7 +26,7 @@ exports.examples = {
 
 //#region create
 
-exports.create = function(pdfPath, pass, buffer) {
+const create = function(pdfPath, pass, buffer) {
   if (!buffer && !pdfPath) {
     throw new InputValidationError(["must supply pdfPath or buffer"]);
   }
@@ -49,7 +50,7 @@ exports.create = function(pdfPath, pass, buffer) {
     buffer,
     pass,
   };
-  let errors = Schema.validate(exports.code, exports.validate, instance, exports.nestedSchemas);
+  let errors = Schema.validate(code, validate, instance);
   if (errors) {
     throw new InputValidationError(errors);
   }
@@ -60,24 +61,25 @@ exports.create = function(pdfPath, pass, buffer) {
 
 //#region validate
 
-exports.isBase64EncodedPdf = function(pdfString) {
+const isBase64EncodedPdf = function(pdfString) {
   return pdfString.slice(0, 5) == "JVBER"; // Buffer.from("%PDF").toString('base64')
 };
 
-exports.validate = function(data) {
+const validate = function(data) {
   let validationErrors = [];
   if (!data.file) {
     validationErrors.push("missing required input: file");
   }
   if (!data.buffer) {
     validationErrors.push("missing required input: buffer");
-  } else if (!exports.isBase64EncodedPdf(data.buffer)) {
+  } else if (!isBase64EncodedPdf(data.buffer)) {
     validationErrors.push("invalid buffer: either not a PDF or not base64 encoded");
   }
   return validationErrors.length === 0 ? undefined : validationErrors;
 };
 
-exports.schema = {
+// For swagger definition - not used by validate()
+const schema = {
   type: "object",
   properties: {
     file: {
@@ -99,7 +101,7 @@ exports.schema = {
 //#region sanitize
 
 // NOTE: custom sanitizer in order to prevent buffer being deep cloned before being [redacted]
-exports.sanitize = function(data) {
+const sanitize = function(data) {
   let temp = data.buffer;
   delete data.buffer;
   let clone = Object.assign({ buffer: "[redacted]" }, data);
@@ -108,3 +110,18 @@ exports.sanitize = function(data) {
 };
 
 //#endregion
+
+// typescript typecheck
+const factory: ClientGwShapeFactory = {
+  code,
+  type,
+  channel,
+  sessionBased,
+  examples,
+  create,
+  validate,
+  schema,
+  sanitize,
+  marshallTo,
+};
+export default factory;
