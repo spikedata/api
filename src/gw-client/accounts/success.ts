@@ -119,7 +119,7 @@ const sanitize = [
 //#endregion
 
 // typescript typecheck
-const AccountsSuccess: GwClientShapeFactory = {
+const factory: GwClientShapeFactory = {
   code,
   passThrough,
   type,
@@ -129,4 +129,4 @@ const AccountsSuccess: GwClientShapeFactory = {
   sanitize,
   noSessionId: false,
 };
-export default AccountsSuccess;
+export default factory;

@@ -1,12 +1,16 @@
-const enums = require("../../../../enums");
-const parent = require("../../no-data");
-module.exports = {
+import * as enums from "../../../../enums";
+import { GwClientErrorFactory } from "../../../../shape";
+import parent from "../../no-data";
+
+// typescript typecheck
+const factory: GwClientErrorFactory = {
   // parent
   type: parent.type,
-  examples: parent.examples,
+  create: parent.create,
   validate: parent.validate,
   sanitize: parent.sanitize,
   noData: parent.noData,
+  examples: parent.examples,
   passThrough: parent.passThrough,
   noSessionId: parent.noSessionId,
   // own
@@ -14,3 +18,4 @@ module.exports = {
   code: "error/common/access/insufficient-credit",
   blame: enums.BLAME.CLIENT,
 };
+export default factory;

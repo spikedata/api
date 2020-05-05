@@ -10,22 +10,22 @@ import clientGwLoginInterimWait from "./client-gw/login-interim-wait";
 import clientGwPdf from "./client-gw/pdf";
 import clientGwStatements from "./client-gw/statements";
 import clientGwTransactions from "./client-gw/transactions";
-// import gwClientAccountsSuccess from "./gw-client/accounts/success";
-// import gwClientCloseSuccess from "./gw-client/close/success";
-// import gwClientCsvFailInvalidDataExtracted from "./gw-client/csv/fail/invalid-data-extracted";
-// import gwClientCsvFailMultipleMatchingParsers from "./gw-client/csv/fail/multiple-matching-parsers";
-// import gwClientCsvFailUnknownCsv from "./gw-client/csv/fail/unknown-csv";
-// import gwClientCsvFailUnknownException from "./gw-client/csv/fail/unknown-exception";
+import gwClientAccountsSuccess from "./gw-client/accounts/success";
+import gwClientCloseSuccess from "./gw-client/close/success";
+import gwClientCsvFailInvalidDataExtracted from "./gw-client/csv/fail/invalid-data-extracted";
+import gwClientCsvFailMultipleMatchingParsers from "./gw-client/csv/fail/multiple-matching-parsers";
+import gwClientCsvFailUnknownCsv from "./gw-client/csv/fail/unknown-csv";
+import gwClientCsvFailUnknownException from "./gw-client/csv/fail/unknown-exception";
 // import gwClientCsvSuccessBankStatement from "./gw-client/csv/success/bank-statement";
-// import gwClientErrorCommonAccessExceededMaxConcurrentRequests from "./gw-client/error/common/access/exceeded-max-concurrent-requests";
-// import gwClientErrorCommonAccessInsufficientCredit from "./gw-client/error/common/access/insufficient-credit";
-// import gwClientErrorCommonDevAuthorization from "./gw-client/error/common/dev/authorization";
-// import gwClientErrorCommonDevFunctionNotSupportedOnSite from "./gw-client/error/common/dev/function-not-supported-on-site";
-// import gwClientErrorCommonDevInvalidInputs from "./gw-client/error/common/dev/invalid-inputs";
-// import gwClientErrorCommonDevSentAnotherRequestAfterFinalResponse from "./gw-client/error/common/dev/sent-another-request-after-final-response";
-// import gwClientErrorCommonException from "./gw-client/error/common/exception";
-// import gwClientErrorCommonSessionInUse from "./gw-client/error/common/session-in-use";
-// import gwClientErrorCommonSessionTimedOut from "./gw-client/error/common/session-timed-out";
+import gwClientErrorCommonAccessExceededMaxConcurrentRequests from "./gw-client/error/common/access/exceeded-max-concurrent-requests";
+import gwClientErrorCommonAccessInsufficientCredit from "./gw-client/error/common/access/insufficient-credit";
+import gwClientErrorCommonDevAuthorization from "./gw-client/error/common/dev/authorization";
+import gwClientErrorCommonDevFunctionNotSupportedOnSite from "./gw-client/error/common/dev/function-not-supported-on-site";
+import gwClientErrorCommonDevInvalidInputs from "./gw-client/error/common/dev/invalid-inputs";
+import gwClientErrorCommonDevSentAnotherRequestAfterFinalResponse from "./gw-client/error/common/dev/sent-another-request-after-final-response";
+import gwClientErrorCommonException from "./gw-client/error/common/exception";
+import gwClientErrorCommonSessionInUse from "./gw-client/error/common/session-in-use";
+import gwClientErrorCommonSessionTimedOut from "./gw-client/error/common/session-timed-out";
 // import gwClientErrorFnbOnlineBankingLegalDocumentation from "./gw-client/error/fnb/online-banking-legal-documentation";
 // import gwClientErrorFnbStatementsDisabled from "./gw-client/error/fnb/statements-disabled";
 // import gwClientErrorSiteAbsLoggedOff from "./gw-client/error/site/abs/logged-off";
@@ -45,7 +45,7 @@ import clientGwTransactions from "./client-gw/transactions";
 // import gwClientErrorUserDenied from "./gw-client/error/user/denied";
 // import gwClientErrorUserTookTooLong from "./gw-client/error/user/took-too-long";
 // import gwClientFileSuccess from "./gw-client/file/success";
-// import gwClientInsuranceFail from "./gw-client/insurance/fail";
+import gwClientInsuranceFail from "./gw-client/insurance/fail";
 // import gwClientInsuranceSuccess from "./gw-client/insurance/success";
 // import gwClientLoginInterimInputAbsPass from "./gw-client/login/interim-input-abs-pass";
 // import gwClientLoginInterimInputStdOtp from "./gw-client/login/interim-input-std-otp";
@@ -81,6 +81,7 @@ import clientGwTransactions from "./client-gw/transactions";
 // import gwClientPdfSuccessCreditCardBreakdownMultiUser from "./gw-client/pdf/success/credit-card-breakdown-multi-user";
 // import gwClientPdfSuccessCreditCardSimple from "./gw-client/pdf/success/credit-card-simple";
 // import gwClientSarsSuccessPayrollTaxes from "./gw-client/sars/success/payroll-taxes";
+import gwClientSarsFail from "./gw-client/sars/fail";
 // import gwClientTransactionsSuccess from "./gw-client/transactions/success";
 // import gwClientWrapper from "./gw-client/wrapper"; // remove circular dep: shape -> wrapper -> common -> shape
 
@@ -98,22 +99,22 @@ export const shape = {
   "client-gw/statements": clientGwStatements,
   "client-gw/transactions": clientGwTransactions,
   // gw-client
-  // "gw-client/accounts/success": gwClientAccountsSuccess,
-  // "gw-client/close/success": gwClientCloseSuccess,
-  // "gw-client/csv/fail/invalid-data-extracted": gwClientCsvFailInvalidDataExtracted,
-  // "gw-client/csv/fail/multiple-matching-parsers": gwClientCsvFailMultipleMatchingParsers,
-  // "gw-client/csv/fail/unknown-csv": gwClientCsvFailUnknownCsv,
-  // "gw-client/csv/fail/unknown-exception": gwClientCsvFailUnknownException,
+  "gw-client/accounts/success": gwClientAccountsSuccess,
+  "gw-client/close/success": gwClientCloseSuccess,
+  "gw-client/csv/fail/invalid-data-extracted": gwClientCsvFailInvalidDataExtracted,
+  "gw-client/csv/fail/multiple-matching-parsers": gwClientCsvFailMultipleMatchingParsers,
+  "gw-client/csv/fail/unknown-csv": gwClientCsvFailUnknownCsv,
+  "gw-client/csv/fail/unknown-exception": gwClientCsvFailUnknownException,
   // "gw-client/csv/success/bank-statement": gwClientCsvSuccessBankStatement,
-  // "gw-client/error/common/access/exceeded-max-concurrent-requests": gwClientErrorCommonAccessExceededMaxConcurrentRequests,
-  // "gw-client/error/common/access/insufficient-credit": gwClientErrorCommonAccessInsufficientCredit,
-  // "gw-client/error/common/dev/authorization": gwClientErrorCommonDevAuthorization,
-  // "gw-client/error/common/dev/function-not-supported-on-site": gwClientErrorCommonDevFunctionNotSupportedOnSite,
-  // "gw-client/error/common/dev/invalid-inputs": gwClientErrorCommonDevInvalidInputs,
-  // "gw-client/error/common/dev/sent-another-request-after-final-response": gwClientErrorCommonDevSentAnotherRequestAfterFinalResponse,
-  // "gw-client/error/common/exception": gwClientErrorCommonException,
-  // "gw-client/error/common/session-in-use": gwClientErrorCommonSessionInUse,
-  // "gw-client/error/common/session-timed-out": gwClientErrorCommonSessionTimedOut,
+  "gw-client/error/common/access/exceeded-max-concurrent-requests": gwClientErrorCommonAccessExceededMaxConcurrentRequests,
+  "gw-client/error/common/access/insufficient-credit": gwClientErrorCommonAccessInsufficientCredit,
+  "gw-client/error/common/dev/authorization": gwClientErrorCommonDevAuthorization,
+  "gw-client/error/common/dev/function-not-supported-on-site": gwClientErrorCommonDevFunctionNotSupportedOnSite,
+  "gw-client/error/common/dev/invalid-inputs": gwClientErrorCommonDevInvalidInputs,
+  "gw-client/error/common/dev/sent-another-request-after-final-response": gwClientErrorCommonDevSentAnotherRequestAfterFinalResponse,
+  "gw-client/error/common/exception": gwClientErrorCommonException,
+  "gw-client/error/common/session-in-use": gwClientErrorCommonSessionInUse,
+  "gw-client/error/common/session-timed-out": gwClientErrorCommonSessionTimedOut,
   // "gw-client/error/fnb/online-banking-legal-documentation": gwClientErrorFnbOnlineBankingLegalDocumentation,
   // "gw-client/error/fnb/statements-disabled": gwClientErrorFnbStatementsDisabled,
   // "gw-client/error/site/abs/logged-off": gwClientErrorSiteAbsLoggedOff,
@@ -133,7 +134,7 @@ export const shape = {
   // "gw-client/error/user/denied": gwClientErrorUserDenied,
   // "gw-client/error/user/took-too-long": gwClientErrorUserTookTooLong,
   // "gw-client/file/success": gwClientFileSuccess,
-  // "gw-client/insurance/fail": gwClientInsuranceFail,
+  "gw-client/insurance/fail": gwClientInsuranceFail,
   // "gw-client/insurance/success": gwClientInsuranceSuccess,
   // "gw-client/login/interim-input-abs-pass": gwClientLoginInterimInputAbsPass,
   // "gw-client/login/interim-input-std-otp": gwClientLoginInterimInputStdOtp,
@@ -169,6 +170,7 @@ export const shape = {
   // "gw-client/pdf/success/credit-card-breakdown-multi-user": gwClientPdfSuccessCreditCardBreakdownMultiUser,
   // "gw-client/pdf/success/credit-card-simple": gwClientPdfSuccessCreditCardSimple,
   // "gw-client/sars/success/payroll-taxes": gwClientSarsSuccessPayrollTaxes,
+  "gw-client/sars/fail": gwClientSarsFail,
   // "gw-client/transactions/success": gwClientTransactionsSuccess,
   // "gw-client/wrapper": gwClientWrapper, // remove circular dep: shape -> wrapper -> common -> shape
 };
