@@ -45,12 +45,12 @@ const create = function(pdfPath, pass, buffer) {
     throw new PdfTooLargeError();
   }
 
-  let instance = {
+  const instance = {
     file: path ? path.basename(pdfPath) : pdfPath,
     buffer,
     pass,
   };
-  let errors = Schema.validate(code, validate, instance);
+  const errors = Schema.validate(code, validate, instance);
   if (errors) {
     throw new InputValidationError(errors);
   }
@@ -66,7 +66,7 @@ const isBase64EncodedPdf = function(pdfString) {
 };
 
 const validate = function(data) {
-  let validationErrors = [];
+  const validationErrors = [];
   if (!data.file) {
     validationErrors.push("missing required input: file");
   }
@@ -102,9 +102,9 @@ const schema = {
 
 // NOTE: custom sanitizer in order to prevent buffer being deep cloned before being [redacted]
 const sanitize = function(data) {
-  let temp = data.buffer;
+  const temp = data.buffer;
   delete data.buffer;
-  let clone = Object.assign({ buffer: "[redacted]" }, data);
+  const clone = Object.assign({ buffer: "[redacted]" }, data);
   data.buffer = temp;
   return clone;
 };

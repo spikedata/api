@@ -23,10 +23,10 @@ const examples = {
 
 // TODO: note not currently used by spike-web
 const create = function(todo) {
-  let instance = {
+  const instance = {
     todo,
   };
-  let errors = Schema.validate(code, validate, instance);
+  const errors = Schema.validate(code, validate, instance);
   if (errors) {
     throw new InputValidationError(errors);
   }

@@ -38,13 +38,13 @@ const examples: Examples = {
 
 // NOTE: final=false: normally you want to do /accounts & /transactions after login
 const create = function(sessionId, final = false, data) {
-  let instance = {
+  const instance = {
     sessionId,
     final,
     code,
     data,
   };
-  let errors = Schema.validate(code, validate, instance);
+  const errors = Schema.validate(code, validate, instance);
   if (errors) {
     throw new InputValidationError(errors);
   }

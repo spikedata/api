@@ -9,7 +9,7 @@ export default {
     if (this[config]) {
       return true;
     } else {
-      let configs = Object.keys(this)
+      const configs = Object.keys(this)
         .filter((x) => x !== "checkConfig")
         .join("\n");
       console.error(`invalid config, valid options = \n${configs}`);

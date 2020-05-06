@@ -26,13 +26,13 @@ const examples = {
 //#region create
 
 const create = function(sessionId, final = true, accountNumber, numStatements = 3) {
-  let instance = {
+  const instance = {
     sessionId,
     final,
     accountNumber,
     numStatements,
   };
-  let errors = Schema.validate(code, validate, instance);
+  const errors = Schema.validate(code, validate, instance);
   if (errors) {
     throw new InputValidationError(errors);
   }

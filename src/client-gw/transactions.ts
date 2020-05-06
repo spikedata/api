@@ -27,13 +27,13 @@ const examples = {
 
 const create = function(sessionId, final = true, accountNumber, numDays) {
   numDays = +numDays; // in case user supplied numDays as a string
-  let instance = {
+  const instance = {
     sessionId,
     final,
     accountNumber,
     numDays,
   };
-  let errors = Schema.validate(code, validate, instance);
+  const errors = Schema.validate(code, validate, instance);
   if (errors) {
     throw new InputValidationError(errors);
   }

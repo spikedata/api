@@ -49,7 +49,7 @@ export const validate = {
 };
 
 export const nested = [_nested["statement-info"], _nested.transactions, _nested.breaks];
-let { shapes, schemas } = Nested.resolve(validate.id, nested);
+const { shapes, schemas } = Nested.resolve(validate.id, nested);
 export const nestedShapes = shapes;
 export const nestedSchemas = schemas;
 

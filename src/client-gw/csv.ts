@@ -44,12 +44,12 @@ const create = function(csvPath, pass, buffer) {
     throw new PdfTooLargeError();
   }
 
-  let instance = {
+  const instance = {
     file: path ? path.basename(csvPath) : csvPath,
     buffer,
     pass,
   };
-  let errors = Schema.validate(code, validate, instance);
+  const errors = Schema.validate(code, validate, instance);
   if (errors) {
     throw new InputValidationError(errors);
   }
@@ -80,9 +80,9 @@ const validate = {
 
 // NOTE: custom sanitizer in order to prevent buffer being deep cloned before being [redacted]
 const sanitize = function(data) {
-  let temp = data.buffer;
+  const temp = data.buffer;
   delete data.buffer;
-  let clone = Object.assign({ buffer: "[redacted]" }, data);
+  const clone = Object.assign({ buffer: "[redacted]" }, data);
   data.buffer = temp;
   return clone;
 };

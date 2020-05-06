@@ -24,13 +24,13 @@ const examples = {
 //#region create
 
 const create = function(sessionId, final = true) {
-  let instance = {
+  const instance = {
     sessionId,
     // code, // not required atm hardcoded in routeHandler
     final,
   };
 
-  let errors = Schema.validate(code, validate, instance);
+  const errors = Schema.validate(code, validate, instance);
   if (errors) {
     throw new InputValidationError(errors);
   }

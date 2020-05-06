@@ -61,7 +61,7 @@ export const validate = {
 };
 
 export const nested = [creditCardBreakdownMultiUser];
-let { shapes, schemas } = Nested.resolve(validate.id, nested);
+const { shapes, schemas } = Nested.resolve(validate.id, nested);
 export const nestedShapes = shapes;
 export const nestedSchemas = schemas;
 

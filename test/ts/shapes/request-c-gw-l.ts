@@ -15,18 +15,18 @@ chai.use(chaiUuid);
 //#endregion
 
 // InternalTest
-let _clientId = "InternalTest";
-let _apiKey = "91502218-bb45-4a69-bb7c-36c6c25dd87a";
-let _userKey = "41032ed6-a5d1-4ac9-93cc-5f717758517a";
+const _clientId = "InternalTest";
+const _apiKey = "91502218-bb45-4a69-bb7c-36c6c25dd87a";
+const _userKey = "41032ed6-a5d1-4ac9-93cc-5f717758517a";
 
 describe("full request pipeline = client-gw-lambda", function() {
-  let shapes = Object.keys(API.shape).filter((x) => x.startsWith("client-gw"));
+  const shapes = Object.keys(API.shape).filter((x) => x.startsWith("client-gw"));
   // let shapes = Object.keys(API.shape).filter(x => x.startsWith("client-gw/login"));
   // log.info(JSON.stringify(shapes, null, 2));
 
-  for (let shape of shapes) {
+  for (const shape of shapes) {
     let clientGwShape;
-    let clientGwCode = shape;
+    const clientGwCode = shape;
     let clientGwInstance;
 
     let gwLambdaShape;
@@ -43,7 +43,7 @@ describe("full request pipeline = client-gw-lambda", function() {
     //  req1 = gw-lambda/lchan/inputs and marshall
     //  req2 = gw-lambda/bchan/composer and passThrough
 
-    let testname = `${clientGwCode} request pipeline`;
+    const testname = `${clientGwCode} request pipeline`;
     it(testname, async function() {
       try {
         // if (shape === "client-gw/login-interim-input/abs-pass") {
@@ -65,8 +65,8 @@ describe("full request pipeline = client-gw-lambda", function() {
           ));
           gwLambdaCode = gwLambdaShape.code;
         } else {
-          let examples = Object.keys(clientGwShape.examples);
-          for (let example of examples) {
+          const examples = Object.keys(clientGwShape.examples);
+          for (const example of examples) {
             // validate client-gw shape
             clientGwInstance = clientGwShape.examples[example];
             API.common.validateShape(clientGwShape, clientGwInstance);
@@ -89,7 +89,7 @@ describe("full request pipeline = client-gw-lambda", function() {
             // );
             // LCHAN = "gw-lambda/lchan/inputs".validate()
             // BCHAN = "gw-lambda/bchan/composer".validate()
-            let errors = API.common.validateShape(gwLambdaShape, gwLambdaInstance);
+            const errors = API.common.validateShape(gwLambdaShape, gwLambdaInstance);
             expect(errors).to.be.undefined;
           }
         }

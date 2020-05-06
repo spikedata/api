@@ -16,7 +16,7 @@ export const noSessionId = true; // shapeExplorer
 
 //#region examples
 
-let statement = {
+const statement = {
   bank: "ABS",
   accountNumber: undefined,
   dates: {
@@ -116,7 +116,7 @@ export const validate = {
 };
 
 export const nested = [_nested.transactionsNoBalance, _nested.breaks];
-let { shapes, schemas } = Nested.resolve(validate.id, nested);
+const { shapes, schemas } = Nested.resolve(validate.id, nested);
 export const nestedShapes = shapes;
 export const nestedSchemas = schemas;
 

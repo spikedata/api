@@ -40,9 +40,9 @@ export const examples = {
 
 export const create = function(requestId, accountNumber, transactions, scraperName) {
   PdfCommon.add_id(transactions);
-  let { breaks, valid } = PdfCommon.validate(requestId, transactions, scraperName);
-  let instance = { accountNumber, transactions, valid, breaks };
-  let errors = Schema.validate(code, validate, instance, nestedSchemas);
+  const { breaks, valid } = PdfCommon.validate(requestId, transactions, scraperName);
+  const instance = { accountNumber, transactions, valid, breaks };
+  const errors = Schema.validate(code, validate, instance, nestedSchemas);
   if (errors) {
     throw new InputValidationError(errors);
   }
@@ -77,7 +77,7 @@ export const validate = {
 };
 
 export const nested = [_nested.transactions, _nested.breaks];
-let { shapes, schemas } = Nested.resolve(validate.id, nested);
+const { shapes, schemas } = Nested.resolve(validate.id, nested);
 export const nestedShapes = shapes;
 export const nestedSchemas = schemas;
 

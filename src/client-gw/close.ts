@@ -24,11 +24,11 @@ const examples = {
 //#region create
 
 const create = function(sessionId) {
-  let instance = {
+  const instance = {
     sessionId,
     final: true,
   };
-  let errors = Schema.validate(code, validate, instance);
+  const errors = Schema.validate(code, validate, instance);
   if (errors) {
     throw new InputValidationError(errors);
   }

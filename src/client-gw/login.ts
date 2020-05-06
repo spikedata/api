@@ -52,8 +52,8 @@ const examples = {
 //#region create
 
 const create = function(site, user, pin, pass, usernum) {
-  let instance = { site, user, pin, pass, usernum };
-  let errors = Schema.validate(code, validate, instance);
+  const instance = { site, user, pin, pass, usernum };
+  const errors = Schema.validate(code, validate, instance);
   if (errors) {
     throw new InputValidationError(errors);
   }
@@ -87,7 +87,7 @@ const schema = {
 };
 
 const validate = function(data) {
-  let validationErrors = [];
+  const validationErrors = [];
   if (!data.site) {
     validationErrors.push("missing required input: site");
   } else {
@@ -104,7 +104,7 @@ const validate = function(data) {
         if (!data.usernum) {
           validationErrors.push("missing required input: usernum = User number");
         } else {
-          let usernumstr = data.usernum.toString();
+          const usernumstr = data.usernum.toString();
           if (usernumstr.match(/[^0-9]/) || parseInt(usernumstr) <= 0 || parseInt(usernumstr) > 9) {
             validationErrors.push("usernum should be an integer between 1 and 9");
           }
@@ -149,7 +149,7 @@ const validate = function(data) {
 
 // NOTE: custom sanitizer used so that .pin & .pass are not added when they haven't been supplied
 const sanitize = function(data) {
-  let clone = Object.assign({}, data);
+  const clone = Object.assign({}, data);
   if (clone.pin) clone.pin = "***";
   if (clone.pass) clone.pass = "***";
   return clone;

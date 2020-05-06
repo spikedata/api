@@ -40,8 +40,8 @@ export const decompose = function(shape, instance) {
   // ALGORITHM:
   //  - clone instance and remove composer fields { sessionId, final }
   //  - all remaining fields are .data
-  let code = shape.code; // instance.code only exists on ./codeData composed shapes - not basic composed shapes
-  let clone = Object.assign({}, instance); // shallow clone is fine
+  const code = shape.code; // instance.code only exists on ./codeData composed shapes - not basic composed shapes
+  const clone = Object.assign({}, instance); // shallow clone is fine
   delete clone.sessionId;
   delete clone.final;
   return { code, data: clone };

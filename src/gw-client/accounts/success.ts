@@ -52,10 +52,10 @@ const examples = {
 
 // TODO: note not currently used because data created by browserCode - e.g. see [$/spike-web/src/NED.0/accounts.js]
 const create = function(todo) {
-  let instance = {
+  const instance = {
     todo,
   };
-  let errors = Schema.validate(code, validate, instance);
+  const errors = Schema.validate(code, validate, instance);
   if (errors) {
     throw new InputValidationError(errors);
   }

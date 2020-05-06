@@ -33,12 +33,12 @@ const create = function(filePath, buffer, ext) {
     buffer = fs.readFileSync(filePath);
     buffer = buffer.toString("base64");
   }
-  let instance = {
+  const instance = {
     file: path.basename(filePath),
     buffer,
     ext,
   };
-  let errors = Schema.validate(code, validate, instance);
+  const errors = Schema.validate(code, validate, instance);
   if (errors) {
     throw new InputValidationError(errors);
   }
@@ -64,7 +64,7 @@ const validate = {
 
 // NOTE: custom sanitizer in order to prevent buffer being deep cloned before being [redacted]
 const sanitize = function(data) {
-  let clone = {
+  const clone = {
     file: data.file,
     buffer: "[redacted]",
     ext: data.ext,
