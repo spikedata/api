@@ -32,4 +32,7 @@ module.exports = {
   globals: {
     log: "readonly",
   },
+  env: {
+    mocha: true,
+  },
 };
