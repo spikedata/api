@@ -1,17 +1,18 @@
-const enums = require("../../../enums");
-const transactionsNoBalance = require("../../nested/transactions-no-balance");
-const Nested = require("../../../lib/nested");
-const breaks = require("../../nested/breaks");
+import * as enums from "../../../enums";
+import { GwClientShapeFactory } from "../../../shape";
+import * as Nested from "../../../lib/nested";
+import * as breaks from "../../nested/breaks";
+import * as transactionsNoBalance from "../../nested/transactions-no-balance";
 
-const nested = {
+const _nested = {
   transactionsNoBalance,
   breaks,
 };
 
-exports.code = "csv/success/bank-statement";
-exports.type = enums.TYPES.SUCCESS;
-exports.passThrough = true; // from lambda-gw
-exports.noSessionId = true; // shapeExplorer
+export const code = "csv/success/bank-statement";
+export const type = enums.TYPES.SUCCESS;
+export const passThrough = true; // from lambda-gw
+export const noSessionId = true; // shapeExplorer
 
 //#region examples
 
@@ -26,18 +27,18 @@ let statement = {
   nameAddress: ["Mr. J Smith"],
 };
 
-exports.examples = {
+export const examples = {
   success: {
     parser: "ABS1",
     statement,
-    transactions: nested.transactionsNoBalance.examples.default,
+    transactions: _nested.transactionsNoBalance.examples.default,
     valid: true,
   },
   successWithBreaks: {
     parser: "ABS1",
     statement,
-    transactions: nested.transactionsNoBalance.examples.default,
-    breaks: nested.breaks.examples.default,
+    transactions: _nested.transactionsNoBalance.examples.default,
+    breaks: _nested.breaks.examples.default,
     valid: false,
   },
 };
@@ -46,7 +47,7 @@ exports.examples = {
 
 //#region validate
 
-exports.validate = {
+export const validate = {
   id: "/bank-statement-csv",
   type: "object",
   properties: {
@@ -101,7 +102,7 @@ exports.validate = {
     },
     transactions: {
       required: true,
-      $ref: nested.transactionsNoBalance.validate.id,
+      $ref: _nested.transactionsNoBalance.validate.id,
     },
     valid: {
       required: true,
@@ -109,24 +110,37 @@ exports.validate = {
     },
     breaks: {
       required: false,
-      $ref: nested.breaks.validate.id,
+      $ref: _nested.breaks.validate.id,
     },
   },
 };
 
-exports.nested = [nested.transactionsNoBalance, nested.breaks];
-let { shapes, schemas } = Nested.resolve(exports.validate.id, exports.nested);
-exports.nestedShapes = shapes;
-exports.nestedSchemas = schemas;
+export const nested = [_nested.transactionsNoBalance, _nested.breaks];
+let { shapes, schemas } = Nested.resolve(validate.id, nested);
+export const nestedShapes = shapes;
+export const nestedSchemas = schemas;
 
 //#endregion
 
 //#region sanitize
 
-exports.sanitize = {
+export const sanitize = {
   statement: {
     nameAddress: "[redacted]",
   },
 };
 
 //#endregion
+
+// typescript typecheck
+const factory: GwClientShapeFactory = {
+  code,
+  passThrough,
+  type,
+  examples,
+  create: undefined, // spike-pdf doesn't call .create() atm
+  validate,
+  sanitize,
+  noSessionId,
+};
+export default factory;

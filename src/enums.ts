@@ -205,7 +205,7 @@ export const PdfParserAll = Object.keys(PdfParser).reduce((arr, k) => {
 // Documents expected values - not an enum
 // see $/spike-csv/tools/doc.js
 export const CsvParser = {
-  bankStatementsNormal: ["ABS1", "CAP1"],
+  bankStatements: ["ABS1", "CAP1", "CAP2", "FNB1", "INV1", "NED1", "NED2"],
 };
 
 export const CsvParserAll = Object.keys(CsvParser).reduce((arr, k) => {

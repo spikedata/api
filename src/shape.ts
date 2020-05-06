@@ -1,6 +1,7 @@
 // Shape is the factory which creates the instance
 // Each shape has a .code, this lives on the wrapper NOT on the instance though
 // makes sense to split factory and instance so that instance is just a JSON object - esp. when serializing and deserializing across network
+// see ../docs/shape-system.md
 export type ShapeInstance = object;
 
 export type CreateFunction = (...args) => ShapeInstance;
