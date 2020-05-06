@@ -1,7 +1,7 @@
-const chai = require("chai");
-const chaiUuid = require("chai-uuid");
-const API = require("../../src/index").default;
-const uuid = require("../../src/lib/uuid");
+import chai from "chai";
+import chaiUuid from "chai-uuid";
+import API from "../../../build/module/index";
+import * as uuid from "../../../build/module/lib/uuid";
 
 /**
  * GOAL: simulate the logic which is occurring inside GW when response is received from Lambda and must be marshalled / passed to Client

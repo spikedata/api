@@ -1,5 +1,5 @@
 const chai = require("chai");
-const AjvExt = require("../src/lib/ajvExt").default;
+const AjvExt = require("../../build/main/lib/ajvExt").default;
 
 //#region chai setup
 

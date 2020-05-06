@@ -1,8 +1,8 @@
 const chai = require("chai");
 const chaiUuid = require("chai-uuid");
-const uuid = require("../../src/lib/uuid");
-const API = require("../../src/index").default;
-const gwLambdaComposer = require("../../src/gw-lambda/bchan/composer");
+const uuid = require("../../../build/main/lib/uuid");
+const API = require("../../../build/main/index").default;
+const gwLambdaComposer = require("../../../build/main/gw-lambda/bchan/composer");
 
 //#region chai setup
 

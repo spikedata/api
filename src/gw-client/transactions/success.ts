@@ -99,5 +99,9 @@ const factory: GwClientShapeFactory = {
   validate,
   sanitize,
   noSessionId,
+  // nested
+  nested,
+  nestedSchemas,
+  nestedShapes,
 };
 export default factory;

@@ -1,7 +1,7 @@
 const chai = require("chai");
 const chaiUuid = require("chai-uuid");
-const API = require("../../src/index").default;
-const uuid = require("../../src/lib/uuid");
+const API = require("../../../build/main/index").default;
+const uuid = require("../../../build/main/lib/uuid");
 
 /**
  * GOAL: simulate the logic which is occurring inside GW when request is received from Client and must be marshalled / passed to Lambda
