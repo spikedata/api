@@ -19,16 +19,14 @@ describe("full response pipeline = lambda-gw-client", function() {
   // log.info(JSON.stringify(shapes, null, 2));
 
   for (const shape of shapes) {
-    let lambdaGwShape;
     const lambdaGwCode = shape;
+    const lambdaGwShape = API.shape[lambdaGwCode];
     let lambdaGwInstance;
 
     let gwClientShape;
     let gwClientCode;
-    // eslint-disable-next-line no-unused-vars
     let gwClientInstance;
 
-    lambdaGwShape = API.shape[lambdaGwCode];
     if (!lambdaGwShape.code) {
       log.info(JSON.stringify(lambdaGwShape, null, 2));
       assert.fail(true, false, `${lambdaGwCode}.code missing`); // throws

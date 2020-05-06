@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 export const LogLevel = {};
 export const defaultSettings = {};
 export const AlertLevel = {};

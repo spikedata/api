@@ -21,4 +21,5 @@ export const init = function(config) {
   initGlobals(config);
 };
 
-export const shutdown = function() {};
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+export const shutdown = () => {};

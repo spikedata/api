@@ -25,15 +25,14 @@ describe("full request pipeline = client-gw-lambda", function() {
   // log.info(JSON.stringify(shapes, null, 2));
 
   for (const shape of shapes) {
-    let clientGwShape;
     const clientGwCode = shape;
+    const clientGwShape = API.shape[clientGwCode];
     let clientGwInstance;
 
     let gwLambdaShape;
     let gwLambdaCode;
     let gwLambdaInstance;
 
-    clientGwShape = API.shape[clientGwCode];
     if (!clientGwShape.code) {
       log.info(JSON.stringify(clientGwShape, null, 2));
       assert.fail(true, false, `${clientGwCode}.code missing`); // throws
