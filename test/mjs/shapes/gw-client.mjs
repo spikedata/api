@@ -1,6 +1,6 @@
 import chai from "chai";
 import chaiUuid from "chai-uuid";
-import API from "../../../build/module/index";
+import API from "../../../build/module/index.mjs";
 
 //#region chai setup
 

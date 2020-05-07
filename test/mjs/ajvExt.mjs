@@ -1,5 +1,5 @@
 import chai from "chai";
-import AjvExt from "../../build/module/lib/ajvExt";
+import AjvExt from "../../build/module/lib/ajvExt.mjs";
 
 //#region chai setup
 

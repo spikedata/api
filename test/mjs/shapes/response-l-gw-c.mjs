@@ -1,7 +1,7 @@
 import chai from "chai";
 import chaiUuid from "chai-uuid";
-import API from "../../../build/module/index";
-import * as uuid from "../../../build/module/lib/uuid";
+import API from "../../../build/module/index.mjs";
+import * as uuid from "../../../build/module/lib/uuid.mjs";
 
 /**
  * GOAL: simulate the logic which is occurring inside GW when response is received from Lambda and must be marshalled / passed to Client

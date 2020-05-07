@@ -19,11 +19,11 @@ describe("init", () => {
 // shapes
 //
 
-import "./ajvExt";
-import "./shapes/client-gw";
-import "./shapes/gw-client";
-// import "./shapes/request-c-gw-l";
-// import "./shapes/response-l-gw-c";
+import "./ajvExt.mjs";
+import "./shapes/client-gw.mjs";
+import "./shapes/gw-client.mjs";
+// import "./shapes/request-c-gw-l.mjs";
+// import "./shapes/response-l-gw-c.mjs";
 
 //
 // shutdown
