@@ -36,25 +36,25 @@ export const compose = function(
   additionalSchema
 ) {
   // same as basic
-  let composedSchema;
+  let composedSchemaLocal;
   if (additionalSchema) {
-    composedSchema = objectUtil.mergeObjectsClone(this.composedSchema, {
+    composedSchemaLocal = objectUtil.mergeObjectsClone(composedSchema, {
       properties: additionalSchema,
     });
   } else {
-    composedSchema = objectUtil.clone(this.composedSchema);
+    composedSchemaLocal = objectUtil.clone(composedSchema);
   }
-  composedSchema.properties.sessionId.required = sessionIdRequired;
-  composedSchema.properties.final.required = finalRequired;
+  composedSchemaLocal.properties.sessionId.required = sessionIdRequired;
+  composedSchemaLocal.properties.final.required = finalRequired;
 
   // codeData
-  composedSchema.properties.code.required = codeRequired;
+  composedSchemaLocal.properties.code.required = codeRequired;
   if (dataSchema) {
-    composedSchema.properties.data = dataSchema;
+    composedSchemaLocal.properties.data = dataSchema;
   } else {
-    delete composedSchema.properties.data;
+    delete composedSchemaLocal.properties.data;
   }
-  return composedSchema;
+  return composedSchemaLocal;
 };
 
 // returns { code, data } that will be sent over bchan to lambda

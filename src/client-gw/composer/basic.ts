@@ -16,17 +16,17 @@ export const composedSchema = {
 };
 
 export const compose = function(sessionIdRequired, finalRequired, additionalSchema) {
-  let composedSchema;
+  let composedSchemaLocal;
   if (additionalSchema) {
-    composedSchema = objectUtil.mergeObjectsClone(this.composedSchema, {
+    composedSchemaLocal = objectUtil.mergeObjectsClone(composedSchema, {
       properties: additionalSchema,
     });
   } else {
-    composedSchema = objectUtil.clone(this.composedSchema);
+    composedSchemaLocal = objectUtil.clone(composedSchema);
   }
-  composedSchema.properties.sessionId.required = sessionIdRequired;
-  composedSchema.properties.final.required = finalRequired;
-  return composedSchema;
+  composedSchemaLocal.properties.sessionId.required = sessionIdRequired;
+  composedSchemaLocal.properties.final.required = finalRequired;
+  return composedSchemaLocal;
 };
 
 // create data that will be sent over bchan to lambda
