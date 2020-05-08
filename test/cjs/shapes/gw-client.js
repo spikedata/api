@@ -1,6 +1,6 @@
 const chai = require("chai");
 const chaiUuid = require("chai-uuid");
-const API = require("../../../build/main/index").default;
+const API = require("../../../build/main/index");
 
 //#region chai setup
 

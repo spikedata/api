@@ -29,7 +29,7 @@
     "describe": "npm-scripts-info",
     "build": "run-s clean && run-p build:m* && run-s build:rollup",
     "build:main": "tsc -p tsconfig.json",
-    "build:module": "build-module.sh",
+    "build:module": "./build-module.sh",
     "build:rollup": "rollup -c rollup.config.js",
     "fix": "run-s fix:*",
     "fix:prettier": "prettier \"src/**/*.ts\" --write",

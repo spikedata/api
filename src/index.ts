@@ -25,31 +25,42 @@ import * as shared from "./wrappers/shared";
 import statements from "./wrappers/statements";
 import transactions from "./wrappers/transactions";
 
-export default {
+function sanitize(response) {
+  const shape = shapes.getShape(response.code);
+  return common.sanitize(shape.sanitize, response.data);
+}
+
+function overrideShapes(shapeOverrides) {
+  // NOTE: must modify the object inplace in order for @spike/api code to use supplied shapes
+  for (const key in shapeOverrides) {
+    shapes.shape[key] = shapeOverrides[key]; // NOTE: modifies export shape
+  }
+}
+
+// rename
+const response = gwClientWrapper;
+const shape = shapes.shape;
+const getShape = shapes.getShape;
+const isSupported = enums.isSupported;
+const isUserError = helpers.isUserError;
+
+export {
   config,
   // api
-  shape: shapes.shape,
-  getShape: shapes.getShape,
-  overrideShapes: function(shapeOverrides) {
-    // NOTE: must modify the object inplace in order for @spike/api code to use supplied shapes
-    for (const key in shapeOverrides) {
-      shapes.shape[key] = shapeOverrides[key]; // NOTE: modifies export shape
-    }
-  },
+  shape,
+  getShape,
+  overrideShapes,
   common,
   enums,
-  isSupported: enums.isSupported,
-  isUserError: helpers.isUserError,
+  isSupported,
+  isUserError,
   BadShapeError,
   InputValidationError,
   PdfTooLargeError,
   ShapeNotFoundError,
-  sanitize(response) {
-    const shape = shapes.getShape(response.code);
-    return common.sanitize(shape.sanitize, response.data);
-  },
+  sanitize,
   schema,
-  response: gwClientWrapper,
+  response,
   // wrappers
   accounts,
   close,

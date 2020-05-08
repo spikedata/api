@@ -1,5 +1,5 @@
 exports.LogLevel = {};
-exports.defaultSettings = {};
+exportsSettings = {};
 exports.AlertLevel = {};
 exports.config = {};
 exports.init = () => {};

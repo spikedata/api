@@ -71,7 +71,7 @@ export default [
 
   // browser - umd build for cdn
   {
-    input: "./build/module/index.js",
+    input: "./build/module/index.mjs",
     output: [
       {
         name: "SpikeApi",

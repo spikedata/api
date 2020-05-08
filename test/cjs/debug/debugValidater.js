@@ -1,4 +1,4 @@
-const API = require("../../../build/main/index").default;
+const API = require("../../../build/main/index");
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Choose shape here:

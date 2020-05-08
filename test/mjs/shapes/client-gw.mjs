@@ -1,6 +1,6 @@
 import chai from "chai";
 import chaiUuid from "chai-uuid";
-import API from "../../../build/module/index.mjs";
+import * as API from "../../../build/module/index.mjs";
 import * as uuid from "../../../build/module/lib/uuid.mjs";
 import * as gwLambdaComposer from "../../../build/module/gw-lambda/bchan/composer.mjs";
 

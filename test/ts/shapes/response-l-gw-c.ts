@@ -1,6 +1,6 @@
 import chai from "chai";
 import chaiUuid from "chai-uuid";
-import API from "../../../src/index";
+import * as API from "../../../src/index";
 import * as uuid from "../../../src/lib/uuid";
 
 /**

@@ -1,4 +1,4 @@
-import API from "../../../build/module/index.mjs";
+import * as API from "../../../build/module/index.mjs";
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Choose shape here:
