@@ -10,7 +10,7 @@ import InputValidationError from "./lib/inputValidationError";
 import PdfTooLargeError from "./lib/pdfTooLargeError";
 import ShapeNotFoundError from "./lib/shapeNotFoundError";
 import * as schema from "./lib/schema";
-import * as gwClientWrapper from "./gw-client/wrapper";
+import gwClientWrapper from "./gw-client/wrapper";
 // wrappers
 import accounts from "./wrappers/accounts";
 import close from "./wrappers/close";
@@ -24,6 +24,10 @@ import pdf from "./wrappers/pdf";
 import * as shared from "./wrappers/shared";
 import statements from "./wrappers/statements";
 import transactions from "./wrappers/transactions";
+// lib - for swaggerGenerator
+import AjvExt from "./lib/ajvExt";
+import * as core from "./lib/core";
+import * as object from "./lib/object";
 
 function sanitize(response) {
   const shape = shapes.getShape(response.code);
@@ -43,6 +47,11 @@ const shape = shapes.shape;
 const getShape = shapes.getShape;
 const isSupported = enums.isSupported;
 const isUserError = helpers.isUserError;
+const lib = {
+  core,
+  AjvExt,
+  object,
+};
 
 export {
   config,
@@ -74,4 +83,5 @@ export {
   shared,
   statements,
   transactions,
+  lib,
 };
