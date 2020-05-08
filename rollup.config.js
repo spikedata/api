@@ -14,15 +14,39 @@ const disabledBuiltins = {
 const external = builtins.concat(Object.keys(pkg.dependencies));
 
 export default [
-  // CommonJS (for Node) and ES module (for bundlers) build
+  // NOTE: cjs and esm are not needed - only umd
+  // cjs = use build/main/index.js
+  // esm = use build/module/index.mjs
+  /*
+  // CommonJS (for Node)
   {
-    input: "./src/module.mjs",
+    input: "./build/main/index.js",
     output: [
       {
         file: "dist/spike-api.cjs.js", // pkg.main,
         format: "cjs",
         sourcemap: true,
       },
+    ],
+    external,
+    plugins: [
+      babel({
+        exclude: ["node_modules/**"],
+        externalHelpers: false,
+        runtimeHelpers: true,
+      }),
+      resolve({
+        preferBuiltins: true,
+      }),
+      commonjs(),
+      json(),
+    ],
+  },
+
+  // ES module (for bundlers)
+  {
+    input: "./build/module/index.js",
+    output: [
       {
         file: "dist/spike-api.esm.mjs", // pkg.module,
         format: "es",
@@ -43,13 +67,15 @@ export default [
       json(),
     ],
   },
+  */
+
   // browser - umd build for cdn
   {
-    input: "./src/module.mjs",
+    input: "./build/module/index.mjs",
     output: [
       {
         name: "SpikeApi",
-        file: "dist/spike-api.umd.mjs", // pkg.browser,
+        file: "./build/umd/spike-api.umd.js", // pkg.browser,
         format: "umd",
         sourcemap: true,
         // NOTE: fs & path aren't used in browser code
