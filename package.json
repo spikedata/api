@@ -17,13 +17,10 @@
     "statements"
   ],
   "exports": {
-    ".": [
-      {
-        "import": "./build/module/index.mjs",
-        "require": "./build/main/index.js"
-      },
-      "./build/module/index.mjs"
-    ]
+    ".": {
+      "import": "./build/module/index.mjs",
+      "require": "./build/main/index.js"
+    }
   },
   "scripts": {
     "describe": "npm-scripts-info",
