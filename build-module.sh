@@ -17,4 +17,4 @@ tsc -p tsconfig.module.json
 printf "${YELLOW}transform import paths${NC}\n"
 find ./build/module -iname \*.js -exec sh -c 'mv "$1" "${1%.js}.mjs"' _ {} \;
 shopt -s globstar
-./node_modules/.bin/jscodeshift ./build/module/**/*.mjs -t ./codemod/fix-mjs-import-paths.js
+./node_modules/.bin/jscodeshift ./build/module/**/*.mjs -t ./codemod/fix-mjs-import-paths.js > /dev/null
