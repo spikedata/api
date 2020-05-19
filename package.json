@@ -4,7 +4,14 @@
   "description": "Spike API library helper",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
-  "module": "build/module/index.mjs",
+  "xtype": "module",
+  "xmodule": "build/module/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./build/module/index.mjs",
+      "require": "./build/main/index.js"
+    }
+  },
   "sideEffects": false,
   "author": "ilan@spikedata.co.za",
   "repository": "https://github.com/spikedata/api",
@@ -16,12 +23,6 @@
     "bank",
     "statements"
   ],
-  "exports": {
-    ".": {
-      "import": "./build/module/index.mjs",
-      "require": "./build/main/index.js"
-    }
-  },
   "scripts": {
     "describe": "npm-scripts-info",
     "build": "run-s clean && run-p build:m* && run-s build:rollup",
